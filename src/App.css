@@ -1,0 +1,14 @@
+/* 
+    - red : #f40402
+    - dark grey (nav): #212121
+    - black : #0f0f0f 
+    */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.App {
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+  
+}
