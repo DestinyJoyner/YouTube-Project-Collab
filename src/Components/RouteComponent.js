@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import SearchIndex from './SearchIndex';
+import SearchIndex from './VideoThumbnail';
 import SearchResults from './SearchResults';
 
 function RouteComponent({searchInput, setSearchInput, searchResult, setSearchResult}) {
