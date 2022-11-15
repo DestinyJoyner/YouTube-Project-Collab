@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function VideoThumbnail({e, videoId}) {
 const [views, setViews] = useState("")
@@ -11,9 +12,10 @@ const [views, setViews] = useState("")
         .then( respJson => setViews(respJson.items[0].statistics.viewCount))
         .catch(err => console.log(err))
     }, [videoId])
+
     return (
         <div className='videoThumbnail'>
-            <p>{e.snippet.title}</p>
+            <Link to = {`/videos/${videoId}`}><p>{e.snippet.title}</p></Link>
             <img 
             src={e.snippet.thumbnails.default.url} 
             alt= {e.snippet.title} />

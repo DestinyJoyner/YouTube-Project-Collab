@@ -20,6 +20,9 @@
 .videoThumbnail img {
     margin-top: 15px;
 }
+.videoThumbnail a {
+    color: black;
+}
 h2 {
     text-align: center;
     margin-top: 10px;
