@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-import SearchIndex from "./VideoThumbnail";
-import "./SearchIndex.css"
+import VideoThumbnail from "./VideoThumbnail";
+import "./VideoThumbnail.css"
 import "./SearchBar.css"
 
 export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput }) {
@@ -32,7 +32,7 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
     <div className="videos">
       {searchResult &&
         searchResult.map((e) => {
-           return <SearchIndex key={e.id.videoId} e= {e} videoId = {e.id.videoId} />  
+           return <VideoThumbnail key={e.id.videoId} e= {e} videoId = {e.id.videoId} />  
         })}
     </div>
     </>

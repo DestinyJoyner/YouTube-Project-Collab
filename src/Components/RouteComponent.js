@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import SearchIndex from './VideoThumbnail';
 import SearchResults from './SearchResults';
+import Video from './Video';
 
 function RouteComponent({searchInput, setSearchInput, searchResult, setSearchResult}) {
 
@@ -34,7 +35,7 @@ function RouteComponent({searchInput, setSearchInput, searchResult, setSearchRes
 
             <Route path = "videos">
                 <Route index element = {<SearchIndex />} />
-                <Route path = ":id" element = {<>Video Player</>} />
+                <Route path = ":id" element = {<Video/>} />
 
             </Route>
             <Route path = "*" element = {<>Error</>} />
