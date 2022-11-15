@@ -19,6 +19,7 @@ export default function SearchBar({
       }}
     >
       <input
+        className="textbox"
         type="text"
         placeholder="type..."
         value={searchInput}

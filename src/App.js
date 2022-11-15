@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import RouteComponent from "./Components/RouteComponent";
 import Footer from "./Components/Footer"
 import Nav from "./Components/Nav";
 import SearchBar from "./Components/SearchBar";
@@ -8,14 +9,24 @@ import './App.css';
 import SearchResults from "./Components/SearchResults";
 
 function App() {
+
+  /* comment out before merge*/
+
+  const dogs = window.localStorage.getItem(`dogs`)
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
   return (
     <div className="App">
       <Nav />
-      
-      <Routes>
+
+      <RouteComponent
+      searchInput={searchInput} 
+      setSearchInput={setSearchInput} 
+      setSearchResult={setSearchResult}
+      searchResult = {searchResult} 
+      /> 
+      {/* <Routes>
         <Route path = "/" element = {<SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchResult={setSearchResult}/>} />
 
         <Route path = "/about" element = {<>About</>} />
@@ -26,7 +37,7 @@ function App() {
 
         <Route path = "*" element = {<>Error</>}/>
 
-      </Routes>
+      </Routes> */}
       
       <Footer />
      

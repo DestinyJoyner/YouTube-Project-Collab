@@ -1,21 +1,38 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import SearchIndex from "./SearchIndex";
+import "./SearchIndex.css"
+import "./SearchBar.css"
 
-export default function SearchResults({ searchResult }) {
+export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput }) {
+  const {keyword} = useParams()
+  
+
   useEffect(() => {
+    const stored = window.localStorage.getItem(keyword)
+    if(stored){
+      setSearchResult(JSON.parse(stored).items)
+    }
+    if(!keyword){
+      setSearchResult([])
+    }
     console.log("useEffect");
-  }, [searchResult]);
+  }, [keyword]);
   return (
-    <div>
-      Search Results:
+    <>
+    <SearchBar
+    searchInput={searchInput} 
+    setSearchInput={setSearchInput} 
+    setSearchResult={setSearchResult}/>
+    <h2>Results for : {keyword}</h2>
+    <div className="videos">
       {searchResult &&
         searchResult.map((e) => {
-          return (
-            <div key={e.id.videoId}>
-              <p>{e.snippet.title}</p>
-              <img src={e.snippet.thumbnails.default.url} alt={e.snippet.title}></img>
-            </div>
-          );
+           return <SearchIndex key={e.id.videoId} e= {e} />
+            
         })}
     </div>
+    </>
   );
 }
