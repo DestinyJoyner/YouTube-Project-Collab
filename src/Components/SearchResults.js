@@ -15,7 +15,7 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
     if(stored){
       setSearchResult(JSON.parse(stored).items)
     }
-    if(!keyword){
+    if(!stored){
       setSearchResult([])
     }
     console.log("useEffect");

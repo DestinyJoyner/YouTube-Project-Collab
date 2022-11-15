@@ -5,10 +5,15 @@ import "./Video.css"
 
 function Video(props) {
     const {id} = useParams()
+    const opts = {
+        height: 400,
+        width: 500,
+       
+    }
     
     return (
         <div className='video'>
-            <YouTube videoId= {id} />
+            <YouTube videoId= {id} opts = {opts} />
         </div>
     );
 }
