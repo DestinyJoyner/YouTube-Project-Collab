@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { fetchData } from "../API/Fetch";
+import "./SearchBar.css"
 
 export default function SearchBar({
   searchInput,

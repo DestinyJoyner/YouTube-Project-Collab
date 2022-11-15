@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function VideoThumbnail({e, videoId}) {
+function VideoThumbnail({video, videoId}) {
 const [views, setViews] = useState("")
 /* this fetch w/ 'statistics gives viewcount
     https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=ZtHCnXMjIXY&maxResults=25&key=AIzaSyBPnE3WELPDQRQlYWCpMDN9Gw_B5GjcoEE
@@ -15,10 +15,10 @@ const [views, setViews] = useState("")
 
     return (
         <div className='videoThumbnail'>
-            <Link to = {`/videos/${videoId}`}><p>{e.snippet.title}</p></Link>
+            <Link to = {`/videos/${videoId}`}><p>{video.snippet.title}</p></Link>
             <img 
-            src={e.snippet.thumbnails.default.url} 
-            alt= {e.snippet.title} />
+            src={video.snippet.thumbnails.default.url} 
+            alt= {video.snippet.title} />
             <p>Views: {views}</p>
             
         </div>

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import YouTube from 'react-youtube'
 import "./Video.css"
 
-function Video(props) {
+function Video() {
     const {id} = useParams()
     const opts = {
         height: 400,

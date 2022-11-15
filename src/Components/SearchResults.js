@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 import VideoThumbnail from "./VideoThumbnail";
-import "./VideoThumbnail.css"
-import "./SearchBar.css"
+import "./SearchResults.css"
 
 export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput }) {
   const {keyword} = useParams()
@@ -16,6 +15,7 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
       setSearchResult(JSON.parse(stored).items)
     }
     if(!stored){
+      // add fetch from keyword param
       setSearchResult([])
     }
     console.log("useEffect");
@@ -28,11 +28,11 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
     setSearchInput={setSearchInput} 
     setSearchResult={setSearchResult}/>
     
-    <h2>Results for : {keyword}</h2>
+    <h2 id="results-label">Results for : {keyword}</h2>
     <div className="videos">
       {searchResult &&
-        searchResult.map((e) => {
-           return <VideoThumbnail key={e.id.videoId} e= {e} videoId = {e.id.videoId} />  
+        searchResult.map((video) => {
+           return <VideoThumbnail key={video.id.videoId} video= {video} videoId = {video.id.videoId} />  
         })}
     </div>
     </>
