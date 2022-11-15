@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import "./VideoThumbnail.css"
 function VideoThumbnail({video, videoId}) {
 const [views, setViews] = useState("")
 /* this fetch w/ 'statistics gives viewcount
