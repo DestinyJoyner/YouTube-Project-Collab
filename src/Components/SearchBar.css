@@ -1,0 +1,11 @@
+form {
+    text-align: center;
+}
+.textbox {
+    width: 40%;
+    margin-right: 5px ;
+}
+
+input {
+    width: 10%;
+}

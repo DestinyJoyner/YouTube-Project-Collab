@@ -19,14 +19,15 @@ export default function SearchBar({
       }}
     >
       <input
+        className="textbox"
         type="text"
-        placeholder="type..."
+        placeholder="Enter Keyword(s) Here..."
         value={searchInput}
         onChange={(e) => {
           setSearchInput(e.target.value);
         }}
       />
-      <input type="submit" value="search" />
+      <input type="submit" value="Search" />
     </form>
   );
 }
