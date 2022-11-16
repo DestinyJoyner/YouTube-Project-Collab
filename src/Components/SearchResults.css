@@ -10,3 +10,8 @@
     margin-bottom: 24px;
 
 }
+
+/* test css */
+.videos {
+    column-gap: 20px;
+}

@@ -1,12 +1,30 @@
 form {
-    text-align: center;
+    display: flex;
+    justify-content:space-around;
     margin-top: 100px;
 }
+
 .textbox {
-    width: 40%;
+    width: 45%;
     margin-right: 5px ;
+    border-radius: 20px;
+    border: 2px solid #e8e5e5;
+    text-indent: 10px;
 }
 
 input {
     width: 10%;
+    height:40px;
+}
+
+/* test css */
+.button {
+    position: absolute;
+    height: 44px;
+    margin-left: 35% ;
+    border-top-right-radius: 20px ;
+    border-bottom-right-radius: 20px;
+    background-color: #f8f8f8;
+    /* border: 1px solid #b7b4b4; */
+    border: 2px solid #e8e5e5;
 }

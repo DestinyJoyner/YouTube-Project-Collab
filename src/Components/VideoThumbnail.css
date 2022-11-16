@@ -14,3 +14,22 @@
     text-align: center;
     margin-top: 10px;
 }
+
+/* Testing Css */
+.videoThumbnail img {
+    border-radius: 7px;
+    /* box-shadow: 5px 7px #f40402 ; */
+
+}
+.videoThumbnail {
+    box-shadow: 5px 10px #f40402 ;
+    border-radius: 7px;
+    border: 1px solid black;
+  
+}
+
+.videoThumbnail:hover {
+
+
+
+}

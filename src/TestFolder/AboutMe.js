@@ -6,15 +6,13 @@ function AboutMe(props) {
     
     
     return (
-        <>
-        <div className='lightining'></div>
-        <div className='rain'></div>
-        <div className='axe-hammer'><img 
-        src = {pix}
-         alt = 'collision' /></div>
-         
-         
-        </>
+        <div className = 'about'>
+            <div className='lightining'></div>
+            <div className='rain'></div>
+            <div className='axe-hammer'><img 
+            src = {pix}
+            alt = 'collision' /></div>
+        </div>
        
     );
 }
