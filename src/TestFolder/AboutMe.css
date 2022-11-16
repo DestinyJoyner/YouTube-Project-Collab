@@ -85,7 +85,7 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     gap: var(--g);
     width: calc(2*var(--s) + var(--g));
     grid-auto-flow: column;
-    background-image: url('/public/assets/Kratos-Thor.gif');
+    /* background-image: url('/public/assets/Kratos-Thor.gif'); */
     background-position-x: center;
     background-position-y: center;
     /* width: 500px; */
