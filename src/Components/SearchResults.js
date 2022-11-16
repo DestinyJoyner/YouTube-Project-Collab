@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 import VideoThumbnail from "./VideoThumbnail";
+
+import { fetchData } from "../API/Fetch"
+
 import "./SearchResults.css"
 
-export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput }) {
+export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput, setIsOpen }) {
   const {keyword} = useParams()
   
 
@@ -15,8 +18,8 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
       setSearchResult(JSON.parse(stored).items)
     }
     if(!stored){
-      // add fetch from keyword param
-      setSearchResult([])
+      // makes a fetch call directly from the url when search is not in local storage
+      fetchData("search", keyword, setSearchResult, setIsOpen)
     }
     console.log("useEffect");
   }, [keyword]);
