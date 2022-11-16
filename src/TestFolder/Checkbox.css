@@ -1,0 +1,8 @@
+
+.checkbox {
+    margin-top: 15px;
+    display:block;
+    text-align: center;
+    grid-column: 1;
+    grid-row: 2;
+}

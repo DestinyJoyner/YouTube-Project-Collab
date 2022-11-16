@@ -4,8 +4,9 @@ import SearchBar from "./SearchBar";
 
 import VideoThumbnail from "./VideoThumbnail";
 import "./SearchResults.css"
+import Favorites from "../TestFolder/Favorites";
 
-export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput }) {
+export default function SearchResults({ searchResult,setSearchResult, searchInput, setSearchInput, favorites }) {
   const {keyword} = useParams()
   
 
@@ -28,13 +29,19 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
     setSearchInput={setSearchInput} 
     setSearchResult={setSearchResult}/>
     
+    
     <h2 id="results-label">Results for : {keyword}</h2>
-    <div className="videos">
+
+      
+      <div className="videos">
       {searchResult &&
         searchResult.map((video) => {
            return <VideoThumbnail key={video.id.videoId} video= {video} videoId = {video.id.videoId} />  
         })}
-    </div>
+      </div>
+    
+  
+    
     </>
   );
 }

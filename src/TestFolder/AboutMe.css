@@ -6,7 +6,7 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     width:fit-content;
     position: fixed;
     bottom: 30%;
-    left: 35%;
+    left: 40%;
 }
 .axe-hammer img {
     width: 250px;
@@ -73,3 +73,110 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
         opacity: 0;
     }
 }
+
+/* test css */
+
+.gallery {
+    --z: 32px;  /* control the zig-zag  */
+    --s: 360px; /* control the size */
+    --g: 8px;   /* control the gap */
+    
+    display: grid;
+    gap: var(--g);
+    width: calc(2*var(--s) + var(--g));
+    grid-auto-flow: column;
+    background-image: url('/public/assets/Kratos-Thor.gif');
+    background-position-x: center;
+    background-position-y: center;
+    width: 500px;
+  }
+  .gallery > img, article {
+    width: 0;
+    min-width: calc(100% + var(--z)/2);
+    height: var(--s);
+    object-fit: cover;
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+    cursor: pointer;
+    transition: .5s;
+  }
+  .gallery > img:hover, article:hover {
+    width: calc(var(--s)/2);
+  }
+  .gallery > img:first-child, article {
+    place-self: start;
+    clip-path: polygon(calc(2*var(--z)) 0,100% 0,100% 100%,0 100%);
+    --mask: 
+      conic-gradient(from -135deg at right,#0000,#000 1deg 89deg,#0000 90deg) 
+        50%/100% calc(2*var(--z)) repeat-y;
+    margin-left: -100px;
+  }
+  .gallery img:last-child {
+    place-self: end;
+    clip-path: polygon(0 0,100% 0,calc(100% - 2*var(--z)) 100%,0 100%);
+    --mask: 
+      conic-gradient(from   45deg at left ,#0000,#000 1deg 89deg,#0000 90deg) 
+        50% calc(50% - var(--z))/100% calc(2*var(--z)) repeat-y;
+    margin-right: -100px;
+  }
+  
+  .aboutMe {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background-image: url('/public/assets/Fire-ice.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 50%;
+  }
+  /* 
+  outrun future
+  shaka pow 
+  the jacatra*/
+ .aboutMe h1 {
+    text-align: center;
+    font-family: next custom ;
+    font-size: 42px;
+    word-spacing: 8em;
+  }
+
+  .destiny {
+    color: #af3817;
+  }
+  /* color: #f25812 */
+  article.destiny  {
+    background-image: url('/public/assets/Fire-ice\ copy.png');
+    background-size: cover;
+  }
+  .destiny p {
+    background-color: black;
+    color:#f25812;
+    height: 100%;
+    text-align: center;
+}
+  .destiny img  {
+    height: 200px;
+    margin-left: 25%;
+   position: relative;
+   top: -35px;
+   transform: rotate(deg)
+  }
+
+  .destiny li {
+    list-style: none;
+  }
+  #destiny {
+    color: #af3817
+    
+  }
+
+ 
+ #dan {
+    color: #0b3fa1;
+  }
+
+  .collision {
+    width: 100px;
+    height: 100px;
+  }

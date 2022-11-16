@@ -16,12 +16,13 @@ form {
 }
 
 input {
-    width: 10%;
     height:40px;
 }
 
 /* test css */
 .button {
+    width: 6%;
+    height:40px;
     position: absolute;
     margin-left: 22% ;
     border-top-right-radius: 20px ;

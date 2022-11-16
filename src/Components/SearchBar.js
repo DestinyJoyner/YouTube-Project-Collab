@@ -31,9 +31,11 @@ export default function SearchBar({
       />
       {/* <input type="submit" value="Search" 
       className="button"/> */}
-      <input type="image" id="image" alt="search"
-       src={searchIcon} style = {{width: '50px'}}
-       className="button"></input>
+      <input 
+      type="image" 
+      alt="search"
+      src={searchIcon} 
+      className="button"></input>
     </form>
   );
 }

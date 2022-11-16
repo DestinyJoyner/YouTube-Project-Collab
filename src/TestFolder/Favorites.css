@@ -1,0 +1,13 @@
+
+aside {
+    border: 1px solid black;
+    grid-column: 2;
+    grid-row: span 2;
+    width: 75%;
+    text-align: center;
+}
+ ul {
+    margin: 5px;
+    border: 1px solid black;
+    list-style: none;
+ }

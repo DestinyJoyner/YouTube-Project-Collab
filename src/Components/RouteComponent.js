@@ -1,17 +1,21 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AboutMe from "../TestFolder/AboutMe";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
 
-function RouteComponent({
+function RouteComponent() {
+/* 
   searchInput,
   setSearchInput,
   searchResult,
-  setSearchResult,
-}) {
+  setSearchResult, */
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
+
   return (
     <Routes>
       <Route path="/">

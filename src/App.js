@@ -7,18 +7,18 @@ import Nav from "./Components/Nav";
 import "./App.css";
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  // const [searchInput, setSearchInput] = useState("");
+  // const [searchResult, setSearchResult] = useState([]);
 
   return (
     <div className="App">
       <Nav />
 
       <RouteComponent
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        setSearchResult={setSearchResult}
-        searchResult={searchResult}
+        // searchInput={searchInput}
+        // setSearchInput={setSearchInput}
+        // setSearchResult={setSearchResult}
+        // searchResult={searchResult}
       />
 
       <Footer />
