@@ -3,6 +3,7 @@ import "./Modal.css";
 
 export default function Modal({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
+
   if (!isOpen) return null;
   return (
     <>

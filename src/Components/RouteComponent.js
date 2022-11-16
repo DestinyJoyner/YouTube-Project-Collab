@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
-import Modal from "./Modal";
+import ModalTrigger from "./ModalTrigger";
 
 function RouteComponent({
   searchInput,
@@ -51,7 +51,7 @@ function RouteComponent({
         </Route>
         <Route
           path="*"
-          element={<Modal isOpen={true} setIsOpen={setIsOpen} />}
+          element={<ModalTrigger isTrue={true} setIsOpen={setIsOpen} />}
         />
       </Route>
     </Routes>
