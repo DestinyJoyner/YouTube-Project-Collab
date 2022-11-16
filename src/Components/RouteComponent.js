@@ -40,6 +40,7 @@ function RouteComponent({
                 setSearchResult={setSearchResult}
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
+                setIsOpen={setIsOpen}
               />
             }
           />

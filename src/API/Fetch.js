@@ -4,7 +4,7 @@ export const fetchData = (resource, searchInput, setData, setModal) => {
   // check if search is already in local storage
   const stored = window.localStorage.getItem(searchInput);
   if (stored) {
-    setData(stored);
+    setData(JSON.parse(stored).items);
   } else {
     const formattedInput = searchInput.replaceAll(" ", "%20");
     const fDetails = "?part=snippet&maxResults=10&q=";
