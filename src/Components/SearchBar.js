@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchData } from "../API/Fetch";
 import "./SearchBar.css"
-import searchIcon from '../TestFolder/Search-icon.png'
+import searchIcon from '../TestFolder/Search-icon(2).png'
 
 export default function SearchBar({
   searchInput,
