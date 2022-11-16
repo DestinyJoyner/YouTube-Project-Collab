@@ -88,7 +88,7 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     background-image: url('/public/assets/Kratos-Thor.gif');
     background-position-x: center;
     background-position-y: center;
-    width: 500px;
+    /* width: 500px; */
   }
   .gallery > img, article {
     width: 0;
@@ -152,8 +152,11 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
   .destiny p {
     background-color: black;
     color:#f25812;
-    height: 100%;
+    height: fit-content;
+    width:70%;
     text-align: center;
+    margin-left: 15%;
+    border-radius: 15px;
 }
   .destiny img  {
     height: 200px;
