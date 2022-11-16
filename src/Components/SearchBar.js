@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchData } from "../API/Fetch";
 import "./SearchBar.css"
+import searchIcon from '../TestFolder/Search-icon.png'
 
 export default function SearchBar({
   searchInput,
@@ -28,8 +29,11 @@ export default function SearchBar({
           setSearchInput(e.target.value);
         }}
       />
-      <input type="submit" value="Search" 
-      className="button"/>
+      {/* <input type="submit" value="Search" 
+      className="button"/> */}
+      <input type="image" id="image" alt="search"
+       src={searchIcon} style = {{width: '50px'}}
+       className="button"></input>
     </form>
   );
 }

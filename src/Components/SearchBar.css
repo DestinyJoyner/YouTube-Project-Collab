@@ -5,11 +5,14 @@ form {
 }
 
 .textbox {
-    width: 45%;
+    width: 50%;
     margin-right: 5px ;
     border-radius: 20px;
     border: 2px solid #e8e5e5;
     text-indent: 10px;
+}
+.textbox:focus {
+    outline: .2px solid #c3c0c0;
 }
 
 input {
@@ -20,8 +23,7 @@ input {
 /* test css */
 .button {
     position: absolute;
-    height: 44px;
-    margin-left: 35% ;
+    margin-left: 22% ;
     border-top-right-radius: 20px ;
     border-bottom-right-radius: 20px;
     background-color: #f8f8f8;
