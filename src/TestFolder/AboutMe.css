@@ -146,7 +146,8 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
   }
   /* color: #f25812 */
   article.destiny  {
-    background-image: url('/public/assets/Fire-ice\ copy.png');
+    background-color: black;
+    /* background-image: url('/public/assets/Fire-ice\ copy.png'); */
     background-size: cover;
   }
   .destiny p {
