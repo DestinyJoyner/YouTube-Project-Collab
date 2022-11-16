@@ -10,5 +10,8 @@
 .App {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
-  
+}
+
+.test-modal {
+    margin-top: 300px;
 }
