@@ -4,12 +4,15 @@ import { Routes, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
+import Modal from "./Modal";
 
 function RouteComponent({
   searchInput,
   setSearchInput,
   searchResult,
   setSearchResult,
+  isOpen,
+  setIsOpen,
 }) {
   return (
     <Routes>
@@ -22,6 +25,7 @@ function RouteComponent({
               setSearchResult={setSearchResult}
               searchInput={searchInput}
               setSearchInput={setSearchInput}
+              setIsOpen={setIsOpen}
             />
           }
         />
@@ -43,10 +47,14 @@ function RouteComponent({
         </Route>
 
         <Route path="videos">
-          <Route index element={<Navigate to="/" />} />
+          {/* <Route index element={<Navigate to="/" />} /> */}
+          <Route index element={<button className="test-modal" onClick={() => setIsOpen(true)}>open modal</button>} />
           <Route path=":id" element={<Video />} />
         </Route>
-        <Route path="*" element={<>Error</>} />
+        <Route
+          path="*"
+          element={<Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+        />
       </Route>
     </Routes>
   );

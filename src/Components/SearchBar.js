@@ -7,6 +7,7 @@ export default function SearchBar({
   searchInput,
   setSearchInput,
   setSearchResult,
+  setIsOpen
 }) {
   const navigate = useNavigate();
   return (
@@ -14,7 +15,7 @@ export default function SearchBar({
       onSubmit={(e) => {
         e.preventDefault();
         setSearchResult([]);
-        fetchData("search", searchInput, setSearchResult);
+        fetchData("search", searchInput, setSearchResult, setIsOpen)
         navigate(`/search/${searchInput}`);
         setSearchInput("");
       }}
