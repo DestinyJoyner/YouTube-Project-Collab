@@ -11,7 +11,6 @@ function RouteComponent({
   setSearchInput,
   searchResult,
   setSearchResult,
-  isOpen,
   setIsOpen,
 }) {
   return (
@@ -47,13 +46,12 @@ function RouteComponent({
         </Route>
 
         <Route path="videos">
-          {/* <Route index element={<Navigate to="/" />} /> */}
-          <Route index element={<button className="test-modal" onClick={() => setIsOpen(true)}>open modal</button>} />
+          <Route index element={<Navigate to="/" />} />
           <Route path=":id" element={<Video />} />
         </Route>
         <Route
           path="*"
-          element={<Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+          element={<Modal isOpen={true} setIsOpen={setIsOpen} />}
         />
       </Route>
     </Routes>

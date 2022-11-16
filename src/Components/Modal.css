@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  border: 2px solid green;
+  border: 2px solid maroon;
   padding: 50px;
   z-index: 1000;
 }

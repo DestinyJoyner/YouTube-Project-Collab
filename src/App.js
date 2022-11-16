@@ -11,7 +11,7 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {}, [isOpen]);
+  // useEffect(() => {}, [isOpen]);
   return (
     <div className="App">
       <Nav />

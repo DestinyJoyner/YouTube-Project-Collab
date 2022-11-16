@@ -8,12 +8,13 @@ export default function Modal({ isOpen, setIsOpen }) {
     <>
       <div className="overlay" />
       <div className="modal">
-        <h3>Modal Test</h3>
-        <p>something went wrong</p>
+        <h3>Error</h3>
+        <p>something went wrong... close window to be redirected home</p>
+        {/* button to be placed in top corner */}
         <button
           onClick={() => {
             setIsOpen(false);
-            // navigate("/");
+            navigate("/");
           }}
         >
           x
