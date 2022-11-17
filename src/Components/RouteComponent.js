@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
 import ModalTrigger from "./ModalTrigger";
+import Home from "./Home";
 
 function RouteComponent({
   searchInput,
@@ -19,6 +20,7 @@ function RouteComponent({
         <Route
           index
           element={
+            <>
             <SearchBar
               searchResult={searchResult}
               setSearchResult={setSearchResult}
@@ -26,6 +28,8 @@ function RouteComponent({
               setSearchInput={setSearchInput}
               setIsOpen={setIsOpen}
             />
+            <Home setIsOpen = {setIsOpen} />
+            </>
           }
         />
         <Route path="about" element={<>About</>} />
@@ -35,6 +39,11 @@ function RouteComponent({
           <Route
             path=":keyword"
             element={
+              <><SearchBar
+    searchInput={searchInput} 
+    setSearchInput={setSearchInput} 
+    setSearchResult={setSearchResult}/>
+
               <SearchResults
                 searchResult={searchResult}
                 setSearchResult={setSearchResult}
@@ -42,6 +51,7 @@ function RouteComponent({
                 setSearchInput={setSearchInput}
                 setIsOpen={setIsOpen}
               />
+              </>
             }
           />
         </Route>

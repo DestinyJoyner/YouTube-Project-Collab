@@ -9,7 +9,7 @@ function VideoThumbnail({ video, videoId }) {
 */
   useEffect(() => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=25&key=${process.env.REACT_APP_API_KEY}`
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
     )
       .then((resp) => resp.json())
       .then((respJson) => setViews(respJson.items[0].statistics.viewCount))
