@@ -38,9 +38,9 @@ function Home({ setIsOpen }) {
     const desVal = randomize(desPicks);
     setDansTheme(danVal);
     setDesTheme(desVal);
-    const dansValue = fetchData(`search`, danVal, setDansVids, setIsOpen, 5);
+    const dansValue = fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 5);
 
-    const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, 5);
+    const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 5);
   }, []);
   return (
     <section className="featVids">

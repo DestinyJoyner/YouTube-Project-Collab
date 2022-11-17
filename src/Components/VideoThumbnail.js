@@ -12,16 +12,25 @@ function VideoThumbnail({ video, videoId }) {
   /* this fetch w/ 'statistics gives viewcount
     https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=ZtHCnXMjIXY&maxResults=25&key=
 */
+
+// function to convert views number
+function convertNumber (num) {
+  return num.split(``).reverse().join(``).match(/.{1,3}/g).join(`,`).split(``).reverse().join(``)
+}
+
   useEffect(() => {
     fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
     )
       .then((resp) => resp.json())
-      .then((respJson) => setViews(respJson.items[0].statistics.viewCount))
+      .then((respJson) => {
+        setViews(convertNumber(respJson.items[0].statistics.viewCount))
+      })
       .catch((err) => console.log(err));
   }, [videoId]);
 
-  return (
+
+return (
     <div className="videoThumbnail">
       <Link to={`/videos/${videoId}`}>
         <p id="title">{video.snippet.title}</p>

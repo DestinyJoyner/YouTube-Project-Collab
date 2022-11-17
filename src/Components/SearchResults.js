@@ -21,9 +21,9 @@ export default function SearchResults({
     }
     if (!stored) {
       // makes a fetch call directly from the url when search is not in local storage
-      fetchData("search", keyword, setSearchResult, setIsOpen, 9);
+      fetchData("search", keyword, setSearchResult, setIsOpen, "relevance", 9);
     }
-    console.log("useEffect");
+    ;
   }, [keyword]);
 
   return (
