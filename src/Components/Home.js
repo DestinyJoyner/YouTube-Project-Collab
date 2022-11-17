@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchData } from '../API/Fetch';
 import VideoThumbnail from './VideoThumbnail';
+import './Home.css'
 
 function Home({setIsOpen}) {
 
@@ -10,8 +11,8 @@ function Home({setIsOpen}) {
     const [dansTheme, setDansTheme] = useState("")
     const [desTheme, setDesTheme] = useState("")
 
-    const dansPicks = ['seria a', 'qlimax', 'life hacks', 'react coding', 'funny cat videos', 'ted lasso']
-    const desPicks = ['asian cuisine recipes', 'egypt pyramids','how to adult', 'resident evil', 'the office', 'hats' ]
+    const dansPicks = ['Seria A', 'Qlimax', 'Life Hacks', 'React Coding', 'Funny Cat Videos', 'Ted Lasso']
+    const desPicks = ['Asian Cuisine Recipes', 'Egypt Pyramids', 'How to Adult', 'Resident Evil', 'The Office', 'Hats' ]
 
     function randomize(arr) {
         const length = arr.length
@@ -28,17 +29,11 @@ function Home({setIsOpen}) {
         
         const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, 5)
 
-        // [dansValue,desValue].reduce(el => fetch =>[[],[]] => setFeatVids)
-    //   const featData =  [dansValue,desValue].reduce((acc, el) => {
-    
-    //         fetchData('search', el, )
-    //     }, [],[])
-
     }, [])
     return (
-        <>
-        <div className='featVids'>
-            <h3>{dansTheme}</h3>
+        <section className='featVids'>
+        <div className='dan'>
+            <p>Dan's Search Suggestion: <span>{dansTheme}</span></p>
             {
                 dansVids && dansVids.map((video) => {
                    return <VideoThumbnail key = {video.id.videoId} video = {video} videoId = {video.id.videoId} />
@@ -46,15 +41,15 @@ function Home({setIsOpen}) {
             }
         </div>
 
-        <div className='featVids'>
-            <h3>{desTheme}</h3>
+        <div className='destiny'>
+            <p>Destiny's Search Suggestion: <span>{desTheme}</span></p>
         {
               desVids &&  desVids.map((video) => {
                   return  <VideoThumbnail key = {video.id.videoId} video = {video} videoId = {video.id.videoId} />
                 })
             }
         </div>
-        </>
+        </section>
     );
 }
 

@@ -1,0 +1,26 @@
+
+.featVids {
+    display:grid;
+    grid-template-rows: repeat(2,1fr);
+    margin: 30px 15px;
+}
+
+.dan, .destiny {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.dan p, .destiny p {
+    grid-column: 1/6;
+}
+p span {
+    font-weight: bold;
+}
+.dan {
+    grid-row: 1;
+}
+
+.destiny {
+    grid-row: 2,
+}
