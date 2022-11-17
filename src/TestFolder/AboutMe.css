@@ -3,23 +3,38 @@ https://www.youtube.com/watch?v=tLCU2RupVo4
 https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
 */
 .axe-hammer {
-    width:fit-content;
-    position: fixed;
-    bottom: 30%;
-    left: 40%;
+    /* width:fit-content;
+    position: absolute; */
+    align-self: center;
+    margin-left: 60%;
+    margin-bottom: 12%;
+    transform: translate(-50% -50%);
+    grid-column: 1/3;
+    grid-row: 2;
+   
+   
+    
 }
 .axe-hammer img {
-    width: 250px;
+    width: 320px;
 }
 /* #213042, #2b3f55 */
 .about{
     background-color: #1a2635
      ;
+     height: 100vh;
+     display: grid;
+     grid-template-columns: repeat(3,1fr);
+     grid-template-rows: 1fr  ;
+     
 }
 .rain{
-    height: 100vh;
+    
     background-image: url('/public/assets/rain.png');
     animation: rain 3s linear infinite;
+    grid-row: 1/3;
+    grid-column:1/4;
+   
 }
 @keyframes rain{
     0%{
@@ -36,6 +51,7 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     height: 100%;
     /* background-image: url('./Kratos-Thor.gif');
     background-size: 40%; */
+    
     
     
     background-image: url('/public/assets/lightining.png');
@@ -88,6 +104,14 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     /* background-image: url('/public/assets/Kratos-Thor.gif'); */
     background-position-x: center;
     background-position-y: center;
+    margin-left:25%;
+    grid-column: 1/4;
+    grid-row: 2;
+    margin-bottom: 8%;
+
+
+    
+   
     /* width: 500px; */
   }
   .gallery > img, article {
@@ -184,3 +208,5 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
     width: 100px;
     height: 100px;
   }
+
+  
