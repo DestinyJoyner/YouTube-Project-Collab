@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutMe.css'
 import pix from "./Kratos-Thor.gif"
-import profile from './fire-shades-avatar.gif'
+import profile from './Gaming-no-background.png'
 
 function AboutMe(props) {
    
@@ -15,8 +15,10 @@ function AboutMe(props) {
             <div className='axe-hammer'><img 
             src = {pix}
             alt = 'collision' /></div>
+             <h1><span id = "destiny">Destiny</span>  <span id ="dan">Dan</span></h1>
 
             <div class="gallery">
+           
             <article className='destiny'>
                 <img src={profile} alt="destiny" className='destinypic'
                 />

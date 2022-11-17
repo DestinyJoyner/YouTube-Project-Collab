@@ -1,6 +1,8 @@
 /* 
 https://www.youtube.com/watch?v=tLCU2RupVo4
 https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
+
+https://codepen.io/t_afif/pen/BarmdPB
 */
 .axe-hammer {
     align-self: center;
@@ -99,94 +101,103 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
   height: var(--s);
   object-fit: cover;
   -webkit-mask: var(--mask);
-    mask: var(--mask);
+  mask: var(--mask);
   cursor: pointer;
   transition: .5s;
 }
 
-  .gallery > img:hover, article:hover {
+.gallery > img:hover, article:hover {
     width: calc(var(--s)/2);
-  }
-  .gallery > img:first-child, article {
-    place-self: start;
-    clip-path: polygon(calc(2*var(--z)) 0,100% 0,100% 100%,0 100%);
-    --mask: 
-      conic-gradient(from -135deg at right,#0000,#000 1deg 89deg,#0000 90deg) 
-        50%/100% calc(2*var(--z)) repeat-y;
-    margin-left: -100px;
-  }
-  .gallery img:last-child {
-    place-self: end;
-    clip-path: polygon(0 0,100% 0,calc(100% - 2*var(--z)) 100%,0 100%);
-    --mask: 
-      conic-gradient(from   45deg at left ,#0000,#000 1deg 89deg,#0000 90deg) 
-        50% calc(50% - var(--z))/100% calc(2*var(--z)) repeat-y;
-    margin-right: -100px;
-  }
-  
-  .aboutMe {
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    place-content: center;
-    background-image: url('/public/assets/Fire-ice.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 50%;
-  }
-  /* 
+}
+
+.gallery > img:first-child, article {
+  place-self: start;
+  clip-path: polygon(calc(2*var(--z)) 0,100% 0,100% 100%,0 100%);
+  --mask: 
+    conic-gradient(from -135deg at right,#0000,#000 1deg 89deg,#0000 90deg) 
+      50%/100% calc(2*var(--z)) repeat-y;
+  margin-left: -100px;
+}
+
+.gallery img:last-child {
+  place-self: end;
+  clip-path: polygon(0 0,100% 0,calc(100% - 2*var(--z)) 100%,0 100%);
+  --mask: 
+    conic-gradient(from   45deg at left ,#0000,#000 1deg 89deg,#0000 90deg) 
+    50% calc(50% - var(--z))/100% calc(2*var(--z)) repeat-y;
+  margin-right: -100px;
+}
+
+.aboutMe {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background-image: url('/public/assets/Fire-ice.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 50%;
+}
+ /* 
+  test fonts:
   outrun future
   shaka pow 
-  the jacatra*/
- .aboutMe h1 {
-    text-align: center;
-    font-family: next custom ;
-    font-size: 42px;
-    word-spacing: 8em;
-  }
-
-  .destiny {
-    color: #af3817;
-  }
-  /* color: #f25812 */
-  article.destiny  {
-    background-color: black;
-    /* background-image: url('/public/assets/Fire-ice\ copy.png'); */
-    background-size: cover;
-  }
-  .destiny p {
-    background-color: black;
-    color:#f25812;
-    height: fit-content;
-    width:70%;
-    text-align: center;
-    margin-left: 15%;
-    border-radius: 15px;
+  the jacatra
+  next custom*/
+  /* #213042, #2b3f55 */
+.about h1 {
+  display: flex;
+  justify-content: space-around;
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 140px;
+  text-align: center;
+  font-family: GodofWar ;
+  font-size: 54px;
 }
-  .destiny img  {
-    height: 200px;
-    margin-left: 25%;
-   position: relative;
-   top: -35px;
-   transform: rotate(deg)
-  }
-
-  .destiny li {
-    list-style: none;
-  }
-  #destiny {
-    color: #af3817
-    
-  }
-
  
- #dan {
-    color: #0b3fa1;
-  }
+#destiny {
+  margin-right: 40%;
+  color:#21b1ee;
+}
 
-  .collision {
-    width: 100px;
-    height: 100px;
-  }
+article.destiny  {
+  /* background-color: #213042cd; */
+  background-color: #1d7ea849;
+}
+
+.destiny p {
+  background-color: black;
+  color:#1d7ea8;
+  font-family: outrun future;
+  height: fit-content;
+  width:70%;
+  text-align: center;
+  margin-left: 15%;
+  border-radius: 15px;
+}
+
+.destiny img  {
+  height: 200px;
+  margin-left: 25%;
+  position: relative;
+  top: -5px;
+  transform: rotate(2deg)
+}
+
+.destiny li {
+  list-style: none;
+}
+
+#dan {
+  color: #0b3fa1;
+  margin-left: 40%;
+}
+
+.dan {
+
+}
+
+
 
   
