@@ -3,38 +3,31 @@ https://www.youtube.com/watch?v=tLCU2RupVo4
 https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
 */
 .axe-hammer {
-    /* width:fit-content;
-    position: absolute; */
     align-self: center;
     margin-left: 60%;
     margin-bottom: 12%;
     transform: translate(-50% -50%);
     grid-column: 1/3;
-    grid-row: 2;
-   
-   
-    
+    grid-row: 2; 
 }
+
 .axe-hammer img {
     width: 320px;
 }
 /* #213042, #2b3f55 */
 .about{
-    background-color: #1a2635
-     ;
-     height: 100vh;
-     display: grid;
-     grid-template-columns: repeat(3,1fr);
-     grid-template-rows: 1fr  ;
+  background-color: #1a2635;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: 1fr  ;
      
 }
 .rain{
-    
-    background-image: url('/public/assets/rain.png');
-    animation: rain 3s linear infinite;
-    grid-row: 1/3;
-    grid-column:1/4;
-   
+  background-image: url('/public/assets/rain.png');
+  animation: rain 3s linear infinite;
+  grid-row: 1/3;
+  grid-column:1/4;
 }
 @keyframes rain{
     0%{
@@ -44,25 +37,19 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
         background-position: 20% 100%;
     }
 }
-.rain::before{
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    /* background-image: url('./Kratos-Thor.gif');
-    background-size: 40%; */
-    
-    
-    
-    background-image: url('/public/assets/lightining.png');
-    top: 65px;
-    /* left: ; */
-    background-repeat: no-repeat;
-    transform: rotate(180deg);
-    animation: lightining  3s linear infinite;
-    opacity: 1;
-}
 
+.rain::before{
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%; 
+  top: 65px;   
+  background-image: url('/public/assets/lightining.png');
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  animation: lightining  3s linear infinite;
+  opacity: 1;
+}
 @keyframes lightining{
     0%{
         opacity: 0;
@@ -89,41 +76,34 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
         opacity: 0;
     }
 }
-
 /* test css */
-
 .gallery {
-    --z: 32px;  /* control the zig-zag  */
-    --s: 360px; /* control the size */
-    --g: 8px;   /* control the gap */
-    
-    display: grid;
-    gap: var(--g);
-    width: calc(2*var(--s) + var(--g));
-    grid-auto-flow: column;
-    /* background-image: url('/public/assets/Kratos-Thor.gif'); */
-    background-position-x: center;
-    background-position-y: center;
-    margin-left:25%;
-    grid-column: 1/4;
-    grid-row: 2;
-    margin-bottom: 8%;
+  --z: 32px;  /* control the zig-zag  */
+  --s: 360px; /* control the size */
+  --g: 8px;   /* control the gap */
+  display: grid;
+  gap: var(--g);
+  width: calc(2*var(--s) + var(--g));
+  grid-auto-flow: column;
+  background-position-x: center;
+  background-position-y: center;
+  margin-left:25%;
+  grid-column: 1/4;
+  grid-row: 2;
+  margin-bottom: 8%;
+}
 
+.gallery > img, article {
+  width: 0;
+  min-width: calc(100% + var(--z)/2);
+  height: var(--s);
+  object-fit: cover;
+  -webkit-mask: var(--mask);
+    mask: var(--mask);
+  cursor: pointer;
+  transition: .5s;
+}
 
-    
-   
-    /* width: 500px; */
-  }
-  .gallery > img, article {
-    width: 0;
-    min-width: calc(100% + var(--z)/2);
-    height: var(--s);
-    object-fit: cover;
-    -webkit-mask: var(--mask);
-            mask: var(--mask);
-    cursor: pointer;
-    transition: .5s;
-  }
   .gallery > img:hover, article:hover {
     width: calc(var(--s)/2);
   }
