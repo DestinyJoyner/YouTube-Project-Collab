@@ -1,12 +1,33 @@
 form {
-    text-align: center;
+    display: flex;
+    justify-content:space-around;
     margin-top: 100px;
 }
+
 .textbox {
-    width: 40%;
+    width: 50%;
     margin-right: 5px ;
+    border-radius: 20px;
+    border: 2px solid #e8e5e5;
+    text-indent: 10px;
+}
+.textbox:focus {
+    outline: .2px solid #c3c0c0;
 }
 
 input {
-    width: 10%;
+    height:40px;
+}
+
+/* test css */
+.button {
+    width: 6%;
+    height:40px;
+    position: absolute;
+    margin-left: 22% ;
+    border-top-right-radius: 20px ;
+    border-bottom-right-radius: 20px;
+    background-color: #f8f8f8;
+    /* border: 1px solid #b7b4b4; */
+    border: 2px solid #e8e5e5;
 }

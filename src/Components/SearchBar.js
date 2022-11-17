@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
 import { fetchData } from "../API/Fetch";
-import "./SearchBar.css"
+import searchIcon from "./assets/Search-icon.png"
+import "./SearchBar.css";
 
 export default function SearchBar({
   searchInput,
   setSearchInput,
   setSearchResult,
-  setIsOpen
+  setIsOpen,
 }) {
   const navigate = useNavigate();
   return (
@@ -15,7 +16,7 @@ export default function SearchBar({
       onSubmit={(e) => {
         e.preventDefault();
         setSearchResult([]);
-        fetchData("search", searchInput, setSearchResult, setIsOpen, 9)
+        fetchData("search", searchInput, setSearchResult, setIsOpen, 9);
         navigate(`/search/${searchInput}`);
         setSearchInput("");
       }}
@@ -29,7 +30,12 @@ export default function SearchBar({
           setSearchInput(e.target.value);
         }}
       />
-      <input type="submit" value="Search" />
+      <input
+        type="image"
+        alt="search"
+        src={searchIcon}
+        className="button"
+      ></input>
     </form>
   );
 }

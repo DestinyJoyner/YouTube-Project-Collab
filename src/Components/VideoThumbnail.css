@@ -1,16 +1,37 @@
+/* - red : #f40402
+- dark grey (nav): #212121
+- black : #0f0f0f  */
+
 .videoThumbnail {
-    display:block;
-    text-align: center;
-    margin-top: 10px;
-    /* border: 1px solid black; */
+  display: grid;
+  text-align: center;
+  margin-top: 10px;
+  border: 2px solid #e8e5e5;
+  background-color: #f8f8f8;
+  border-radius: 25px;
+  padding: 10px;
+  color: #212121;
 }
+
 .videoThumbnail img {
-    margin-top: 15px;
+  margin: 15px 4px;
+  height: 140px;
+  border: 2px solid white;
+  border-radius: 10px;
 }
-.videoThumbnail a {
-    color: black;
+#title {
+  color: #212121;
+  height: 50px;
+  font-size: 14px;
+  font-weight: bold;
 }
-.videoThumbnail h2, #results-label {
-    text-align: center;
-    margin-top: 10px;
+
+.views {
+  color: #212121;
+  font-size: 14px;
+}
+
+.videoThumbnail:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }

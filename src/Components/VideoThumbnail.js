@@ -19,13 +19,13 @@ function VideoThumbnail({ video, videoId }) {
   return (
     <div className="videoThumbnail">
       <Link to={`/videos/${videoId}`}>
-        <p>{video.snippet.title}</p>
+        <p id="title">{video.snippet.title}</p>
+        <img
+          src={video.snippet.thumbnails.default.url}
+          alt={video.snippet.title}
+        />
+        <p className="views">Views: {views}</p>
       </Link>
-      <img
-        src={video.snippet.thumbnails.default.url}
-        alt={video.snippet.title}
-      />
-      <p>Views: {views}</p>
     </div>
   );
 }
