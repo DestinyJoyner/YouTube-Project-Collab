@@ -19,17 +19,17 @@ export default function SearchResults({ searchResult,setSearchResult, searchInpu
     }
     if(!stored){
       // makes a fetch call directly from the url when search is not in local storage
-      fetchData("search", keyword, setSearchResult, setIsOpen)
+      fetchData("search", keyword, setSearchResult, setIsOpen, 9)
     }
     console.log("useEffect");
   }, [keyword]);
   
   return (
     <>
-    <SearchBar
+    {/* <SearchBar
     searchInput={searchInput} 
     setSearchInput={setSearchInput} 
-    setSearchResult={setSearchResult}/>
+    setSearchResult={setSearchResult}/> */}
     
     <h2 id="results-label">Results for : {keyword}</h2>
     <div className="videos">

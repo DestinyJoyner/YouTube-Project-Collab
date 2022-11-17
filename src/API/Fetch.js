@@ -1,13 +1,14 @@
 URL = "https://youtube.googleapis.com/youtube/v3/";
 
-export const fetchData = (resource, searchInput, setData, setModal) => {
+export const fetchData = (resource, searchInput, setData, setModal, number) => {
+  const lowerCase = searchInput.toLowerCase() 
   // check if search is already in local storage
-  const stored = window.localStorage.getItem(searchInput);
+  const stored = window.localStorage.getItem(lowerCase);
   if (stored) {
     setData(JSON.parse(stored).items);
   } else {
-    const formattedInput = searchInput.replaceAll(" ", "%20");
-    const fDetails = "?part=snippet&maxResults=10&q=";
+    const formattedInput = lowerCase.replaceAll(" ", "%20");
+    const fDetails = `?part=snippet&maxResults=${number}&q=`;
     const apiKey = `&key=${process.env.REACT_APP_API_KEY}`;
     fetch(URL + resource + fDetails + formattedInput + apiKey)
       .then((res) => res.json())
@@ -16,7 +17,7 @@ export const fetchData = (resource, searchInput, setData, setModal) => {
         if (res.error) {
           setModal(true);
         } else {
-          window.localStorage.setItem(searchInput, JSON.stringify(res));
+          window.localStorage.setItem(lowerCase, JSON.stringify(res));
           setData(res.items);
         }
       })

@@ -15,7 +15,7 @@ export default function SearchBar({
       onSubmit={(e) => {
         e.preventDefault();
         setSearchResult([]);
-        fetchData("search", searchInput, setSearchResult, setIsOpen)
+        fetchData("search", searchInput, setSearchResult, setIsOpen, 9)
         navigate(`/search/${searchInput}`);
         setSearchInput("");
       }}
