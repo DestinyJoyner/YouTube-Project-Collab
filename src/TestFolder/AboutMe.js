@@ -15,7 +15,8 @@ function AboutMe(props) {
             <div className='axe-hammer'><img 
             src = {pix}
             alt = 'collision' /></div>
-             <div class="gallery">
+
+            <div class="gallery">
             <article className='destiny'>
                 <img src={profile} alt="destiny" className='destinypic'
                 />
