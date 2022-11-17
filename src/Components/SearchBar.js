@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Dropdown from "./Dropdown";
 
 import { fetchData } from "../API/Fetch";
 import searchIcon from "./assets/Search-icon.png"
@@ -10,15 +12,23 @@ export default function SearchBar({
   setSearchResult,
   setIsOpen,
 }) {
+  
+  const [numResults, setNumResults] = useState("9")
+  const [order, setOrder] = useState("")
   const navigate = useNavigate();
+
+
   return (
+    <>
+   
     <form
       onSubmit={(e) => {
         e.preventDefault();
         setSearchResult([]);
-        fetchData("search", searchInput, setSearchResult, setIsOpen, 9);
+        fetchData("search", searchInput, setSearchResult, setIsOpen, numResults);
         navigate(`/search/${searchInput}`);
-        setSearchInput("");
+        setSearchInput("")
+        setNumResults("9")
       }}
     >
       <input
@@ -26,9 +36,7 @@ export default function SearchBar({
         type="text"
         placeholder="Enter Keyword(s) Here..."
         value={searchInput}
-        onChange={(e) => {
-          setSearchInput(e.target.value);
-        }}
+        onChange={(e) => { setSearchInput(e.target.value);}}
       />
       <input
         type="image"
@@ -37,5 +45,23 @@ export default function SearchBar({
         className="button"
       ></input>
     </form>
+
+    <Dropdown 
+    value = {"maxResults"} 
+    title = {"Number of Results: "} 
+    optionValue ={["9","18","27","36","45"]} 
+    optionName ={["9","18","27","36","45"]}
+    stateVar = {numResults}
+    setFunction={setNumResults}  />
+
+    <Dropdown 
+    value = {"order"} 
+    title = {"Sort By: "} 
+    optionValue ={['relevance', 'date', `viewCount`]} 
+    optionName ={['Relevance', `Most Recent`, `Most Viewed`]}
+    stateVar = {order}
+    setFunction={setOrder} />  
+    </>
+    
   );
 }
