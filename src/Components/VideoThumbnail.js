@@ -21,7 +21,7 @@ function VideoThumbnail({ video, videoId }) {
       <Link to={`/videos/${videoId}`}>
         <p id="title">{video.snippet.title}</p>
         <img
-          src={video.snippet.thumbnails.default.url}
+          src={video.snippet.thumbnails.high.url}
           alt={video.snippet.title}
         />
         <p className="views">Views: {views}</p>
