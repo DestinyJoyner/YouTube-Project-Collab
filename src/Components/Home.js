@@ -38,15 +38,15 @@ function Home({ setIsOpen }) {
     const desVal = randomize(desPicks);
     setDansTheme(danVal);
     setDesTheme(desVal);
-    const dansValue = fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 5);
+    const dansValue = fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 4);
 
-    const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 5);
+    const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 4);
   }, []);
   return (
     <section className="featVids">
       <div className="dan">
         <p>
-          Dan's Search Suggestion: <span>{dansTheme}</span>
+          Dan's Search Suggestion: <span className="home-span">{dansTheme}</span>
         </p>
         {dansVids &&
           dansVids.map((video) => {
@@ -62,7 +62,7 @@ function Home({ setIsOpen }) {
 
       <div className="destiny">
         <p>
-          Destiny's Search Suggestion: <span>{desTheme}</span>
+          Destiny's Search Suggestion: <span className="home-span">{desTheme}</span>
         </p>
         {desVids &&
           desVids.map((video) => {
