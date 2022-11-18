@@ -25,6 +25,9 @@ function convertNumber (num) {
       .then((resp) => resp.json())
       .then((respJson) => {
         setViews(convertNumber(respJson.items[0].statistics.viewCount))
+        const videoFetchData = `video ${videoId}`
+        console.log(videoFetchData)
+        window.localStorage.setItem(videoFetchData, JSON.stringify(respJson))
       })
       .catch((err) => console.log(err));
   }, [videoId]);

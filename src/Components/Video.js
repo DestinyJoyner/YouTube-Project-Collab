@@ -8,7 +8,7 @@ function Video() {
     const {id} = useParams()
     const opts = {
         height: 400,
-        width: 500,
+        width: 800,
        
     }
     
