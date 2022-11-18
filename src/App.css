@@ -15,3 +15,13 @@
 .test-modal {
     margin-top: 300px;
 }
+
+/* test to have same border, color radius for all inputs */
+ input, select{
+    border-radius: 20px ;
+    border: 2px solid #e8e5e5;
+}
+
+input:focus {
+    outline: 2px solid #f40402;
+}
