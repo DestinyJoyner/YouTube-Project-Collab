@@ -49,12 +49,12 @@ function CommentForm({videoId}) {
     
     return (
         <div className = "commentSection">
-            <h5>Leave A Comment</h5>
+        
             <form 
             onSubmit = {(event) => handleSubmit(event)}
             className = "commentForm">
                 
-                <label htmlFor = 'commenter'> Name:
+                <label htmlFor = 'commenter'><span>Name: </span>
                     <input
                     type = "text"
                     id = "commenter"
@@ -63,7 +63,7 @@ function CommentForm({videoId}) {
                 </label>
                 <br></br>
 
-                <label htmlFor = 'comment'> Comment:
+                <label htmlFor = 'comment'><span>Comment: </span>  
                     <input
                     type = "text"
                     id = "comment"
@@ -74,6 +74,7 @@ function CommentForm({videoId}) {
 
                 <input 
                 type = "submit"
+                className = 'commentButton'
                 value = "Add Comment"/>
 
             </form>
