@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 
 import VideoThumbnail from "./VideoThumbnail";
 
@@ -11,8 +11,19 @@ export default function SearchResults({
   searchResult,
   setSearchResult,
   setIsOpen,
+  defaultOrder,
+  defaultNum,
 }) {
+  const navigate = useNavigate();
+
   const { keyword } = useParams();
+  const { order } = useParams();
+  const { num } = useParams();
+
+  const orderVal = defaultOrder ? "relevance" : order;
+  const numVal = defaultNum ? 9 : num;
+
+  console.log("keyword: ", keyword, " order: ", order, " num: ", num);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(keyword);
@@ -21,9 +32,16 @@ export default function SearchResults({
     }
     if (!stored) {
       // makes a fetch call directly from the url when search is not in local storage
-      fetchData("search", keyword, setSearchResult, setIsOpen, "relevance", 9);
+      fetchData(
+        "search",
+        keyword,
+        setSearchResult,
+        setIsOpen,
+        orderVal,
+        numVal
+      );
+      navigate(`/search/${keyword}/${orderVal}/${numVal}`);
     }
-    ;
   }, [keyword]);
 
   return (

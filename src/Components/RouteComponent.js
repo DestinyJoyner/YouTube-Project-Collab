@@ -21,14 +21,14 @@ function RouteComponent({
           index
           element={
             <>
-            <SearchBar
-              searchResult={searchResult}
-              setSearchResult={setSearchResult}
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              setIsOpen={setIsOpen}
-            />
-            <Home setIsOpen = {setIsOpen} />
+              <SearchBar
+                searchResult={searchResult}
+                setSearchResult={setSearchResult}
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                setIsOpen={setIsOpen}
+              />
+              <Home setIsOpen={setIsOpen} />
             </>
           }
         />
@@ -39,18 +39,61 @@ function RouteComponent({
           <Route
             path=":keyword"
             element={
-              <><SearchBar
-    searchInput={searchInput} 
-    setSearchInput={setSearchInput} 
-    setSearchResult={setSearchResult}/>
+              <>
+                <SearchBar
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setSearchResult={setSearchResult}
+                />
+                <SearchResults
+                  searchResult={searchResult}
+                  setSearchResult={setSearchResult}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setIsOpen={setIsOpen}
+                  defaultOrder={true}
+                  defaultNum={true}
+                />
+              </>
+            }
+          />
+          <Route
+            path=":keyword/:order"
+            element={
+              <>
+                <SearchBar
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setSearchResult={setSearchResult}
+                />
+                <SearchResults
+                  searchResult={searchResult}
+                  setSearchResult={setSearchResult}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setIsOpen={setIsOpen}
+                  defaultNum={true}
+                />
+              </>
+            }
+          />
+          <Route
+            path=":keyword/:order/:num"
+            element={
+              <>
+                <SearchBar
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setSearchResult={setSearchResult}
+                />
 
-              <SearchResults
-                searchResult={searchResult}
-                setSearchResult={setSearchResult}
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-                setIsOpen={setIsOpen}
-              />
+                <SearchResults
+                  searchResult={searchResult}
+                  setSearchResult={setSearchResult}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  setIsOpen={setIsOpen}
+                />
               </>
             }
           />
