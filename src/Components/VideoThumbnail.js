@@ -13,10 +13,25 @@ function VideoThumbnail({ video, videoId }) {
     https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=ZtHCnXMjIXY&maxResults=25&key=
 */
 
-// function to convert views number
-function convertNumber (num) {
-  return num.split(``).reverse().join(``).match(/.{1,3}/g).join(`,`).split(``).reverse().join(``)
-}
+  // function to convert views number
+  function convertNumber(num) {
+    return num
+      .split(``)
+      .reverse()
+      .join(``)
+      .match(/.{1,3}/g)
+      .join(`,`)
+      .split(``)
+      .reverse()
+      .join(``);
+  }
+
+  function convertDate(str) {
+    let date = str.slice(2, 10).split("-");
+    date.push(date[0]);
+    date.shift();
+    return date.join("/");
+  }
 
   useEffect(() => {
     fetch(
@@ -24,19 +39,16 @@ function convertNumber (num) {
     )
       .then((resp) => resp.json())
       .then((respJson) => {
-        setViews(convertNumber(respJson.items[0].statistics.viewCount))
-        const videoFetchData = `video ${videoId}`
-        console.log(videoFetchData)
-        window.localStorage.setItem(videoFetchData, JSON.stringify(respJson))
+        setViews(convertNumber(respJson.items[0].statistics.viewCount));
+        const videoFetchData = `video ${videoId}`;
+        window.localStorage.setItem(videoFetchData, JSON.stringify(respJson));
       })
       .catch((err) => console.log(err));
   }, [videoId]);
 
-
-return (
+  return (
     <div className="videoThumbnail">
       <Link to={`/videos/${videoId}`}>
-        <p id="title">{video.snippet.title}</p>
         <img
           // src={
           //   video.snippet.thumbnails.high.url !== noImageUrl
@@ -45,8 +57,12 @@ return (
           // }
           src={video.snippet.thumbnails.high.url}
           alt={video.snippet.title}
-        />
-        <p className="views">Views: {views}</p>
+        />{" "}
+        <p id="title">{video.snippet.title}</p>
+        <p className="views">
+          {views} views{" "}
+          <span>date added: {convertDate(video.snippet.publishedAt)}</span>
+        </p>
       </Link>
     </div>
   );

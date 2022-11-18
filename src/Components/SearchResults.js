@@ -46,7 +46,7 @@ export default function SearchResults({
 
   return (
     <>
-      <h2 id="results-label">Results for : {keyword}</h2>
+      <h3 id="results-label">Results for: {keyword}</h3>
       <div className="videos">
         {searchResult &&
           searchResult.map((video) => {
