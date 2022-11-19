@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import RouteComponent from "./Components/RouteComponent";
 import Footer from "./Components/Footer";

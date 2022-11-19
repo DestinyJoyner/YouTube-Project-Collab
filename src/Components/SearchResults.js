@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import VideoThumbnail from "./VideoThumbnail";
 
@@ -12,7 +12,7 @@ export default function SearchResults({
   setSearchResult,
   setIsOpen,
   defaultOrder,
-  defaultNum,
+  defaultNum
 }) {
   const navigate = useNavigate();
 
@@ -22,9 +22,7 @@ export default function SearchResults({
 
   const orderVal = defaultOrder ? "relevance" : order;
   const numVal = defaultNum ? 9 : num;
-
-  console.log("keyword: ", keyword, " order: ", order, " num: ", num);
-
+  
   useEffect(() => {
     const stored = window.localStorage.getItem(keyword);
     if (stored) {

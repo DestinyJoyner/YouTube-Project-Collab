@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-// import noImageLight from "./assets/no-image-light.png";
 import "./VideoThumbnail.css";
-function VideoThumbnail({ video, videoId }) {
+
+function VideoThumbnail({ video, videoId}) {
   const [views, setViews] = useState("");
-
-  // const noImageUrl =
-  //   "https://yt3.ggpht.com/9mZKUej5L_BhqlKkRIjtOTmAb_e8LmxCOvETV_BIRhQirO0lMybRF8rTlo7au85r2-gsIxbDPw=s800-c-k-c0xffffffff-no-rj-mo";
-
-  /* this fetch w/ 'statistics gives viewcount
-    https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=ZtHCnXMjIXY&maxResults=25&key=
-*/
 
   // function to convert views number
   function convertNumber(num) {
@@ -50,11 +43,6 @@ function VideoThumbnail({ video, videoId }) {
     <div className="videoThumbnail">
       <Link to={`/videos/${videoId}`}>
         <img
-          // src={
-          //   video.snippet.thumbnails.high.url !== noImageUrl
-          //     ? video.snippet.thumbnails.high.url
-          //     : noImageLight
-          // }
           src={video.snippet.thumbnails.high.url}
           alt={video.snippet.title}
         />{" "}
