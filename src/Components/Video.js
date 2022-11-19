@@ -7,8 +7,27 @@ import "./Video.css";
 
 function Video() {
   const { id } = useParams();
+
   const stored = JSON.parse(window.localStorage.getItem("video " + id));
-  const [vidData, setVidData] = useState(stored);
+
+  const empty = {
+    items: [
+      {
+        snippet: {
+          localized: {
+            title: "",
+            description: "",
+          },
+          publishedAt: "",
+          channelTitle: "",
+        },
+        statistics: {
+          viewCount: "",
+        },
+      },
+    ],
+  };
+  const [vidData, setVidData] = useState(empty);
 
   const opts = {
     height: 400,
@@ -22,7 +41,10 @@ function Video() {
   // https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCBJeMCIeLQos7wacox4hmLQ&maxResults=5&type=video&key=
 
   useEffect(() => {
-    if (!vidData) {
+    if (stored) {
+      setVidData(stored);
+    }
+    if (!stored) {
       fetch(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${id}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
       )
@@ -44,7 +66,6 @@ function Video() {
       <h2>{vidData.items[0].snippet.localized.title}</h2>
       <h4>{vidData.items[0].snippet.channelTitle}</h4>
       <p>{vidData.items[0].snippet.localized.description}</p>
-
       <p>Date added: {vidData.items[0].snippet.publishedAt}</p>
       <p>{vidData.items[0].statistics.viewCount} views</p>
       <CommentForm videoId={id} />
