@@ -4,10 +4,18 @@ https://drive.google.com/drive/folders/1qCiULMbKOpRbX8vhukt6B8fPF9OrXAQv
 
 https://codepen.io/t_afif/pen/BarmdPB
 */
+ /* 
+  test fonts:
+  outrun future
+  shaka pow 
+  the jacatra
+  next custom*/
+  /* #213042, #2b3f55 */
+ 
 .axe-hammer {
     align-self: center;
     margin-left: 60%;
-    margin-bottom: 12%;
+    margin-bottom: 15%;
     transform: translate(-50% -50%);
     grid-column: 1/3;
     grid-row: 2; 
@@ -26,7 +34,7 @@ https://codepen.io/t_afif/pen/BarmdPB
      
 }
 .rain{
-  background-image: url('./rain.png');
+  /* background-image: url('/public/assets/rain.png'); */
   animation: rain 3s linear infinite;
   grid-row: 1/3;
   grid-column:1/4;
@@ -46,7 +54,7 @@ https://codepen.io/t_afif/pen/BarmdPB
   width: 100%;
   height: 100%; 
   top: 65px;   
-  background-image: url('./lightining.png');
+  /* background-image: url("/public/lightining.png"); */
   background-repeat: no-repeat;
   transform: rotate(180deg);
   animation: lightining  3s linear infinite;
@@ -95,23 +103,26 @@ https://codepen.io/t_afif/pen/BarmdPB
   margin-bottom: 8%;
 }
 
-.gallery > img, article {
+article {
   width: 0;
   min-width: calc(100% + var(--z)/2);
   height: var(--s);
   object-fit: cover;
+  /* hides an element (partially or fully) by masking or clipping the image at specific points. */
   -webkit-mask: var(--mask);
   mask: var(--mask);
   cursor: pointer;
   transition: .5s;
 }
 
-.gallery > img:hover, article:hover {
+article:hover {
+    /* slide effect when hover over article- calc distance between  */
     width: calc(var(--s)/2);
 }
 
-.gallery > img:first-child, article {
+article.destiny {
   place-self: start;
+  /* zig zag formula */
   clip-path: polygon(calc(2*var(--z)) 0,100% 0,100% 100%,0 100%);
   --mask: 
     conic-gradient(from -135deg at right,#0000,#000 1deg 89deg,#0000 90deg) 
@@ -119,8 +130,9 @@ https://codepen.io/t_afif/pen/BarmdPB
   margin-left: -100px;
 }
 
-.gallery img:last-child {
+article.dan {
   place-self: end;
+  /* zig zag formula */
   clip-path: polygon(0 0,100% 0,calc(100% - 2*var(--z)) 100%,0 100%);
   --mask: 
     conic-gradient(from   45deg at left ,#0000,#000 1deg 89deg,#0000 90deg) 
@@ -129,52 +141,59 @@ https://codepen.io/t_afif/pen/BarmdPB
 }
 
 .about h1 {
-    display: flex;
-    justify-content: space-around;
-    grid-row: 1;
-    grid-column: 2;
-    margin-top: 140px;
-    text-align: center;
-    font-family: GodofWar ;
-    font-size: 54px;
-  }
-   
-  #destiny {
-    margin-right: 40%;
-    color:#21b1ee;
-  }
-  
-  article.destiny  {
-    /* background-color: #213042cd; */
-    background-color: #1d7ea849;
-  }
-  
-  .destiny p {
-    background-color: black;
-    color:#1d7ea8;
-    font-family: outrun future;
-    height: fit-content;
-    width:70%;
-    text-align: center;
-    margin-left: 15%;
-    border-radius: 15px;
-  }
-  
-  .destiny img  {
-    height: 200px;
-    margin-left: 25%;
-    position: relative;
-    top: -5px;
-    transform: rotate(2deg)
-  }
-  
-  .destiny li {
-    list-style: none;
-  }
-  
-  #dan {
-    color: #0b3fa1;
-    margin-left: 40%;
-  }
+  display: flex;
+  justify-content: space-around;
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 140px;
+  text-align: center;
+  font-family: GodofWar ;
+  font-size: 54px;
+}
  
+#destiny {
+  margin-right: 100%;
+  color:#21b1ee;
+}
+
+.destiny, .dan {
+  /* background-color: #213042cd; */
+  background-color: #141d28e8;
+}
+
+.destiny p, .dan p{
+  background-color: black;
+  color:#1d7ea8;
+  font-family: outrun future;
+  height: fit-content;
+  width:70%;
+  text-align: center;
+  margin-left: 15%;
+  border-radius: 15px;
+}
+
+.destiny img {
+  height: 200px;
+  margin-right: 5%;
+  grid-column: 3;
+}
+
+.dan img {
+    margin-left: 100%;
+    height: 200px;
+}
+
+.destiny li {
+  list-style: none;
+}
+
+#dan {
+  color: #0b3fa1;
+  margin-left: 20%;
+}
+
+
+
+
+
   
