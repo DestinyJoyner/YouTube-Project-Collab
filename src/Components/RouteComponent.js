@@ -7,6 +7,7 @@ import SearchResults from "./SearchResults";
 import Video from "./Video";
 import ModalTrigger from "./ModalTrigger";
 import Home from "./Home";
+import EasterEgg from "../Easter Egg/EasterEgg";
 
 // test 
 // import { useContext } from "react";
@@ -33,7 +34,7 @@ function RouteComponent() {
       <Route index element={ <Home  /> }/>
       <Route path="about" element={<>About</>} />
       <Route path="favorites" element={<>Favorites</>} />
-      <Route path="overkill" element={<>EasterEgg</>} />
+      <Route path="overkill" element={<EasterEgg/>} />
 
       <Route path="search">
         <Route index element={<Navigate to="/" />} />
