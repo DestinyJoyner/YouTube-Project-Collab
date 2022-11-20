@@ -140,21 +140,19 @@ article.danEgg {
   margin-right: -100px;
 }
 
+
 .about h1 {
-  display: flex;
-  justify-content: space-around;
   grid-row: 1;
-  grid-column: 2;
-  margin-top: 140px;
+  grid-column: 1/4;
+  margin-top: 100px;
+  margin-right:5%;
   text-align: center;
   font-family: GodofWar ;
   font-size: 54px;
+  color:#174bb1;
 }
+
  
-#destiny {
-  margin-right: 100%;
-  color:#21b1ee;
-}
 
 .destinyEgg, .danEgg {
   /* background-color: #213042cd; */
@@ -186,10 +184,6 @@ article.danEgg {
   list-style: none;
 }
 
-#dan {
-  color: #0b3fa1;
-  margin-left: 20%;
-}
 
 
 

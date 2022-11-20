@@ -20,7 +20,7 @@ function EasterEgg(props) {
             <div className='axe-hammer'><img 
             src = {pix}
             alt = 'collision' /></div>
-             <h1><span id = "destiny">Destiny</span>  <span id ="dan">Dan</span></h1>
+             <h1><span className='first'>PROJECT </span><span className='second'>OVERKILL</span></h1>
 
             <div className="gallery">
            
