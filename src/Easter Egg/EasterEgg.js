@@ -1,6 +1,7 @@
 import React from 'react';
 import pix from './kratos-thor.gif'
 import destiny from './gaming-in-chair.png'
+// import "./EasterEgg.css";
 
 function EasterEgg(props) {
     return (
@@ -13,7 +14,7 @@ function EasterEgg(props) {
             alt = 'collision' /></div>
              <h1><span id = "destiny">Destiny</span>  <span id ="dan">Dan</span></h1>
 
-            <div class="gallery">
+            <div className="gallery">
            
             <article className='destiny'>
                 <img src={destiny} alt="destiny" className='destinypic'
