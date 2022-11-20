@@ -21,13 +21,13 @@ function RouteComponent({
           index
           element={
             <>
-              <SearchBar
+              {/* <SearchBar
                 searchResult={searchResult}
                 setSearchResult={setSearchResult}
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 setIsOpen={setIsOpen}
-              />
+              /> */}
               <Home setIsOpen={setIsOpen} />
             </>
           }
@@ -40,11 +40,11 @@ function RouteComponent({
             path=":keyword"
             element={
               <>
-                <SearchBar
+                {/* <SearchBar
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                   setSearchResult={setSearchResult}
-                />
+                /> */}
                 <SearchResults
                   searchResult={searchResult}
                   setSearchResult={setSearchResult}
@@ -61,11 +61,11 @@ function RouteComponent({
             path=":keyword/:order"
             element={
               <>
-                <SearchBar
+                {/* <SearchBar
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                   setSearchResult={setSearchResult}
-                />
+                /> */}
                 <SearchResults
                   searchResult={searchResult}
                   setSearchResult={setSearchResult}
@@ -81,11 +81,11 @@ function RouteComponent({
             path=":keyword/:order/:num"
             element={
               <>
-                <SearchBar
+                {/* <SearchBar
                   searchInput={searchInput}
                   setSearchInput={setSearchInput}
                   setSearchResult={setSearchResult}
-                />
+                /> */}
 
                 <SearchResults
                   searchResult={searchResult}

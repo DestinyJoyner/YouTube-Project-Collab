@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 import youTubeLogo from "./assets/youTubeLogo.png";
 import "./Nav.css";
 
-function Nav() {
+
+function Nav({searchInput, setSearchInput, searchResult, setSearchResult}) {
+
+
   return (
     <nav className="nav">
       <img src={youTubeLogo} alt="youTube Logo" height="30px" />
@@ -14,6 +18,13 @@ function Nav() {
       <Link to="/about">
         <h2 className="h2-nav">About</h2>
       </Link>
+
+      {/* testing putting searchbar inside Nav */}
+      <SearchBar 
+      searchInput ={searchInput} 
+      setSearchInput ={setSearchInput}
+      searchResult ={searchResult} 
+      setSearchResult = {setSearchResult} />
     </nav>
   );
 }

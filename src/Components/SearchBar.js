@@ -18,7 +18,7 @@ export default function SearchBar({
 
   return (
     <div className="search-section">
-      <div className="dropdowns">
+      {/* <div className="dropdowns">
         <section className="order-drop">
           <Dropdown
             value={"order"}
@@ -41,7 +41,7 @@ export default function SearchBar({
             setFunction={setNumResults}
           />
         </section>
-      </div>
+      </div> */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -75,6 +75,32 @@ export default function SearchBar({
           className="button"
         ></input>
       </form>
+
+      {/* testing moving dropdowns to right of searchbar */}
+      <div className="dropdowns">
+        <section className="order-drop">
+          <Dropdown
+            value={"order"}
+            title={"Sort By: "}
+            optionValue={["relevance", "date", `viewCount`]}
+            optionName={["Relevance", `Most Recent`, `Most Viewed`]}
+            stateVar={order}
+            setFunction={setOrder}
+          />
+        </section>
+
+        <section className="num-drop">
+          <Dropdown
+            className="num-drop"
+            value={"maxResults"}
+            title={"Number of Results: "}
+            optionValue={["9", "18", "27", "36", "45"]}
+            optionName={["9", "18", "27", "36", "45"]}
+            stateVar={numResults}
+            setFunction={setNumResults}
+          />
+        </section>
+      </div>
     </div>
   );
 }

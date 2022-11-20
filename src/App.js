@@ -6,6 +6,7 @@ import Nav from "./Components/Nav";
 import Modal from "./Components/Modal";
 
 import "./App.css";
+import Provider from "./Provider/Provider";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -14,7 +15,13 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav /> */}
+      <Nav 
+      searchInput ={searchInput} 
+      setSearchInput ={setSearchInput}
+      searchResult ={searchResult} 
+      setSearchResult = {setSearchResult}/>
+  
 
       <RouteComponent
         searchInput={searchInput}
@@ -24,7 +31,11 @@ function App() {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
+
+
+      
       {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+      
       <Footer />
     </div>
   );
