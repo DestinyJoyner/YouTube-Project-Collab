@@ -81,6 +81,7 @@ article.danEgg {
   margin-right: -100px;
 }
 
+
 .axe-hammer {
     align-self: center;
     margin-left: 60%;
@@ -114,8 +115,6 @@ article.danEgg {
   color:#174bb1;
 }
 
- 
-
 .destinyEgg, .danEgg {
   /* background-color: #213042cd; */
   background-color: #1a2635c0;
@@ -146,7 +145,7 @@ article.danEgg {
   list-style: none;
 }
 
-
+/* alternate no  background-  image url  */
 .lightining {
     grid-column: 1/4;
     grid-row: 1/3;

@@ -1,16 +1,12 @@
 import React from 'react';
-import lightining from '../lightining.png'
+import lightining from './lightining.png'
 import rain from './rain.png'
 import pix from './kratos-thor.gif'
 import destiny from './short.png'
 import dan from './test.png'
-
-
 import "./EasterEgg.css"
 
 function EasterEgg(props) {
-    
-    
     return (
         <div className = 'about'>
             
@@ -33,7 +29,8 @@ function EasterEgg(props) {
                     <li>App Crusher</li>
                     <li>Web developer</li>
                 </p>
-                    </article>
+            </article>
+            
             <article className='danEgg'>
                 <img src={dan} alt="danpic"/>
                 <p>
