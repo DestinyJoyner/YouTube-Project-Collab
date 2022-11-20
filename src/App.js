@@ -16,11 +16,13 @@ function App() {
   return (
     <div className="App">
       {/* <Nav /> */}
+      <Provider>
       <Nav 
       searchInput ={searchInput} 
       setSearchInput ={setSearchInput}
       searchResult ={searchResult} 
       setSearchResult = {setSearchResult}/>
+      </Provider>
   
 
       <RouteComponent
