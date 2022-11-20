@@ -6,39 +6,45 @@ import Nav from "./Components/Nav";
 import Modal from "./Components/Modal";
 
 import "./App.css";
+// test
 import Provider from "./Provider/Provider";
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [searchInput, setSearchInput] = useState("");
+  // const [searchResult, setSearchResult] = useState([]);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div className="App">
-      {/* <Nav /> */}
-      <Provider>
-      <Nav 
+  /* props removed from nav comp in provider
       searchInput ={searchInput} 
       setSearchInput ={setSearchInput}
       searchResult ={searchResult} 
-      setSearchResult = {setSearchResult}/>
-      </Provider>
-  
+      setSearchResult = {setSearchResult}
+  */
 
-      <RouteComponent
+      
+
+  return (
+    <div className="App"
+    >
+      <Provider>
+        <RouteComponent />
+      </Provider>
+
+      {/* <Nav /> */}
+
+      {/* <RouteComponent
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         setSearchResult={setSearchResult}
         searchResult={searchResult}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-      />
-
+      /> */}
+      {/* {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+      
+      <Footer /> */}
 
       
-      {isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
-      
-      <Footer />
     </div>
   );
 }

@@ -4,7 +4,17 @@ import { fetchData } from "../API/Fetch";
 import VideoThumbnail from "./VideoThumbnail";
 import "./Home.css";
 
-function Home({ setIsOpen }) {
+// test
+import { useContext } from 'react';
+import { ContextData } from "../Provider/Provider";
+
+function Home() {
+  /* removed props
+  { setIsOpen }
+  */
+  // test 
+  const {setIsOpen} = useContext(ContextData)
+  
   const [desVids, setDesVids] = useState([]);
   const [dansVids, setDansVids] = useState([]);
   const [dansTheme, setDansTheme] = useState("");

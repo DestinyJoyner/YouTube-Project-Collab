@@ -11,14 +11,20 @@ import youTubeLogo from "./assets/youTubeLogo.png";
 import "./Nav.css";
 
 
-function Nav({searchInput, setSearchInput, searchResult, setSearchResult}) {
+function Nav() {
+  /* removed props
+    {searchInput, setSearchInput, searchResult, setSearchResult}
+  */
 // test
-const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
+// const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
+
+// testing for complete app coverage, no need for props
+const {darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSearchResult, darkStyles } = useContext(ContextData)
 // testing style for nav
   return (
     <nav 
-    style={ darkMode ? darkStyles : {}}
-    className="nav">
+    className="nav"
+    style={ darkMode ? darkStyles : {}}>
       <img src={youTubeLogo} alt="youTube Logo" height="30px" />
       <h1>YouTube</h1>
       <Link to="/">
@@ -33,11 +39,7 @@ const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
       </Link>
 
       {/* testing putting searchbar inside Nav */}
-      <SearchBar 
-      searchInput ={searchInput} 
-      setSearchInput ={setSearchInput}
-      searchResult ={searchResult} 
-      setSearchResult = {setSearchResult} />
+      <SearchBar />
      
       {/* testing adding darkMode button */}
       <DarkModeButton

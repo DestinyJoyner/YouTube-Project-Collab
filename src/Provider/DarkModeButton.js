@@ -18,9 +18,6 @@ function DarkModeButton({darkMode, setDarkMode}) {
             borderRadius: '20px',
             border: '2px solid #e8e5e5',
             backgroundColor: '#f8f8f8',
-            // width: '100px',
-            
-
         }}
         type= "button"
         onClick={() => setDarkMode(!darkMode)}>

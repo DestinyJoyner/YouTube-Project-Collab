@@ -3,17 +3,28 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import VideoThumbnail from "./VideoThumbnail";
 
-import { fetchData } from "../API/Fetch";
+// import { fetchData } from "../API/Fetch";
 
 import "./SearchResults.css";
 
+// test useContext
+import { useContext } from "react";
+import { ContextData } from "../Provider/Provider";
+
 export default function SearchResults({
-  searchResult,
-  setSearchResult,
-  setIsOpen,
   defaultOrder,
   defaultNum
 }) {
+
+  /* removed props from param:
+    searchResult,
+  setSearchResult,
+  setIsOpen,
+  */
+  // test use Context
+  const {darkMode, setDarkMode, fetchData, searchResult, setSearchResult, setIsOpen, darkStyles } = useContext(ContextData)
+
+
   const navigate = useNavigate();
 
   const { keyword } = useParams();

@@ -6,14 +6,23 @@ import { fetchData } from "../API/Fetch";
 import searchIcon from "./assets/Search-icon.png";
 import "./SearchBar.css";
 
-export default function SearchBar({
+// test
+import { useContext } from 'react';
+import { ContextData } from "../Provider/Provider";
+
+export default function SearchBar() {
+/* removed props
   searchInput,
   setSearchInput,
   setSearchResult,
   setIsOpen,
-}) {
-  const [numResults, setNumResults] = useState("9");
-  const [order, setOrder] = useState("relevance");
+*/
+
+  // testing for complete app coverage, no need for props
+const {darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSearchResult, setIsOpen, darkStyles, order, setOrder, numResults, setNumResults } = useContext(ContextData)
+
+  // const [numResults, setNumResults] = useState("9");
+  // const [order, setOrder] = useState("relevance");
   const navigate = useNavigate();
 
   return (
