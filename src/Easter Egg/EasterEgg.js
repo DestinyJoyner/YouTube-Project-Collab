@@ -1,4 +1,5 @@
 import React from 'react';
+import lightining from '../lightining.png'
 import rain from './rain.png'
 import pix from './kratos-thor.gif'
 import destiny from './short.png'
@@ -14,6 +15,7 @@ function EasterEgg(props) {
         <div className = 'about'>
             
             <div className='lightining'
+            style={{backgroundImage: `url(${lightining})`}}
             ></div>
             <div className='rain'
             style={{backgroundImage: `url(${rain})`}}></div>
