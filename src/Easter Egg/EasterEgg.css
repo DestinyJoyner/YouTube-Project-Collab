@@ -120,7 +120,7 @@ article:hover {
     width: calc(var(--s)/2);
 }
 
-article.destiny {
+article.destinyEgg {
   place-self: start;
   /* zig zag formula */
   clip-path: polygon(calc(2*var(--z)) 0,100% 0,100% 100%,0 100%);
@@ -130,7 +130,7 @@ article.destiny {
   margin-left: -100px;
 }
 
-article.dan {
+article.danEgg {
   place-self: end;
   /* zig zag formula */
   clip-path: polygon(0 0,100% 0,calc(100% - 2*var(--z)) 100%,0 100%);
@@ -156,12 +156,12 @@ article.dan {
   color:#21b1ee;
 }
 
-.destiny, .dan {
+.destinyEgg, .danEgg {
   /* background-color: #213042cd; */
-  background-color: #141d28e8;
+  background-color: #1a2635c0;
 }
 
-.destiny p, .dan p{
+.destinyEgg p, .danEgg p{
   background-color: black;
   color:#1d7ea8;
   font-family: outrun future;
@@ -172,18 +172,17 @@ article.dan {
   border-radius: 15px;
 }
 
-.destiny img {
+.destinyEgg img {
   height: 200px;
-  margin-right: 5%;
-  grid-column: 3;
+  margin-left: 25%;
 }
 
-.dan img {
-    margin-left: 100%;
+.danEgg img {
+    margin-left: 35%;
     height: 200px;
 }
 
-.destiny li {
+.destinyEgg li {
   list-style: none;
 }
 

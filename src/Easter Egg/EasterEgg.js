@@ -24,7 +24,7 @@ function EasterEgg(props) {
 
             <div className="gallery">
            
-            <article className='destiny'>
+            <article className='destinyEgg'>
                 <img src={destiny} alt="destiny" />
                 <p>
                     <li>Destiny</li>
@@ -32,7 +32,7 @@ function EasterEgg(props) {
                     <li>Web developer</li>
                 </p>
                     </article>
-            <article className='dan'>
+            <article className='danEgg'>
                 <img src={dan} alt="danpic"/>
                 <p>
                     <li>Dan</li>
