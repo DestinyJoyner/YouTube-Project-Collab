@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useContext, createContext} from 'react'
+import {useState, createContext} from 'react'
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
 import Modal from '../Components/Modal';
@@ -37,6 +37,7 @@ function Provider(props) {
         <Nav />
         <Footer />
         {isOpen && <Modal />}
+        
         {props.children}
        </ContextData.Provider>
        </div>
