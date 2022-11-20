@@ -33,6 +33,7 @@ function RouteComponent() {
       <Route index element={ <Home  /> }/>
       <Route path="about" element={<>About</>} />
       <Route path="favorites" element={<>Favorites</>} />
+      <Route path="overkill" element={<>EasterEgg</>} />
 
       <Route path="search">
         <Route index element={<Navigate to="/" />} />

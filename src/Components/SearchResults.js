@@ -11,6 +11,7 @@ import "./SearchResults.css";
 import { useContext } from "react";
 import { ContextData } from "../Provider/Provider";
 
+
 export default function SearchResults({
   defaultOrder,
   defaultNum

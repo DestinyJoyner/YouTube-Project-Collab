@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import DarkModeButton from "../Provider/DarkModeButton";
 import { useContext } from 'react';
 import { ContextData } from "../Provider/Provider";
+import goldEgg from '../Provider/gold-egg.png'
 
 
 import youTubeLogo from "./assets/youTubeLogo.png";
@@ -15,11 +16,10 @@ function Nav() {
   /* removed props
     {searchInput, setSearchInput, searchResult, setSearchResult}
   */
-// test
-// const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
 
 // testing for complete app coverage, no need for props
 const {darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSearchResult, darkStyles } = useContext(ContextData)
+
 // testing style for nav
   return (
     <nav 
@@ -40,7 +40,14 @@ const {darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSear
 
       {/* testing putting searchbar inside Nav */}
       <SearchBar />
-     
+      {/* testing 'Easter Egg' link */}
+      <Link to="/overkill"
+      className="egg">
+          <img
+          // className="egg"
+          src = {goldEgg}
+          alt= 'golden egg' />
+      </Link>
       {/* testing adding darkMode button */}
       <DarkModeButton
       darkMode = {darkMode}
