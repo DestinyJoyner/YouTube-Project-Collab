@@ -27,6 +27,10 @@ const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
       <Link to="/about">
         <h2 className="h2-nav">About</h2>
       </Link>
+       {/* test adding favorites link */}
+       <Link to="/favorites">
+        <h2 className="h2-nav">Favorites</h2>
+      </Link>
 
       {/* testing putting searchbar inside Nav */}
       <SearchBar 
@@ -34,6 +38,7 @@ const {darkMode, setDarkMode, darkStyles} = useContext(ContextData)
       setSearchInput ={setSearchInput}
       searchResult ={searchResult} 
       setSearchResult = {setSearchResult} />
+     
       {/* testing adding darkMode button */}
       <DarkModeButton
       darkMode = {darkMode}

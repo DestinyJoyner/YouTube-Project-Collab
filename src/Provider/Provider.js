@@ -20,7 +20,7 @@ function Provider(props) {
     const darkStyles = {
         backgroundColor: 'black',
         color: 'aqua',
-        border: '2px solid red'
+        border: '2px solid green'
     }
 
     // the value prop always takes in an object { {} } and can hold multiple values

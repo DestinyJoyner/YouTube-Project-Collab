@@ -1,0 +1,21 @@
+
+button{
+    grid-column: 8;
+    width: 60%;
+    align-self: flex-start;
+    justify-self: center;
+    margin-top: 10px;
+    font-family: f Fase Bulan;
+    font-size: 18px;
+    color: #212121;
+    margin-right: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);  
+}
+button img {
+    height:18px;
+
+}
