@@ -2,3 +2,26 @@
     text-align: center;
     margin-top: 100px;
 }
+
+.description {
+    height: 100px;
+    width: 60%;
+    overflow: scroll;
+    margin-left: 20%;
+    border: 1px solid red;
+}
+
+.videoInfo h4 img {
+    height: 40px;
+}
+.videoInfo h4 {
+    display: flex;
+    margin-left: 30px;
+    
+    height: 40px;
+}
+.videoInfo h4 span {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+

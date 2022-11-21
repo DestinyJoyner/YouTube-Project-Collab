@@ -2,7 +2,7 @@ import React from 'react';
 import lightining from './lightining.png'
 import rain from './rain.png'
 import pix from './kratos-thor.gif'
-import destiny from './short.png'
+import destiny from './face-front.png'
 import dan from './test.png'
 import "./EasterEgg.css"
 
@@ -30,7 +30,7 @@ function EasterEgg(props) {
                     <li>Web developer</li>
                 </p>
             </article>
-            
+
             <article className='danEgg'>
                 <img src={dan} alt="danpic"/>
                 <p>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import CommentForm from "./CommentForm";
 import "./Video.css";
+import tvImage from './assets/channel-icon.png'
 
 function Video() {
   const { id } = useParams();
@@ -63,11 +64,15 @@ function Video() {
       <div className="video">
         <YouTube videoId={id} opts={opts} />
       </div>
+      <section className="videoInfo">
       <h2>{vidData.items[0].snippet.localized.title}</h2>
-      <h4>{vidData.items[0].snippet.channelTitle}</h4>
-      <p>{vidData.items[0].snippet.localized.description}</p>
+      <h4>
+        <img src ={tvImage} alt= 'tv-icon'/>
+      <span>{vidData.items[0].snippet.channelTitle}</span></h4>
+      <p className="description">{vidData.items[0].snippet.localized.description}</p>
       <p>Date added: {vidData.items[0].snippet.publishedAt}</p>
       <p>{vidData.items[0].statistics.viewCount} views</p>
+      </section>
       <CommentForm videoId={id} />
     </div>
   );
