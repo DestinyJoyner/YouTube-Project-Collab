@@ -42,7 +42,7 @@ function Video() {
         channelTitle: "",
       },
       statistics: {
-        viewCount: "",
+        viewCount: " ",
       },
     },
   ]
@@ -142,8 +142,8 @@ function Video() {
         <p className="description">{vidData.items[0].snippet.localized.description}</p>
         
         <p className="stats">
-          <span>Date added: {/* {convertDate(vidData.items[0].snippet.publishedAt)} */}</span>
-          <span>{/* {convertNumber(vidData.items[0].statistics.viewCount)}  */}views</span>
+          <span>Date added: {convertDate(vidData.items[0].snippet.publishedAt)}</span>
+          <span>{convertNumber(vidData.items[0].statistics.viewCount)} views</span>
           <span>
             <input type ="button" value = "Add To Favorites"></input>
           </span>
@@ -167,13 +167,13 @@ function Video() {
       <section className="related">
         <h4>You May Also Like:</h4>
         <div className="moreVids">
-      {/*   {   relatedVids.map(video => 
+        {   relatedVids.map(video => 
             <VideoThumbnail
               key={video.id.videoId}
               video={video}
               videoId={video.id.videoId}
             />)
-          } */}
+          }
         </div>
       </section>
       
