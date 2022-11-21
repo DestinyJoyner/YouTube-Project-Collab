@@ -73,7 +73,7 @@ function Video() {
   const [channel, setChannel] = useState(test.items);
 
   const opts = {
-    height: 300,
+    height: 400,
     width: 650,
   };
 
@@ -173,26 +173,22 @@ function Video() {
 
   return (
     <div className="videoPage">
+      
       <div className="video">
         <YouTube videoId={id} opts={opts} />
-        
       </div>
+      
       <CommentForm videoId={id} />
       
-
       <section className="videoInfo">
         <h2>{vidData.items[0].snippet.localized.title}</h2>
 
         <h4>
           <img src={tvImage} alt="tv-icon" />
-
           <span>{vidData.items[0].snippet.channelTitle}</span>
         </h4>
 
-        <p className="description">
-          {vidData.items[0].snippet.localized.description}
-        </p>
-
+        <div >
         <p className="stats">
           <span>Date added: {convertDate(vidData.items[0].snippet.publishedAt)}</span>
           <span>{convertNumber(vidData.items[0].statistics.viewCount)} views</span>
@@ -200,6 +196,16 @@ function Video() {
             <input type="button" value="Add To Favorites"></input>
           </span>
         </p>
+        </div>
+        <p className="description">{vidData.items[0].snippet.localized.description}</p>
+
+        {/* <p className="stats">
+          <span>Date added: {convertDate(vidData.items[0].snippet.publishedAt)}</span>
+          <span>{convertNumber(vidData.items[0].statistics.viewCount)} views</span>
+          <span>
+            <input type="button" value="Add To Favorites"></input>
+          </span>
+        </p> */}
       </section>
 
       <section className="related">

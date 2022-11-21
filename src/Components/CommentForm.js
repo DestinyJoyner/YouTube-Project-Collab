@@ -49,10 +49,10 @@ function CommentForm({videoId}) {
     
     return (
         <div className = "commentSection">
-        
             <form 
             onSubmit = {(event) => handleSubmit(event)}
             className = "commentForm">
+                <h4>Leave A Comment:</h4>
                 
                 <label htmlFor = 'commenter'><span>Name: </span>
                     <input
@@ -61,7 +61,6 @@ function CommentForm({videoId}) {
                     value = {newComment.commenter} 
                     onChange = {(event) => handleNewComment(event)}/>
                 </label>
-                <br></br>
 
                 <label htmlFor = 'comment'><span>Comment: </span>  
                     <input
@@ -70,7 +69,6 @@ function CommentForm({videoId}) {
                     value = {newComment.comment} 
                     onChange = {(event) => handleNewComment(event)}/>
                 </label>
-                <br></br>
 
                 <input 
                 type = "submit"
