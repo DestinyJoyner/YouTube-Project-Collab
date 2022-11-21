@@ -27,7 +27,7 @@ function Provider(props) {
     }
 
     // the value prop always takes in an object { {} } and can hold multiple values
-    // The components or elements inside of Provider will ALWAYS BE RENDERED WHEN CONTEXTDATA IS USED, OR IF APP WRAPPED INSIDE OF PROVIDER COMPONENT (inside index.js)
+    // The components or elements inside of Provider will ALWAYS BE RENDERED IN CHILD COMPONENETS OF PROVIDER, OR IF APP WRAPPED INSIDE OF PROVIDER COMPONENT (inside index.js)
     // ****** NEED {props.children} to render all child components ****
     return (
         <div style={ darkMode ? darkStyles : {}}>
