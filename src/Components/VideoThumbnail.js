@@ -7,7 +7,7 @@ function VideoThumbnail({ video, videoId}) {
   const [views, setViews] = useState("");
 
   // function to convert views number
-  function convertNumber(num) {
+ function convertNumber(num) {
     return num
       .split(``)
       .reverse()

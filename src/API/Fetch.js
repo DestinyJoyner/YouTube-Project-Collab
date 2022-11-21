@@ -1,4 +1,5 @@
-URL = "https://youtube.googleapis.com/youtube/v3/";
+// export Url to use in Video.js for multiple fetch calls
+export const URL = "https://youtube.googleapis.com/youtube/v3/";
 
 export const fetchData = (resource, searchInput, setData, setModal, order, number) => {
   const lowerCase = searchInput.toLowerCase();
