@@ -9,6 +9,9 @@ button{
     font-size: 18px;
     color: #212121;
     margin-right: 20px;
+    border-radius: 20px;
+    border: 2px solid #e8e5e5;
+    background-color: #f8f8f8;
 }
 
 button:hover {
@@ -17,5 +20,4 @@ button:hover {
 }
 button img {
     height:18px;
-
 }

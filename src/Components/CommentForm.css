@@ -2,24 +2,16 @@
 .commentSection {  
     grid-column: 3;
     grid-row: 1/3;
-    color: #212121;
-    /* border: 2px solid #e8e5e5;
-    background-color: #f8f8f8;
-    border-radius: 25px; */
     display: grid;
     grid-template-rows: 40% 60%;
-    
+    color: #212121;
 }
 
 .commentForm {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    
-}
-
-.commentForm input {
-    align-self: center;  
+    align-self: center; 
+    text-align: center;
 }
 
 .commentForm label {
@@ -33,23 +25,51 @@ label input {
     text-indent: 10px;
 }
 
-span, .comments, form h4 {
-    text-align: center;
-}
-
-
 .comments ul {
     list-style: none;
 }
 
+.who{
+    font-size: 16px;
+    font-weight: bolder;
+    margin-right: 5px;
+    padding: 2px;
+}
+
+li {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    column-gap: 8px;
+    grid-template-rows: auto auto;
+}
+
+li h4 {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+li img {
+    height:30px;
+    grid-row: 1/3;
+}
+
+.comments p {
+    font-size: 12px;
+    grid-column: 2;
+}
+
 .commentButton {
-   height: 25px ;
-    margin-top: 10%;
+    height: 25px ;
+    margin: 10%;
     width: 100px;
+    align-self: center;
 }
 
 .commentButton:hover {
-    transform: scale(1.1);
     cursor: pointer;
     border: 2px solid  #f40402;
 }

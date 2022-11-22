@@ -2,9 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
-import { URL } from "../API/Fetch";
 import CommentForm from "./CommentForm";
 import VideoThumbnail from "./VideoThumbnail";
+import { convertDate, convertNumber } from "../Provider/helperFunctions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
 
@@ -40,30 +40,6 @@ function Video() {
     ],
   };
 
-  // const emptyArr =
-  //   {
-  //     snippet: {
-  //       localized: {
-  //         title: "",
-  //         description: "",
-  //       },
-  //       publishedAt: "",
-  //       channelTitle: "",
-  //       thumbnails: {
-  //        high: {
-  //             "url": "",
-  //             },
-  //     },
-  //     statistics: {
-  //       viewCount: " ",
-  //     },
-  //     id: {
-  //       kind: "",
-  //       videoId: "",
-  //     }
-  //   },
-  // }
-  // ]
   const test = JSON.parse(window.localStorage.getItem(`video tTO3EZj2Hx4`))
   const [vidData, setVidData] = useState(test);
 
@@ -76,26 +52,6 @@ function Video() {
     height: 400,
     width: 650,
   };
-
-  // convert string functions from videoThumbnail, can add to helperfunction and import but fo now:
-  function convertNumber(num) {
-    return num
-      .split(``)
-      .reverse()
-      .join(``)
-      .match(/.{1,3}/g)
-      .join(`,`)
-      .split(``)
-      .reverse()
-      .join(``);
-  }
-
-  function convertDate(str) {
-    let date = str.slice(2, 10).split("-");
-    date.push(date[0]);
-    date.shift();
-    return date.join("/");
-  }
 
   // related to
   // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relatedToVideoId=x74lBu1Bn0g&type=video&key=
@@ -114,27 +70,24 @@ function Video() {
         .then((resp) => resp.json())
         .then((respJson) => {
           let count = 0;
-          
           const filtered = respJson.items.filter((video) => {
-  
             if (video.id.videoId !== id && count < 5) {
               count++;
               return video;
             }
           });
-          console.log(`filtered`, filtered)
           setChannel(filtered);
         })
         .catch((err) => console.log(err));
-    } else if (fetchParam === `relatedToVideoId`) {
+      } 
+      else if (fetchParam === `relatedToVideoId`) {
       fetch(
         `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&${fetchParam}=${idValue}&type=video&key=${process.env.REACT_APP_API_KEY}`
       )
         .then((resp) => resp.json())
         .then((respJson) => setFunction(respJson))
         .catch((err) => console.log(err));
-    }
-  
+    } 
 }
 
   useEffect(() => {
@@ -142,7 +95,6 @@ function Video() {
       setVidData(stored);
       const channelId = stored.items[0].snippet.channelId
       // moreVidData(`channelId`, channelId, setChannel)
-
     }
     if (!stored) {
       fetch(
@@ -161,14 +113,6 @@ function Video() {
         })
         .catch((err) => console.log(err));
     }
-    // additional fetch calls for related to video and more from channel
-    // moreVidData(`relatedToVideoId`, id, setRelatedVids);
-    // if(vidData.items[0].id.videoId !== "" ){
-    //   console.log('conditional')
-    //   moreVidData(`channelId`, vidData.items[0].snippet.channelId, setChannel)
-    // }
-    ;
-   
   }, [id]);
 
   return (
@@ -193,7 +137,10 @@ function Video() {
           <span>Date added: {convertDate(vidData.items[0].snippet.publishedAt)}</span>
           <span>{convertNumber(vidData.items[0].statistics.viewCount)} views</span>
           <span>
-            <input type="button" value="Add To Favorites"></input>
+            <input 
+            type="button" 
+            value="Add To Favorites"
+            />
           </span>
         </p>
         </div>
