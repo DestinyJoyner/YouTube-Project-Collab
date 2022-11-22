@@ -1,20 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { fetchData } from "../API/Fetch";
 import VideoThumbnail from "./VideoThumbnail";
+import { ContextData } from "../Provider/Provider";
 import "./Home.css";
 
-// test
-import { useContext } from 'react';
-import { ContextData } from "../Provider/Provider";
-
 function Home() {
-  /* removed props
-  { setIsOpen }
-  */
-  // test 
-  const {setIsOpen} = useContext(ContextData)
-  
+  const { setIsOpen } = useContext(ContextData);
+
   const [desVids, setDesVids] = useState([]);
   const [dansVids, setDansVids] = useState([]);
   const [dansTheme, setDansTheme] = useState("");
@@ -38,25 +30,27 @@ function Home() {
   ];
 
   function randomize(arr) {
-    const length = arr.length;
-    const index = Math.floor(Math.random() * length);
-    return arr[index];
+    return arr[Math.floor(Math.random() * arr.length)];
   }
 
   useEffect(() => {
+    // using the variables to account setState delay
     const danVal = randomize(dansPicks);
     const desVal = randomize(desPicks);
     setDansTheme(danVal);
     setDesTheme(desVal);
-    const dansValue = fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 4);
 
-    const desValue = fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 4);
+    fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 4);
+
+    fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 4);
   }, []);
+
   return (
     <section className="featVids">
       <div className="dan">
         <p>
-          Dan's Search Suggestion: <span className="home-span">{dansTheme}</span>
+          Dan's Search Suggestion:{" "}
+          <span className="home-span">{dansTheme}</span>
         </p>
         {dansVids &&
           dansVids.map((video) => {
@@ -72,7 +66,8 @@ function Home() {
 
       <div className="destiny">
         <p>
-          Destiny's Search Suggestion: <span className="home-span">{desTheme}</span>
+          Destiny's Search Suggestion:{" "}
+          <span className="home-span">{desTheme}</span>
         </p>
         {desVids &&
           desVids.map((video) => {

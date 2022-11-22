@@ -1,16 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import "./Modal.css";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ContextData } from "../Provider/Provider";
+import "./Modal.css";
 
 export default function Modal() {
-
-  /* removed props
-    isOpen, setIsOpen 
-  */
-// test context
-const{isOpen, setIsOpen} = useContext(ContextData)
-
+  const { isOpen, setIsOpen } = useContext(ContextData);
   const navigate = useNavigate();
 
   if (!isOpen) return null;
