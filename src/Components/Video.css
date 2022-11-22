@@ -91,6 +91,10 @@ p#title {
     cursor: pointer;
 }
 
+.stats input:focus {
+    outline: none;
+}
+
 .moreVids .videoThumbnail {
     width: 20%;
 }

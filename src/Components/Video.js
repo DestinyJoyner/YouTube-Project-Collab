@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ContextData } from "../Provider/Provider";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import CommentForm from "./CommentForm";
@@ -8,8 +9,10 @@ import { convertDate, convertNumber } from "../Provider/helperFunctions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
 
+
 function Video() {
   const { id } = useParams();
+  const {favorites, setFavorites} = useContext(ContextData)
 
   const stored = JSON.parse(window.localStorage.getItem("video " + id));
 
@@ -47,6 +50,33 @@ function Video() {
   const [relatedVids, setRelatedVids] = useState(test);
   // more from channel state
   const [channel, setChannel] = useState(test.items);
+  // clicked state for add to favorites button
+  const [clicked, setClicked] = useState(false)
+
+  function clickedFavorites() {
+    // setClicked(!clicked)
+    const favObj = {
+      title: '',
+      id: '',
+      chanId: '',
+      chanName: '',
+      image : '',
+    }
+    vidData.items.forEach(({id, snippet}) => {
+      favObj.title = snippet.title
+      favObj.vidId = id
+      favObj.image = snippet.thumbnails.high.url
+      favObj.chanName = snippet.channelTitle
+      favObj.chanId = snippet.channelId
+
+    })
+    const inFavorites = favorites.find(({vidId}) => id === vidId)
+    const filterFavorites = favorites.filter(({vidId}) => vidId !== id)
+     inFavorites ? setFavorites(filterFavorites) : setFavorites([...favorites, favObj])
+    
+    // setFavorites([...favorites, favObj])
+    window.localStorage.setItem('favorites', JSON.stringify(favorites))
+  }
 
   const opts = {
     height: 400,
@@ -123,7 +153,7 @@ function Video() {
       </div>
       
       <CommentForm videoId={id} />
-      
+
       <section className="videoInfo">
         <h2>{vidData.items[0].snippet.localized.title}</h2>
 
@@ -137,9 +167,12 @@ function Video() {
           <span>Date added: {convertDate(vidData.items[0].snippet.publishedAt)}</span>
           <span>{convertNumber(vidData.items[0].statistics.viewCount)} views</span>
           <span>
-            <input 
+            <input
+            style={clicked ? {backgroundColor: "#f40402", color: 'white', border: '2px solid #e8e5e5 '} : null} 
             type="button" 
-            value="Add To Favorites"
+            value= 'Add To Favorites' 
+            /* {!clicked ? 'Add to Favorites' : 'Remove from Favorites'}  */
+            onClick={() => clickedFavorites()}
             />
           </span>
         </p>

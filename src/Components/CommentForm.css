@@ -36,7 +36,7 @@ label input {
     padding: 2px;
 }
 
-li {
+.commentSection li {
     margin-bottom: 20px;
     display: grid;
     grid-template-columns: 20% 80%;

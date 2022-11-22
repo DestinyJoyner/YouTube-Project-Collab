@@ -19,6 +19,9 @@ function Provider(props) {
     const [numResults, setNumResults] = useState("9");
     const [order, setOrder] = useState("relevance");
 
+    // declare state to hold favorites id / titles
+    const [favorites, setFavorites] = useState([])
+
     // variable to hold darkMode styles object
     const darkStyles = {
         backgroundColor: 'black',
@@ -32,7 +35,8 @@ function Provider(props) {
     return (
         <div style={ darkMode ? darkStyles : {}}>
        <ContextData.Provider 
-       value = {{darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSearchResult, isOpen, setIsOpen, darkStyles , fetchData, order, setOrder, numResults, setNumResults}}> 
+       value = {
+        {darkMode, setDarkMode, searchInput, setSearchInput, searchResult, setSearchResult, isOpen, setIsOpen, darkStyles , fetchData, order, setOrder, numResults, setNumResults, favorites, setFavorites}}> 
         
         <Nav />
         <Footer />
