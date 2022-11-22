@@ -1,9 +1,14 @@
-// export Url to use in Video.js for multiple fetch calls
-export const URL = "https://youtube.googleapis.com/youtube/v3/";
+const URL = "https://youtube.googleapis.com/youtube/v3/";
 
-export const fetchData = (resource, searchInput, setData, setModal, order, number) => {
+export const fetchData = (
+  resource,
+  searchInput,
+  setData,
+  order,
+  number
+) => {
   const lowerCase = searchInput.toLowerCase();
-  const storageVar = `${lowerCase} ${order} ${number}`
+  const storageVar = `${lowerCase} ${order} ${number}`;
   // check if search is already in local storage
   const stored = window.localStorage.getItem(storageVar);
   if (stored) {
@@ -18,7 +23,7 @@ export const fetchData = (resource, searchInput, setData, setModal, order, numbe
       .then((res) => {
         // if we receive a res error -> show modal
         if (res.error) {
-          setModal(true);
+          
         } else {
           // filtering out non video results
           // const resFiltered = res.items.filter((el) =>
@@ -31,7 +36,7 @@ export const fetchData = (resource, searchInput, setData, setModal, order, numbe
       })
       .catch((err) => {
         console.log(err);
-        setModal(true);
+        
       });
   }
 };

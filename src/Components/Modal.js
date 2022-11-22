@@ -4,10 +4,10 @@ import { ContextData } from "../Provider/Provider";
 import "./Modal.css";
 
 export default function Modal() {
-  const { isOpen, setIsOpen } = useContext(ContextData);
+  const { modal, setModal } = useContext(ContextData);
   const navigate = useNavigate();
 
-  if (!isOpen) return null;
+  if (!modal) return null;
   return (
     <>
       <div className="overlay" />
@@ -17,7 +17,7 @@ export default function Modal() {
         {/* button to be placed in top corner */}
         <button
           onClick={() => {
-            setIsOpen(false);
+            setModal(false);
             navigate("/");
           }}
         >

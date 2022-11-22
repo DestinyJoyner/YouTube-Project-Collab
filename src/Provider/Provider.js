@@ -11,9 +11,46 @@ function Provider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState(false);
   const [numResults, setNumResults] = useState("9");
   const [order, setOrder] = useState("relevance");
+
+  const URL = "https://youtube.googleapis.com/youtube/v3/";
+
+  const fetchData = (resource, searchInput, setData, order, number) => {
+    const lowerCase = searchInput.toLowerCase();
+    const storageVar = `${lowerCase}-${order}-${number}`;
+    // check if search is already in local storage
+    const stored = window.localStorage.getItem(storageVar);
+    if (stored) {
+      setData(JSON.parse(stored));
+    } else {
+      const formattedInput = lowerCase.replaceAll(" ", "%20");
+      const fDetails = `?part=snippet&maxResults=${number}&order=${order}&q=`;
+      const type = `&type=video`;
+      const apiKey = `&key=${process.env.REACT_APP_API_KEY}`;
+      fetch(URL + resource + fDetails + formattedInput + type + apiKey)
+        .then((res) => res.json())
+        .then((res) => {
+          // if we receive a res error -> show modal
+          if (res.error) {
+            setModal(true);
+          } else {
+            // filtering out non video results
+            // const resFiltered = res.items.filter((el) =>
+            //   Object.keys(el.id).includes("videoId")
+            // );
+            // res.items = resFiltered;
+            window.localStorage.setItem(storageVar, JSON.stringify(res.items));
+            setData(res.items);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setModal(true);
+        });
+    }
+  };
 
   // variable to hold darkMode styles object
   const darkStyles = {
@@ -29,14 +66,16 @@ function Provider({ children }) {
     <div style={darkMode ? darkStyles : {}}>
       <ContextData.Provider
         value={{
+          fetchData,
+          URL,
           darkMode,
           setDarkMode,
           searchInput,
           setSearchInput,
           searchResult,
           setSearchResult,
-          isOpen,
-          setIsOpen,
+          modal,
+          setModal,
           darkStyles,
           order,
           setOrder,
@@ -46,7 +85,7 @@ function Provider({ children }) {
       >
         <Nav />
         <Footer />
-        {isOpen && <Modal />}
+        {modal && <Modal />}
 
         {children}
       </ContextData.Provider>

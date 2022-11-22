@@ -1,30 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { convertNumber, convertDate } from "../Functions/functions.js"
 import "./VideoThumbnail.css";
 
 function VideoThumbnail({ video, videoId}) {
   const [views, setViews] = useState("");
-
-  // function to convert views number
- function convertNumber(num) {
-    return num
-      .split(``)
-      .reverse()
-      .join(``)
-      .match(/.{1,3}/g)
-      .join(`,`)
-      .split(``)
-      .reverse()
-      .join(``);
-  }
-
-  function convertDate(str) {
-    let date = str.slice(2, 10).split("-");
-    date.push(date[0]);
-    date.shift();
-    return date.join("/");
-  }
 
   useEffect(() => {
     fetch(

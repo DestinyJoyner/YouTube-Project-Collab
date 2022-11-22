@@ -1,30 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { ContextData } from "../Provider/Provider";
 import VideoThumbnail from "./VideoThumbnail";
-
-// import { fetchData } from "../API/Fetch";
-
 import "./SearchResults.css";
 
-// test useContext
-import { useContext } from "react";
-import { ContextData } from "../Provider/Provider";
-
-
-export default function SearchResults({
-  defaultOrder,
-  defaultNum
-}) {
-
-  /* removed props from param:
-    searchResult,
-  setSearchResult,
-  setIsOpen,
-  */
-  // test use Context
-  const {darkMode, setDarkMode, fetchData, searchResult, setSearchResult, setIsOpen, darkStyles } = useContext(ContextData)
-
+export default function SearchResults({ defaultOrder, defaultNum }) {
+  const { fetchData, searchResult, setSearchResult } = useContext(ContextData);
 
   const navigate = useNavigate();
 
@@ -34,25 +15,20 @@ export default function SearchResults({
 
   const orderVal = defaultOrder ? "relevance" : order;
   const numVal = defaultNum ? 9 : num;
-  
+
   useEffect(() => {
-    const stored = window.localStorage.getItem(keyword);
+    const stored = window.localStorage.getItem(
+      `${keyword}-${orderVal}-${numVal}`
+    );
     if (stored) {
       setSearchResult(JSON.parse(stored).items);
     }
     if (!stored) {
       // makes a fetch call directly from the url when search is not in local storage
-      fetchData(
-        "search",
-        keyword,
-        setSearchResult,
-        setIsOpen,
-        orderVal,
-        numVal
-      );
+      fetchData("search", keyword, setSearchResult, orderVal, numVal);
       navigate(`/search/${keyword}/${orderVal}/${numVal}`);
     }
-  }, [keyword]);
+  }, []);
 
   return (
     <>

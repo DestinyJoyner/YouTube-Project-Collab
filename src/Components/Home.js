@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { fetchData } from "../API/Fetch";
-import VideoThumbnail from "./VideoThumbnail";
 import { ContextData } from "../Provider/Provider";
+import VideoThumbnail from "./VideoThumbnail";
 import "./Home.css";
 
 function Home() {
-  const { setIsOpen } = useContext(ContextData);
-
   const [desVids, setDesVids] = useState([]);
   const [dansVids, setDansVids] = useState([]);
   const [dansTheme, setDansTheme] = useState("");
   const [desTheme, setDesTheme] = useState("");
+
+  const { fetchData } = useContext(ContextData);
 
   const dansPicks = [
     "Seria A",
@@ -40,9 +39,9 @@ function Home() {
     setDansTheme(danVal);
     setDesTheme(desVal);
 
-    fetchData(`search`, danVal, setDansVids, setIsOpen, "relevance", 4);
+    fetchData(`search`, danVal, setDansVids, "relevance", 4);
 
-    fetchData(`search`, desVal, setDesVids, setIsOpen, "relevance", 4);
+    fetchData(`search`, desVal, setDesVids, "relevance", 4);
   }, []);
 
   return (
