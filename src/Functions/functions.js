@@ -1,25 +1,71 @@
 // fetch function for view count stats
-function fetchViews(url, videoId, errorHan) {
-  const storageKeys = Object.keys(window.localStorage);
-  const storedVid = storageKeys.find(({ id }) => id.videoId? id.videoId === videoId : id === videoId);
-  if(storedVid.snippet.views === ""){
-    fetch(
-    `${url}videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
-  )
-    .then((resp) => resp.json())
-    .then((respJson) => {
-      if(storedVid){
-        storedVid.snippet.views = convertNumber(respJson.items[0].statistics.viewCount)
-      } else {
-        const videoFetchData = `video-${videoId}`;
-        respJson.items[0].snippet.views = convertNumber(respJson.items[0].statistics.viewCount)
-        window.localStorage.setItem(videoFetchData, JSON.stringify(respJson));
+// localStorage not updating as we wish :'(
+function fetchViews(url, videoId, errorHan, viewsArr, num, setData) {
+  let match = {};
+  let index;
+  if (Object.keys(window.localStorage).length) {
+    for (let obj in window.localStorage) {
+      const objJson = JSON.parse(window.localStorage.getItem(obj));
+      match = objJson.find((item, i) => {
+        if (item.id.videoId === videoId || item.id === videoId) {
+          index = i;
+          fetch(
+            `${url}videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+          )
+            .then((resp) => resp.json())
+            .then((respJson) => {
+              item.snippet.views = convertNumber(
+                respJson.items[0].statistics.viewCount
+              );
+              item.snippet.liveBroadcastContent = convertNumber(
+                respJson.items[0].statistics.viewCount
+              );
+              console.log(item.snippet.liveBroadcastContent);
+            })
+            .catch((err) => {
+              console.log(err);
+              errorHan(true);
+            });
+          viewsArr.push(item);
+
+          if (viewsArr.length === num) {
+            const testArr = [...viewsArr];
+            setData(viewsArr);
+            const objBckp = obj;
+            console.log("obj", obj);
+            window.localStorage.clear();
+            window.localStorage.setItem(
+              objBckp + "edit",
+              JSON.stringify(testArr)
+            );
+            console.log("created");
+          }
+          return item;
+        }
+      });
+      if (match.kind) {
+        break;
       }
-    })
-    .catch((err) => console.log(err));
-}
+    }
+    if (!match.kind) {
+      fetch(
+        `${url}videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((resp) => resp.json())
+        .then((respJson) => {
+          respJson.snippet.views = convertNumber(
+            respJson.items[0].statistics.viewCount
+          );
+          const videoFetchData = `video-${videoId}`;
+          window.localStorage.setItem(videoFetchData, JSON.stringify(respJson));
+        })
+        .catch((err) => {
+          console.log(err);
+          errorHan(true);
+        });
+    }
   }
-  
+}
 
 // function to convert views number
 function convertNumber(num) {
@@ -41,4 +87,4 @@ function convertDate(str) {
   return date.join("/");
 }
 
-export { convertNumber, convertDate };
+export { fetchViews, convertNumber, convertDate };

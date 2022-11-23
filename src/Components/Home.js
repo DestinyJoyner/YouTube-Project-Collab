@@ -4,6 +4,7 @@ import VideoThumbnail from "./VideoThumbnail";
 import "./Home.css";
 
 function Home() {
+
   const [desVids, setDesVids] = useState([]);
   const [dansVids, setDansVids] = useState([]);
   const [dansTheme, setDansTheme] = useState("");
@@ -39,15 +40,15 @@ function Home() {
     setDansTheme(danVal);
     setDesTheme(desVal);
 
-    fetchData(`search`, danVal, setDansVids, "relevance", 4);
+    fetchData(`search`, danVal, setDansVids, "relevance", 2);
 
-    fetchData(`search`, desVal, setDesVids, "relevance", 4);
+    // fetchData(`search`, desVal, setDesVids, "relevance", 4);
   }, []);
 
   return (
     <section className="featVids">
       <div className="dan">
-        <p>
+        {/* <p>
           Dan's Search Suggestion:{" "}
           <span className="home-span">{dansTheme}</span>
         </p>
@@ -61,9 +62,9 @@ function Home() {
               />
             );
           })}
-      </div>
+      </div> */}
 
-      <div className="destiny">
+      {/* <div className="destiny">
         <p>
           Destiny's Search Suggestion:{" "}
           <span className="home-span">{desTheme}</span>
@@ -77,7 +78,7 @@ function Home() {
                 videoId={video.id.videoId}
               />
             );
-          })}
+          })} */}
       </div>
     </section>
   );

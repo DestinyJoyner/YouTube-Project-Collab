@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Modal from "../Components/Modal";
+import { fetchViews } from "../Functions/functions";
 
 // Create Context object to consume data in other components
 export const ContextData = createContext();
@@ -14,10 +15,12 @@ function Provider({ children }) {
   const [modal, setModal] = useState(false);
   const [numResults, setNumResults] = useState("9");
   const [order, setOrder] = useState("relevance");
+  const [viewData, setViewData] = useState([]);
 
   const URL = "https://youtube.googleapis.com/youtube/v3/";
 
   const fetchData = (resource, searchInput, setData, order, number) => {
+    let arrViews = [];
     const lowerCase = searchInput.toLowerCase();
     const storageVar = `${lowerCase}-${order}-${number}`;
     // check if search is already in local storage
@@ -36,14 +39,19 @@ function Provider({ children }) {
           if (res.error) {
             setModal(true);
           } else {
-            // filtering out non video results
-            // const resFiltered = res.items.filter((el) =>
-            //   Object.keys(el.id).includes("videoId")
-            // );
-            // res.items = resFiltered;
             window.localStorage.setItem(storageVar, JSON.stringify(res.items));
             setData(res.items);
           }
+          res.items.forEach(({ id }) => {
+            fetchViews(
+              URL,
+              id.videoId,
+              setModal,
+              arrViews,
+              number,
+              setViewData
+            );
+          });
         })
         .catch((err) => {
           console.log(err);
