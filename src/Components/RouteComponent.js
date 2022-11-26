@@ -12,7 +12,7 @@ function RouteComponent() {
       <Route path="/">
         <Route index element={<Home />} />
         <Route path="about" element={<>About</>} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path="favorites" element={<></>} />
         <Route path="overkill" element={<EasterEgg />} />
 
         <Route path="search">

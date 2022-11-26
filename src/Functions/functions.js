@@ -87,4 +87,76 @@ function convertDate(str) {
   return date.join("/");
 }
 
-export { fetchViews, convertNumber, convertDate };
+
+const empty = {
+  items: [
+    {
+      snippet: {
+        localized: {
+          title: "",
+          description: "",
+        },
+        thumbnails: {
+          high: {
+            url: "",
+          },
+        },
+        publishedAt: "",
+        channelTitle: "",
+      },
+      statistics: {
+        viewCount: "",
+      },
+      id: {
+        kind: "",
+        videoId: "",
+      },
+    },
+  ],
+};
+
+// const videoThumbnailEmpty = {
+//   items: [
+//     {
+//       snippet: 
+//       {
+//         channelId:  "UCa90xqK2odw1KV5wHU9WRhg",
+//         channelTitle: "The Office",
+//         description: "Jim confides in Michael and asks him to keep a secret. Unfortunately for Jim, Michael isn't known for discretion. From Season 2 ...",
+//         liveBroadcastContent: "none",
+//         publishTime: "2022-11-25T18:59:49Z",
+//         publishedAt: "2022-11-25T18:59:49Z",
+//         thumbnails: {
+//           high: {
+//             url: "https://i.ytimg.com/vi/H3Oj7ky4hYU/default.jpg"
+//           }
+//         },
+//         title: "Michael is a Terrible Secret Keeper - The Office US",
+//     }
+//   }
+//   ]
+// }
+const videoThumbnailEmpty = {
+  items: [
+    {
+      snippet: 
+      {
+        channelId:  "",
+        channelTitle: "",
+        description: "",
+        liveBroadcastContent: "",
+        publishTime: "",
+        publishedAt: "",
+        thumbnails: {
+          high: {
+            url: "",
+          }
+        },
+        title: "",
+    }
+  }
+  ]
+}
+
+
+export { fetchViews, convertNumber, convertDate, empty, videoThumbnailEmpty };

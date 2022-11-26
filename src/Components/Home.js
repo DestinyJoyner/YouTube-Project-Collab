@@ -4,9 +4,12 @@ import VideoThumbnail from "./VideoThumbnail";
 import "./Home.css";
 
 function Home() {
+  // hardcoded for testing
+  const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
+  const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
 
-  const [desVids, setDesVids] = useState([]);
-  const [dansVids, setDansVids] = useState([]);
+  const [desVids, setDesVids] = useState(desStored);
+  const [dansVids, setDansVids] = useState(danStored);
   const [dansTheme, setDansTheme] = useState("");
   const [desTheme, setDesTheme] = useState("");
 
@@ -33,52 +36,66 @@ function Home() {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  useEffect(() => {
-    // using the variables to account setState delay
+/*   useEffect(() => {
     const danVal = randomize(dansPicks);
     const desVal = randomize(desPicks);
     setDansTheme(danVal);
     setDesTheme(desVal);
 
-    fetchData(`search`, danVal, setDansVids, "relevance", 2);
+    // check if in local storage
+    const danStored = window.localStorage.getItem(`${danVal.toLowerCase()}-relevance-4`)
+    const desStored = JSON.parse(window.localStorage.getItem(`the office relevance 4`))
+    
+    if(danStored){
+      setDansVids(JSON.parse(danStored))
+    }
+    // if(desStored){
+    //   setDesVids(desStored)
+    // }
+    else{
+      // fetchData(`search`, danVal, setDansVids, "relevance", 4);
+      // fetchData(`search`, desVal, setDesVids, "relevance", 4);
+      console.log(`not in storage`)
+    }
+    // using the variables to account setState delay
+    // const danVal = randomize(dansPicks);
+    // const desVal = randomize(desPicks);
+    // setDansTheme(danVal);
+    // setDesTheme(desVal);
+
+    // fetchData(`search`, danVal, setDansVids, "relevance", 4);
 
     // fetchData(`search`, desVal, setDesVids, "relevance", 4);
-  }, []);
+  }, []); */
 
   return (
     <section className="featVids">
       <div className="dan">
-        {/* <p>
+        <p>
           Dan's Search Suggestion:{" "}
           <span className="home-span">{dansTheme}</span>
         </p>
         {dansVids &&
-          dansVids.map((video) => {
-            return (
-              <VideoThumbnail
-                key={video.id.videoId}
-                video={video}
-                videoId={video.id.videoId}
-              />
-            );
-          })}
-      </div> */}
+          dansVids.items.map(({id}) => 
+                <VideoThumbnail
+                  key={id.videoId}
+                  videoId={id.videoId}
+                />
+          )}
+      </div>
 
-      {/* <div className="destiny">
+      <div className="destiny">
         <p>
           Destiny's Search Suggestion:{" "}
           <span className="home-span">{desTheme}</span>
         </p>
         {desVids &&
-          desVids.map((video) => {
-            return (
-              <VideoThumbnail
-                key={video.id.videoId}
-                video={video}
-                videoId={video.id.videoId}
-              />
-            );
-          })} */}
+          desVids.items.map(({id}) => 
+                <VideoThumbnail
+                  key={id.videoId}
+                  videoId={id.videoId}
+                />
+          )}
       </div>
     </section>
   );

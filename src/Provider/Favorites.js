@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 import './Favorites.css'
 import noImage from '../Components/assets/no-image-dark.png'
 
+
 function Favorites(props) {
     const {favorites, setFavorites} = useContext(ContextData)
     // const stored = JSON.parse(window.localStorage.getItem(`favorites`))
-    useEffect(() =>{
-        const stored = window.localStorage.getItem(`favorites`)
-        if(stored){
-            setFavorites(JSON.parse(stored))
-        }
-    },[])
+    // useEffect(() =>{
+    //     const stored = window.localStorage.getItem(`favorites`)
+    //     if(stored){
+    //         setFavorites(JSON.parse(stored))
+    //     }
+    // },[])
     return (
         <div className='favorites'>
             <section>

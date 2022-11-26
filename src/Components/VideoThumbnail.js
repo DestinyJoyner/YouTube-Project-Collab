@@ -1,40 +1,71 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { convertNumber, convertDate } from "../Functions/functions.js"
+import { ContextData } from "../Provider/Provider.js";
+import { convertNumber, convertDate, videoThumbnailEmpty } from "../Functions/functions.js"
 import "./VideoThumbnail.css";
 
-function VideoThumbnail({ video, videoId}) {
-  // const [views, setViews] = useState("");
+function VideoThumbnail({videoId}) {
+  const {vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel} = useContext(ContextData)
+  const [thisVideo, setThisVideo] = useState(videoThumbnailEmpty)
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${videoId}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
-  //   )
-  //     .then((resp) => resp.json())
-  //     .then((respJson) => {
-  //       setViews(convertNumber(respJson.items[0].statistics.viewCount));
-  //       const videoFetchData = `video ${videoId}`;
-  //       window.localStorage.setItem(videoFetchData, JSON.stringify(respJson));
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [videoId]);
+  // test onclick
+  // function handleOnClick(e) {
+  //   console.log(e.target.id)
+  //   // const videoData = JSON.parse(window.localStorage.getItem(`views-${e.target.id}`))
+  //   // const relatedVideoData = videoData.items[0].snippet.channelId
+  //   // console.log(relatedVideoData)
+  //   // const moreChannelData = JSON.parse(window.localStorage.getItem(`channel-${relatedVideoData}`))
+  //   // setVidData(videoData)
+  //   // setRelatedVids(JSON.parse(window.localStorage.getItem(`related-to-video-${e.target.id}`)))
+  //   // setChannel(moreChannelData)
+  // }
 
-  return;
-  // (
-  //   <div className="videoThumbnail">
-  //     <Link to={`/videos/${videoId}`}>
-  //       <img
-  //         src={video.snippet.thumbnails.high.url}
-  //         alt={video.snippet.title}
-  //       />{" "}
-  //       <p id="title">{video.snippet.title}</p>
-  //       <p className="views">
-  //         {views} views{" "}
-  //         <span>date added: {convertDate(video.snippet.publishedAt)}</span>
-  //       </p>
-  //     </Link>
-  //   </div>
-  // );
+useEffect(() => {
+  const stored = JSON.parse(window.localStorage.getItem(`views-${videoId}`)) 
+  if(videoId === 'H3Oj7ky4hYU'){
+    setThisVideo(videoThumbnailEmpty)
+  }
+  else {
+    setThisVideo(stored)
+  }
+  },[videoId])
+
+// add on click to videoThumbnail to set up info for video.js page
+  return (
+    <div 
+    className="videoThumbnail"
+    >
+      <Link 
+      to={`/video/${videoId}`}
+      /* onClick = {(event) => handleOnClick(event)} */>
+        {
+          thisVideo.items.map(obj => <>
+          <img
+          src={obj.snippet.thumbnails.high.url}
+          alt={obj.snippet.title}
+        />{" "}
+        <p id="title">{obj.snippet.title}</p>
+        <p className="views">
+          {/* {convertNumber(obj.statistics.viewCount)}  */}views{" "}
+          <span>date added: {convertDate(obj.snippet.publishedAt)}</span>
+        </p>
+          </>
+            
+          )
+        }
+      </Link>
+    </div>
+  )
 }
 
 export default VideoThumbnail;
+
+{/* <img
+          src={thisVideo.items[0].snippet.thumbnails.high.url}
+          alt={thisVideo.items[0].snippet.title}
+        />{" "}
+        <p id="title">{thisVideo.items[0].snippet.title}</p>
+        <p className="views">
+          {convertNumber(thisVideo.statistics.viewCount)} views{" "}
+          <span>date added: {convertDate(thisVideo.items[0].snippet.publishedAt)}</span>
+        </p> */}
