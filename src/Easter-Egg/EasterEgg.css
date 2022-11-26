@@ -40,7 +40,8 @@ https://stackoverflow.com/questions/45330061/how-to-flash-a-div-only
   grid-auto-flow: column;
   background-position-x: center;
   background-position-y: center;
-  margin-left:25%;
+  margin-left:auto;
+  margin-right: auto;
   grid-column: 1/4;
   grid-row: 2;
   margin-bottom: 8%;
@@ -97,8 +98,8 @@ article.danEgg {
     width: 320px;
 }
 /* #213042, #2b3f55 */
-.about{
-    margin-top: 20px;
+.about {
+  margin-top: 20px;
   background-color: #1a2635;
   height: 100vh;
   display: grid;
@@ -110,16 +111,18 @@ article.danEgg {
   grid-row: 1;
   grid-column: 1/4;
   margin-top: 100px;
-  margin-right:5%;
+  margin-left: 5%;
   text-align: center;
-  font-family: GodofWar ;
+  font-family: GodofWar;
+  text-shadow: -1px 0#5183e8, 0 1px black, 1px 0 #5183e8, 0 -1px #141e2a;
   font-size: 54px;
   color:#174bb1;
 }
 
 .destinyEgg, .danEgg {
   /* background-color: #213042cd; */
-  background-color: #1a2635c0;
+  background-color: #141e2ac0;
+  
 }
 
 .destinyEgg p, .danEgg p{

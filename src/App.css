@@ -33,7 +33,7 @@ input:focus {
     border: 2px solid #f40402;
 }
 
-.darkMode h4, .darkMode span, .darkMode li{
+.darkMode form h4, .darkMode form span, .darkMode li{
     color: #e8e5e5;
 }
 
