@@ -2,10 +2,7 @@ import { useState, createContext } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Modal from "../Components/Modal";
-import { fetchViews, videoThumbnailEmpty } from "../Functions/functions";
-
-// test
-import { empty} from "../Functions/functions";
+import { fetchViews, videoThumbnailEmpty, empty } from "../Functions/functions";
 
 // Create Context object to consume data in other components
 export const ContextData = createContext();

@@ -46,7 +46,7 @@ useEffect(() => {
         />{" "}
         <p id="title">{obj.snippet.title}</p>
         <p className="views">
-          {/* {convertNumber(obj.statistics.viewCount)}  */}views{" "}
+          <span>{obj.statistics.viewCount ? convertNumber(obj.statistics.viewCount) : null} views{" "}</span>
           <span>date added: {convertDate(obj.snippet.publishedAt)}</span>
         </p>
           </>

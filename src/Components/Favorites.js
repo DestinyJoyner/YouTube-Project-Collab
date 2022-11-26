@@ -1,24 +1,18 @@
 
-import { useContext, useEffect, useState } from 'react';
-import { ContextData } from './Provider';
+import { useContext, useEffect } from 'react';
+import { ContextData } from '../Provider/Provider';
 import { Link } from 'react-router-dom';
 import './Favorites.css'
-import noImage from '../Components/assets/no-image-dark.png'
+import noImage from './assets/no-image-dark.png'
 
 
 function Favorites(props) {
     const {favData, setFavData} = useContext(ContextData)
 
-
     useEffect(()=> {
         const stored = JSON.parse(window.localStorage.getItem(`favorites`))
         console.log(stored)
-        setFavData(stored)
-    //     favorites.forEach(el => {
-    //     const stored = JSON.parse(window.localStorage.getItem(`views-${el}`)).items
-    //     // favData.push(stored)
-    // })    
-    
+        setFavData(stored)    
     },[favData.length])
     return (
         <div className='favorites'>
@@ -28,6 +22,7 @@ function Favorites(props) {
                 <h3>⭐Favorite Videos⭐</h3>
                 <p>{favData.length} {favData.length === 1 ? `video` : `videos`}</p>
             </section>
+            
             <ol>
             {
                 favData.map(({vidId, title, image, chanName, chanId}) => 

@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import EasterEgg from "../Easter-Egg/EasterEgg";
+import Favorites from "./Favorites";
+import Home from "./Home";
+import ModalTrigger from "./ModalTrigger";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
-import ModalTrigger from "./ModalTrigger";
-import Home from "./Home";
-import EasterEgg from "../Easter-Egg/EasterEgg";
-import Favorites from "../Provider/Favorites";
 
 function RouteComponent() {
   return (

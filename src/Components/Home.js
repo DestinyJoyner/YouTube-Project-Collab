@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { ContextData } from "../Provider/Provider";
 import VideoThumbnail from "./VideoThumbnail";
+import { empty } from "../Functions/functions";
 import "./Home.css";
 
 function Home() {
@@ -8,8 +9,8 @@ function Home() {
   const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
   const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
 
-  const [desVids, setDesVids] = useState(desStored);
-  const [dansVids, setDansVids] = useState(danStored);
+  const [desVids, setDesVids] = useState(empty);
+  const [dansVids, setDansVids] = useState(empty);
   const [dansTheme, setDansTheme] = useState("");
   const [desTheme, setDesTheme] = useState("");
 
@@ -25,7 +26,7 @@ function Home() {
   ];
   const desPicks = [
     // "Asian Cuisine Recipes",
-    // "Egypt Pyramids",
+    // "Christmas",
     "How to Adult",
     // "Resident Evil",
     "The Office",
@@ -36,7 +37,8 @@ function Home() {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-/*   useEffect(() => {
+  useEffect(() => {
+    // using the variables to account setState delay
     const danVal = randomize(dansPicks);
     const desVal = randomize(desPicks);
     setDansTheme(danVal);
@@ -44,18 +46,18 @@ function Home() {
 
     // check if in local storage
     const danStored = window.localStorage.getItem(`${danVal.toLowerCase()}-relevance-4`)
-    const desStored = JSON.parse(window.localStorage.getItem(`the office relevance 4`))
-    
+    const desStored = window.localStorage.getItem(`${desVal.toLowerCase()}-relevance-4`)
     if(danStored){
       setDansVids(JSON.parse(danStored))
     }
-    // if(desStored){
-    //   setDesVids(desStored)
-    // }
     else{
-      // fetchData(`search`, danVal, setDansVids, "relevance", 4);
-      // fetchData(`search`, desVal, setDesVids, "relevance", 4);
-      console.log(`not in storage`)
+      fetchData(`search`, danVal, setDansVids, "relevance", 4);
+    }
+    if(desStored){
+      setDesVids(JSON.parse(desStored))
+    }
+    else{
+      fetchData(`search`, desVal, setDesVids, "relevance", 4);
     }
     // using the variables to account setState delay
     // const danVal = randomize(dansPicks);
@@ -66,7 +68,7 @@ function Home() {
     // fetchData(`search`, danVal, setDansVids, "relevance", 4);
 
     // fetchData(`search`, desVal, setDesVids, "relevance", 4);
-  }, []); */
+  }, []);
 
   return (
     <section className="featVids">

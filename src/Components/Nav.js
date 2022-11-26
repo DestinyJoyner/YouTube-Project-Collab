@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextData } from "../Provider/Provider";
 import SearchBar from "./SearchBar";
-import DarkModeButton from "../Provider/DarkModeButton";
+import DarkModeButton from "./DarkModeButton";
 import youTubeLogo from "./assets/youTubeLogo.png";
 import darkLogo from './assets/dark-logo(2).png'
 import "./Nav.css";
@@ -26,7 +26,7 @@ function Nav() {
       <Link to="/about">
         <h2 className="h2-nav">About</h2>
       </Link>
-      <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      <DarkModeButton />
     </nav>
   );
 }

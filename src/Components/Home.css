@@ -1,7 +1,6 @@
 .featVids {
     display:grid;
     grid-template-rows: repeat(2,1fr);
-    /* margin: 30px 15px; */
     margin-top: 100px;
 }
 

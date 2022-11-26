@@ -14,7 +14,7 @@
 
 select:hover {
     cursor:pointer;
-    /* outline: 2px solid #f40402; */
+   
 }
 
 select:focus {
@@ -25,8 +25,7 @@ form {
     display: flex;
     grid-column: 1;
     grid-row: 1;
-    margin-top: 10px;
-    
+    margin-top: 10px; 
 }
 
 .textbox {
@@ -40,7 +39,6 @@ input {
     height:40px;
 }
 
-/* test css */
 .button {
     width: 45px;
     max-width: 45px;

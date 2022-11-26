@@ -55,7 +55,7 @@ input:focus {
 }
 
 .darkMode .dan p, .darkMode .destiny p {
-    color: #f40402;
+    color: #e8e5e5;
 }
 
 .darkMode footer {
@@ -63,4 +63,5 @@ input:focus {
     background-color: #212121;
     color: #e8e5e5;
 }
+
 

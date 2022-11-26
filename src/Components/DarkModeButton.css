@@ -5,13 +5,9 @@ button{
     align-self: flex-start;
     justify-self: center;
     margin-top: 10px;
-    font-family: f Fase Bulan;
-    font-size: 18px;
-    color: #212121;
     margin-right: 20px;
     border-radius: 20px;
     border: 2px solid #e8e5e5;
-    background-color: #f8f8f8;
 }
 
 button:hover {

@@ -135,6 +135,9 @@ const videoThumbnailEmpty = {
           }
         },
         title: "",
+    },
+    statistics : {
+      viewCount: ""
     }
   }
   ]
