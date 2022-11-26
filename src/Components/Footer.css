@@ -7,12 +7,14 @@ footer {
     color: white;
     font-size: 12px;
     padding: 2px 0;
+    word-spacing: 2px;
 }
 
 a.egg {
     width: 50px,;
     justify-self: flex-end,;
-    grid-column: 8;
+    margin: 0 5px;
+    
 }
 
 .egg img {

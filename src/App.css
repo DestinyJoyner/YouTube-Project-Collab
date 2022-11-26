@@ -54,3 +54,13 @@ input:focus {
     border: 2px solid #e8e5e5;
 }
 
+.darkMode .dan p, .darkMode .destiny p {
+    color: #f40402;
+}
+
+.darkMode footer {
+    border-top: 1px solid #f40402;
+    background-color: #212121;
+    color: #e8e5e5;
+}
+

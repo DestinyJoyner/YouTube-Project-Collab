@@ -1,9 +1,7 @@
-import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { ContextData } from "../Provider/Provider";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
-import VideoThumbnail from "./VideoThumbnail";
 import ChannelThumbnail from "../Provider/ChannelThumbnail";
 import CommentForm from "./CommentForm";
 import { convertDate, convertNumber, empty } from "../Provider/helperFunctions";
@@ -15,10 +13,12 @@ function Video() {
   const { id } = useParams();
   
   const {favData, setFavData, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel, darkMode } = useContext(ContextData)
+  
   // state for favorite checkbox
   const checkboxState = favData.find(({vidId}) => vidId === id)
   const [clicked, setClicked] = useState(checkboxState? true : false)
 
+  // OnChange for checkbox to update favorites
   function handleCheckbox() {
     setClicked(!clicked)
     const favObj = {
@@ -48,6 +48,7 @@ function Video() {
     
   }
 
+  // dimensions for youtube component video size
   const opts = {
     height: 400,
     width: 650,
@@ -84,7 +85,7 @@ function Video() {
   //   }
   // }, [id]);
 
-
+// need to add conditional to fetch for inputted id value in url 
   useEffect(()=> {
     const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`))
     const relatedVideoData = videoData.items[0].snippet.channelId

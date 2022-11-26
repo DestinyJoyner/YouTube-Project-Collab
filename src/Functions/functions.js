@@ -79,7 +79,7 @@ function convertNumber(num) {
     .reverse()
     .join(``);
 }
-
+// function to convert date to mm/dd/yy format
 function convertDate(str) {
   let date = str.slice(2, 10).split("-");
   date.push(date[0]);

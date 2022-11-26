@@ -10,9 +10,8 @@ import "./Nav.css";
 function Nav() {
   const { darkMode, setDarkMode, darkStyles } = useContext(ContextData);
 
-  // place ternary in className and move to .css for dark mode toggle
   return (
-    <nav className="nav" style={darkMode ? darkStyles : {}}>
+    <nav className={darkMode ? "darkMode nav" : "nav"}>
       <Link to="/">
         <div className="logo-home">
         <img src={!darkMode ?youTubeLogo : darkLogo} alt="youTube Logo" height="30px" />

@@ -19,7 +19,7 @@ function Provider({ children }) {
   const [numResults, setNumResults] = useState("9");
   const [order, setOrder] = useState("relevance");
  
-//   test for video.js state to be changed from onclick videothumbnail
+    //test for video.js state to be changed from onclick videothumbnail
     const [vidData, setVidData] = useState(empty);
     // related to video state
     const [relatedVids, setRelatedVids] = useState(empty);
@@ -91,25 +91,15 @@ function Provider({ children }) {
         })
         .catch((err) => {
           setModal(true);
-          
         });
     }
   };
-
-  // variable to hold darkMode styles object
-  const darkStyles = {
-    backgroundColor: "#212121",
-    color: "#e8e5e5",
-    border: "2px solid #f40402",
-  };
-
   // the prop value of .Provider always takes in an object { {} } and can hold multiple values
   // The components or elements inside of Provider will ALWAYS BE RENDERED IN CHILD COMPONENETS OF PROVIDER, OR IF APP WRAPPED INSIDE OF PROVIDER COMPONENT (inside index.js)
   // **** NEED {children} as a prop to render all child components ****
   return (
     <div 
-    className= {darkMode ? "darkMode" : null}
-    /* style={darkMode ? darkStyles : {}} */>
+    className= {darkMode ? "darkMode" : null}>
       <ContextData.Provider
         value={{
           fetchData,
@@ -122,7 +112,6 @@ function Provider({ children }) {
           setSearchResult,
           modal,
           setModal,
-          darkStyles,
           order,
           setOrder,
           numResults,
