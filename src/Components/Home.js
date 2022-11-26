@@ -29,7 +29,7 @@ function Home() {
     // "Christmas",
     "How to Adult",
     // "Resident Evil",
-    "The Office",
+    // "The Office",
     // "Hats",
   ];
 
@@ -59,15 +59,6 @@ function Home() {
     else{
       fetchData(`search`, desVal, setDesVids, "relevance", 4);
     }
-    // using the variables to account setState delay
-    // const danVal = randomize(dansPicks);
-    // const desVal = randomize(desPicks);
-    // setDansTheme(danVal);
-    // setDesTheme(desVal);
-
-    // fetchData(`search`, danVal, setDansVids, "relevance", 4);
-
-    // fetchData(`search`, desVal, setDesVids, "relevance", 4);
   }, []);
 
   return (

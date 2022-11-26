@@ -11,7 +11,7 @@ function Provider({ children }) {
   // declare state to toggle darkMode
   const [darkMode, setDarkMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(empty);
   const [modal, setModal] = useState(false);
   const [numResults, setNumResults] = useState("9");
   const [order, setOrder] = useState("relevance");

@@ -21,7 +21,7 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
       `${keyword}-${orderVal}-${numVal}`
     );
     if (stored) {
-      setSearchResult(JSON.parse(stored).items);
+      setSearchResult(JSON.parse(stored));
     }
     if (!stored) {
       // makes a fetch call directly from the url when search is not in local storage
@@ -35,12 +35,11 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
       <h3 id="results-label">Results for: {keyword}</h3>
       <div className="videos">
         {searchResult &&
-          searchResult.map((video) => {
+          searchResult.items.map(({id}) => {
             return (
               <VideoThumbnail
-                key={video.id.videoId}
-                video={video}
-                videoId={video.id.videoId}
+                key={id.videoId}
+                videoId={id.videoId}
               />
             );
           })}

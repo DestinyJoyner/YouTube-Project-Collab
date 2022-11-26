@@ -8,36 +8,18 @@ function VideoThumbnail({videoId}) {
   const {vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel} = useContext(ContextData)
   const [thisVideo, setThisVideo] = useState(videoThumbnailEmpty)
 
-  // test onclick
-  // function handleOnClick(e) {
-  //   console.log(e.target.id)
-  //   // const videoData = JSON.parse(window.localStorage.getItem(`views-${e.target.id}`))
-  //   // const relatedVideoData = videoData.items[0].snippet.channelId
-  //   // console.log(relatedVideoData)
-  //   // const moreChannelData = JSON.parse(window.localStorage.getItem(`channel-${relatedVideoData}`))
-  //   // setVidData(videoData)
-  //   // setRelatedVids(JSON.parse(window.localStorage.getItem(`related-to-video-${e.target.id}`)))
-  //   // setChannel(moreChannelData)
-  // }
-
 useEffect(() => {
   const stored = JSON.parse(window.localStorage.getItem(`views-${videoId}`)) 
-  if(videoId === 'H3Oj7ky4hYU'){
-    setThisVideo(videoThumbnailEmpty)
-  }
-  else {
-    setThisVideo(stored)
-  }
+  setThisVideo(stored)
+  
   },[videoId])
 
-// add on click to videoThumbnail to set up info for video.js page
   return (
     <div 
     className="videoThumbnail"
     >
       <Link 
-      to={`/video/${videoId}`}
-      /* onClick = {(event) => handleOnClick(event)} */>
+      to={`/video/${videoId}`}>
         {
           thisVideo.items.map(obj => <>
           <img
