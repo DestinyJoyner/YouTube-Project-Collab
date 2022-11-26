@@ -22,7 +22,7 @@ function Provider({ children }) {
 //   test for video.js state to be changed from onclick videothumbnail
     const [vidData, setVidData] = useState(empty);
     // related to video state
-    const [relatedVids, setRelatedVids] = useState(empty.items);
+    const [relatedVids, setRelatedVids] = useState(empty);
     // more from channel state
     const [channel, setChannel] = useState(empty.items);
 
