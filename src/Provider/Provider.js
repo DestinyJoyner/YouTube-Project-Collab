@@ -26,6 +26,10 @@ function Provider({ children }) {
     // more from channel state
     const [channel, setChannel] = useState(empty.items);
 
+    // test for favorites
+    
+    const [favData, setFavData] = useState(JSON.parse(window.localStorage.getItem(`favorites`))? JSON.parse(window.localStorage.getItem(`favorites`)):[])
+
   const URL = "https://youtube.googleapis.com/youtube/v3/";
 
   const fetchData = (
@@ -128,7 +132,9 @@ function Provider({ children }) {
           relatedVids,
           setRelatedVids,
           channel,
-          setChannel
+          setChannel,
+          favData,
+          setFavData,
         }}
       >
         <Nav />

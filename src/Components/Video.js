@@ -13,16 +13,17 @@ import tvImage from "./assets/channel-icon.png";
 function Video() {
   const { id } = useParams();
   
-  const {favorites, setFavorites, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel } = useContext(ContextData)
+  const {favData, setFavData, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel } = useContext(ContextData)
+  // state for favorite checkbox
+  const checkboxState = favData.find(({vidId}) => vidId === id)
+  console.log('favState',favData)
+  const [clicked, setClicked] = useState(checkboxState? true : false)
 
-
-  const [clicked, setClicked] = useState(false)
-
-  function clickedFavorites() {
-    // setClicked(!clicked)
+  function handleCheckbox() {
+    setClicked(!clicked)
     const favObj = {
       title: '',
-      id: '',
+      vidId: '',
       chanId: '',
       chanName: '',
       image : '',
@@ -35,12 +36,20 @@ function Video() {
       favObj.chanId = snippet.channelId
 
     })
-    const inFavorites = favorites.find(({vidId}) => id === vidId)
-    const filterFavorites = favorites.filter(({vidId}) => vidId !== id)
-     inFavorites ? setFavorites(filterFavorites) : setFavorites([...favorites, favObj])
+    // const inFavorites = favData.find(({vidId}) => id === vidId)
+    // const filterFavorites = favData.filter(({vidId}) => vidId !== id)
+    //  inFavorites ? setFavData(filterFavorites) : setFavData([favObj, ...favData])
+    // // setFavData([...favData, favObj])
+    if(clicked === false){
+      window.localStorage.setItem('favorites', JSON.stringify([favObj, ...favData]))
+    }
+    else {
+      const stored = JSON.parse(window.localStorage.getItem(`favorites`))
+      const filtered = stored.filter(({vidId}) => vidId !== id)
+      setFavData(filtered)
+      window.localStorage.setItem('favorites', JSON.stringify(filtered))
+    }
     
-    // setFavorites([...favorites, favObj])
-    window.localStorage.setItem('favorites', JSON.stringify(favorites))
   }
 
   const opts = {
@@ -79,6 +88,7 @@ function Video() {
   //   }
   // }, [id]);
 
+
   useEffect(()=> {
     const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`))
     const relatedVideoData = videoData.items[0].snippet.channelId
@@ -111,13 +121,16 @@ function Video() {
           <span>Date added: {vidData.items[0].snippet.publishedAt? convertDate(vidData.items[0].snippet.publishedAt): null}</span>
           <span>{vidData.items[0].statistics.viewCount ? convertNumber(vidData.items[0].statistics.viewCount): null} views</span>
           <span>
+            <label htmlFor="checkbox">
             <input
-            style={clicked ? {backgroundColor: "#f40402", color: 'white', border: '2px solid #e8e5e5 '} : null} 
-            type="button" 
-            value= 'Add To Favorites' 
+            type="checkbox" 
+            checked = {clicked}
+            onChange = {() => handleCheckbox() }
             /* {!clicked ? 'Add to Favorites' : 'Remove from Favorites'}  */
             /* onClick={() => clickedFavorites()} */
-            />
+            />Add to Favorites
+            </label>
+            
           </span>
         </p>
         </div>
@@ -141,15 +154,16 @@ function Video() {
       <section className="related">
         <h4>You May Also Like:</h4>
         <div className="moreVids">
-          {relatedVids.items.map(obj => {
-            if(obj.id.videoId){
-              return <ChannelThumbnail
-              key={obj.id.videoId}
-              obj = {obj}
-          />
-            }
+          {
+            relatedVids.items.map(obj => {
+              if(obj.id.videoId){
+                return <ChannelThumbnail
+                        key={obj.id.videoId}
+                        obj = {obj}
+                        />
+                      }
+                    })
           }
-          )}
         </div>
       </section>
 
