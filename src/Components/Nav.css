@@ -2,17 +2,12 @@
 .nav {
     background-color: #f40402 ;
     display: grid;
-    /* grid-template-columns: auto auto auto auto 1fr; */
-    grid-template-columns: auto auto auto auto auto  auto  .5fr auto auto;
-
+    grid-template-columns: auto auto auto auto .2fr;
     column-gap: 12px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     color: white;
-    /* font-size: 14px; */
     font-size: 16px;
-    /* align-items: center; */
     align-items: flex-end;
-
     margin-bottom: 20px;
     position: fixed;
     top: 0;
@@ -22,21 +17,20 @@
     z-index: 500;
 }
 
-/* test */
- a, img {
-    margin-bottom: 5px;
+.logo-home {
+    grid-column: 1;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 20px;
+}
+.logo-home h1 {
+    margin-top: 10px;
 }
 
-h1 {
-    /* margin: 0; */
-    margin-bottom: 2px;
-}
 a {
     text-decoration: none;
     color: white;
     font-size: 12px;
-    /* test */
-    
 }
 
 a:hover {

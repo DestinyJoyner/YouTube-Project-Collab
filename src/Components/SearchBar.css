@@ -1,28 +1,15 @@
 .search-section {
-    grid-column: 6;
-    /* border: 2px solid gold; */
+    grid-column: 3;
     display: grid;
-    /* grid-template-columns: 0.9fr auto 4fr; */
     grid-template-columns: auto auto;
-
-    column-gap: 20px;
-    /* margin-top: 80px; */
-    
 }
 
 .dropdowns {
-    /* border: 2px solid #e8e5e5;
-    border-radius: 20px; */
-    /* grid-column: 2/3; */
     grid-column: 2;
-
-    /* padding: 10px; */
     padding: 5px;
     font-size: 12px;
     display: grid;
     row-gap: 4px;
-    
-
 }
 
 select:hover {
@@ -34,32 +21,17 @@ select:focus {
     outline: 2px solid #f40402;
 }
 
-/* .order-drop {
-    grid-column: 1/2;
-    margin-left: 20px;
-    padding-top: 6px;
-}
-
-.num-drop {
-    grid-column: 1/2;
-    margin-left: 20px;
-    padding-top: 6px;
-} */
-
 form {
     display: flex;
-    /* grid-column: 3/4; */
     grid-column: 1;
-    /* margin-bottom: 10px; */
-
-    /* test */
+    grid-row: 1;
     margin-top: 10px;
+    
 }
 
 .textbox {
     width: 450px;
     max-width: 500px;
-    /* margin-left: 30%; */
     text-indent: 10px;
     position: relative;
 }

@@ -15,8 +15,11 @@ function Nav() {
   return (
     <nav className="nav" style={darkMode ? darkStyles : {}}>
       <Link to="/">
+        <div className="logo-home">
         <img src={youTubeLogo} alt="youTube Logo" height="30px" />
         <h1>YouTube</h1>
+        </div>
+        
       </Link>
       <Link to="/favorites">
         <h2 className="h2-nav">Favorites</h2>
