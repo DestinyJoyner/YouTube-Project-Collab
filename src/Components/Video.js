@@ -146,7 +146,7 @@ function Video() {
       <section className="related">
         <h4>You May Also Like:</h4>
         <div className="moreVids">
-          {
+          {relatedVids &&
             relatedVids.items.map(obj => {
               if(obj.id.videoId){
                 return <ChannelThumbnail

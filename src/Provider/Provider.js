@@ -55,7 +55,7 @@ function Provider({ children }) {
             // store search keyword, order and num in local storage
             window.localStorage.setItem(storageVar, JSON.stringify(res));
             setData(res.items);
-            // call fetch for channel info and video info here for each video insearch result and save by id in local storage.
+            // call fetch for channel info and video info here for each video in search result and save by id in local storage.
             res.items.forEach(({id,snippet}) => {
                 // fetch for channel id info
               fetch( `https://youtube.googleapis.com/youtube/v3/search?part=snippet&$channelId=${snippet.channelId}&maxResults=6&type=video&key=${process.env.REACT_APP_API_KEY}`)
