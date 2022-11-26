@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { ContextData } from "../Provider/Provider";
 import SearchBar from "./SearchBar";
 import DarkModeButton from "../Provider/DarkModeButton";
-
 import youTubeLogo from "./assets/youTubeLogo.png";
+import darkLogo from './assets/dark-logo(2).png'
 import "./Nav.css";
 
 function Nav() {
@@ -16,7 +15,7 @@ function Nav() {
     <nav className="nav" style={darkMode ? darkStyles : {}}>
       <Link to="/">
         <div className="logo-home">
-        <img src={youTubeLogo} alt="youTube Logo" height="30px" />
+        <img src={!darkMode ?youTubeLogo : darkLogo} alt="youTube Logo" height="30px" />
         <h1>YouTube</h1>
         </div>
         
@@ -28,8 +27,6 @@ function Nav() {
       <Link to="/about">
         <h2 className="h2-nav">About</h2>
       </Link>
-
-      {/* darkMode button */}
       <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
     </nav>
   );

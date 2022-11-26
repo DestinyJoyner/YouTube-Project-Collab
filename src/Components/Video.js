@@ -9,11 +9,12 @@ import CommentForm from "./CommentForm";
 import { convertDate, convertNumber, empty } from "../Provider/helperFunctions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
+import darkTvImage from "./assets/red-channel-icon.png"
 
 function Video() {
   const { id } = useParams();
   
-  const {favData, setFavData, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel } = useContext(ContextData)
+  const {favData, setFavData, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel, darkMode } = useContext(ContextData)
   // state for favorite checkbox
   const checkboxState = favData.find(({vidId}) => vidId === id)
   const [clicked, setClicked] = useState(checkboxState? true : false)
@@ -106,7 +107,7 @@ function Video() {
         <h2>{vidData.items[0].snippet.localized.title}</h2>
 
         <h4>
-          <img src={tvImage} alt="tv-icon" />
+          <img src={!darkMode ? tvImage : darkTvImage} alt="tv-icon" />
           <span>{vidData.items[0].snippet.channelTitle}</span>
         </h4>
 

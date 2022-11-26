@@ -15,6 +15,7 @@ export default function SearchBar() {
     setOrder,
     numResults,
     setNumResults,
+    darkMode
   } = useContext(ContextData);
 
   const navigate = useNavigate();

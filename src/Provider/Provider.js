@@ -25,7 +25,6 @@ function Provider({ children }) {
     const [relatedVids, setRelatedVids] = useState(empty);
     // more from channel state
     const [channel, setChannel] = useState(empty.items);
-
     // test for favorites
     const [favData, setFavData] = useState(JSON.parse(window.localStorage.getItem(`favorites`))? JSON.parse(window.localStorage.getItem(`favorites`)):[])
 
@@ -99,16 +98,18 @@ function Provider({ children }) {
 
   // variable to hold darkMode styles object
   const darkStyles = {
-    backgroundColor: "black",
-    color: "aqua",
-    border: "2px solid green",
+    backgroundColor: "#212121",
+    color: "#e8e5e5",
+    border: "2px solid #f40402",
   };
 
   // the prop value of .Provider always takes in an object { {} } and can hold multiple values
   // The components or elements inside of Provider will ALWAYS BE RENDERED IN CHILD COMPONENETS OF PROVIDER, OR IF APP WRAPPED INSIDE OF PROVIDER COMPONENT (inside index.js)
   // **** NEED {children} as a prop to render all child components ****
   return (
-    <div style={darkMode ? darkStyles : {}}>
+    <div 
+    className= {darkMode ? "darkMode" : null}
+    /* style={darkMode ? darkStyles : {}} */>
       <ContextData.Provider
         value={{
           fetchData,

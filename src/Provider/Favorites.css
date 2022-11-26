@@ -3,9 +3,9 @@
     width: 75%;
     margin-left: auto;
     margin-right: auto;
-    /* border: 1px solid black; */
     display: grid;
     grid-template-columns: 40% 60% ;
+    height: 100vh;
 }
 
 .favorites section img {
@@ -17,7 +17,6 @@
 .favorites section p {
     text-indent: 20px;
     font-size: 14px;
-    font-style: italic;
 }
 
 .favorites section {
@@ -42,7 +41,6 @@
     height: 75px;
     margin-bottom: 0;
     border-radius: 10px;
-    /* margin-left: 10px; */
 }
 
 .favorites ol li h3 {

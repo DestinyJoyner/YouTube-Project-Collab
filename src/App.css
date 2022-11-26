@@ -25,3 +25,32 @@
 input:focus {
     outline: 2px solid #f40402;
 }
+
+/* DarkMode across entire app */
+.darkMode {
+    background-color: #212121;
+    color: #e8e5e5;
+    border: 2px solid #f40402;
+}
+
+.darkMode h4, .darkMode span, .darkMode li{
+    color: #e8e5e5;
+}
+
+
+.darkMode .description, .darkMode .views span{
+    color: #212121;
+}
+
+.darkMode .description {
+    border: 5px solid #f40402;
+}
+
+.darkMode .videoThumbnail {
+    border: 2px solid #f40402;
+}
+
+.darkMode .videoThumbnail:hover {
+    border: 2px solid #e8e5e5;
+}
+
