@@ -6,8 +6,8 @@ import "./Home.css";
 
 function Home() {
   // hardcoded for testing
-  const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
-  const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
+  // const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
+  // const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
 
   const [desVids, setDesVids] = useState(empty);
   const [dansVids, setDansVids] = useState(empty);

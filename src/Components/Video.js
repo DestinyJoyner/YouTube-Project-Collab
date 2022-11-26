@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { ContextData } from "../Provider/Provider";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
-import ChannelThumbnail from "../Provider/ChannelThumbnail";
+import ChannelThumbnail from "./ChannelThumbnail";
 import CommentForm from "./CommentForm";
-import { convertDate, convertNumber, empty } from "../Provider/helperFunctions";
+import { convertDate, convertNumber } from "../Functions/functions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
 import darkTvImage from "./assets/red-channel-icon.png"

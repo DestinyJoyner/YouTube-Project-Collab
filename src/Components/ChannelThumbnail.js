@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { convertDate } from './helperFunctions';
+import { convertDate, convertNumber } from '../Functions/functions';
 
 function ChannelThumbnail({obj}) {
     return (
@@ -13,7 +13,7 @@ function ChannelThumbnail({obj}) {
         />{" "}
         <p id="title">{obj.snippet.title}</p>
         <p className="views">
-          {/* {convertNumber(obj.statistics.viewCount)}  */}views{" "}
+         {/*  {convertNumber(obj.statistics.viewCount)} */} views{" "}
           <span>date added: {convertDate(obj.snippet.publishedAt)}</span>
         </p>
         
