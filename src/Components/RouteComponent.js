@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import About from "../Provider/About";
 import EasterEgg from "../Easter-Egg/EasterEgg";
 import Favorites from "./Favorites";
 import Home from "./Home";
@@ -11,7 +12,7 @@ function RouteComponent() {
     <Routes>
       <Route path="/">
         <Route index element={<Home />} />
-        <Route path="about" element={<>About</>} />
+        <Route path="about" element={<About />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="overkill" element={<EasterEgg />} />
 
