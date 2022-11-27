@@ -64,4 +64,16 @@ input:focus {
     color: #e8e5e5;
 }
 
+.darkMode .recent-views {
+    background-color: #212121;
+    color:#e8e5e5;
+    border:  2px solid #f40402;
+}
+.darkMode .recent-views a {
+    text-decoration-color: #e8e5e5 ;
+}
+.darkMode .recent-views a:hover {
+    transform: scale(1.1);
+}
+
 

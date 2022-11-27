@@ -1,0 +1,33 @@
+.recent-views {
+    border: 1px solid black;
+    grid-column: 1;
+    grid-row: 1/3;
+    text-align: center;
+    background-color: #f8f8f8;
+    color: #212121;
+    border-radius: 20px ;
+    border: 2px solid #e8e5e5;
+
+}
+
+.recent-views a {
+    color: #212121;
+    text-decoration: underline;
+    font-size: 13px;
+    font-family: arial rounded mt bold;
+}
+
+.recent-views h4 {
+    margin-bottom: 15px;
+    margin-top: 20%;
+}
+.recent-views img {
+    height: 15px;
+    margin-right: 10px;
+}
+
+.recent-views ul {
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 20px;
+}

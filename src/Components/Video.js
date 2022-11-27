@@ -8,6 +8,7 @@ import { convertDate, convertNumber } from "../Functions/functions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
 import darkTvImage from "./assets/red-channel-icon.png"
+import RecentlyViewed from "./RecentlyViewed";
 
 function Video() {
   const { id } = useParams();
@@ -103,6 +104,8 @@ function Video() {
       </div>
       
       <CommentForm videoId={id} />
+
+      <RecentlyViewed />
 
       <section className="videoInfo">
         <h2>{vidData.items[0].snippet.localized.title}</h2>

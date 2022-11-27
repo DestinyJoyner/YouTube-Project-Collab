@@ -11,7 +11,6 @@ function Favorites(props) {
 
     useEffect(()=> {
         const stored = JSON.parse(window.localStorage.getItem(`favorites`))
-        console.log(stored)
         setFavData(stored)    
     },[favData.length])
     return (
@@ -22,12 +21,13 @@ function Favorites(props) {
                 <h3>⭐Favorite Videos⭐</h3>
                 <p>{favData.length} {favData.length === 1 ? `video` : `videos`}</p>
             </section>
-            
+
             <ol>
             {
                 favData.map(({vidId, title, image, chanName, chanId}) => 
-                <Link to = {`/video/${vidId}`}>
-                    <li key = {vidId}>
+                <Link to = {`/video/${vidId}`}
+                key = {vidId}>
+                    <li >
                         <img src ={image} alt ='vid-thumbnail'/>
                         <h3>{title}</h3>
                         <p>{chanName}</p> 
