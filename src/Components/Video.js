@@ -119,7 +119,7 @@ function Video() {
   return (
     <div className="videoPage">
       <div className="video">
-        <YouTube videoId={id} opts={{ height: 400}} />
+        <YouTube videoId={id} opts={{ height: 400, width: 650}} />
       </div>
 
       <CommentForm videoId={id} />
@@ -148,14 +148,14 @@ function Video() {
                 : null}{" "}
               views
             </span>
-            <span>
+            <span id="fav-checkbox">
               <label htmlFor="checkbox">
                 <input
                   type="checkbox"
                   checked={clicked}
                   onChange={() => handleCheckbox()}
                 />
-                Add to Favorites
+                <span>Add to Favorites</span>
               </label>
             </span>
           </p>
