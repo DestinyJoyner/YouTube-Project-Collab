@@ -4,105 +4,124 @@ import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import ChannelThumbnail from "./ChannelThumbnail";
 import CommentForm from "./CommentForm";
-import { convertDate, convertNumber } from "../Functions/functions";
+import {
+  convertDate,
+  convertNumber,
+  channelFetch,
+  relatedToVideoFetch,
+  viewsFetch,
+} from "../Functions/functions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
-import darkTvImage from "./assets/red-channel-icon.png"
+import darkTvImage from "./assets/red-channel-icon.png";
 import RecentlyViewed from "./RecentlyViewed";
 
 function Video() {
   const { id } = useParams();
-  
-  const {favData, setFavData, vidData, setVidData, relatedVids, setRelatedVids, channel, setChannel, darkMode } = useContext(ContextData)
-  
+
+  const {
+    favData,
+    setFavData,
+    vidData,
+    setVidData,
+    relatedVids,
+    setRelatedVids,
+    channel,
+    setChannel,
+    darkMode,
+    setModal,
+  } = useContext(ContextData);
+
   // state for favorite checkbox
-  const checkboxState = favData.find(({vidId}) => vidId === id)
-  const [clicked, setClicked] = useState(checkboxState? true : false)
+  const checkboxState = favData.find(({ vidId }) => vidId === id);
+  const [clicked, setClicked] = useState(checkboxState ? true : false);
 
   // OnChange for checkbox to update favorites
   function handleCheckbox() {
-    setClicked(!clicked)
+    setClicked(!clicked);
     const favObj = {
-      title: '',
-      vidId: '',
-      chanId: '',
-      chanName: '',
-      image : '',
+      title: "",
+      vidId: "",
+      chanId: "",
+      chanName: "",
+      image: "",
+    };
+    vidData.items.forEach(({ id, snippet }) => {
+      favObj.title = snippet.title;
+      favObj.vidId = id;
+      favObj.image = snippet.thumbnails.high.url;
+      favObj.chanName = snippet.channelTitle;
+      favObj.chanId = snippet.channelId;
+    });
+
+    if (clicked === false) {
+      window.localStorage.setItem(
+        "favorites",
+        JSON.stringify([favObj, ...favData])
+      );
+    } else {
+      const stored = JSON.parse(window.localStorage.getItem(`favorites`));
+      const filtered = stored.filter(({ vidId }) => vidId !== id);
+      setFavData(filtered);
+      window.localStorage.setItem("favorites", JSON.stringify(filtered));
     }
-    vidData.items.forEach(({id, snippet}) => {
-      favObj.title = snippet.title
-      favObj.vidId = id
-      favObj.image = snippet.thumbnails.high.url
-      favObj.chanName = snippet.channelTitle
-      favObj.chanId = snippet.channelId
-    })
-   
-    if(clicked === false){
-      window.localStorage.setItem('favorites', JSON.stringify([favObj, ...favData]))
-    }
-    else {
-      const stored = JSON.parse(window.localStorage.getItem(`favorites`))
-      const filtered = stored.filter(({vidId}) => vidId !== id)
-      setFavData(filtered)
-      window.localStorage.setItem('favorites', JSON.stringify(filtered))
-    }
-    
   }
 
-  // dimensions for youtube component video size
-  const opts = {
-    height: 400,
-    width: 650,
-  };
+  // Use Effect for setting channel/related to states for video page
+  useEffect(() => {
+    const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`));
+    const videoChannelId = videoData.items[0].snippet.channelId;
+    const moreChannelData = JSON.parse(
+      window.localStorage.getItem(`channel-${videoChannelId}`)
+    );
+    const relatedVideosData = JSON.parse(window.localStorage.getItem(
+      `related-to-video-${id}`
+    ));
 
-  // related to
-  // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relatedToVideoId=x74lBu1Bn0g&type=video&key=
-
-  // more from channel
-  // https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCBJeMCIeLQos7wacox4hmLQ&maxResults=5&type=video&key=
-
-  // useEffect(() => {
-  //   if (stored) {
-  //     setVidData(stored);
-  //     const channelId = stored.items[0].snippet.channelId
-  //     // moreVidData(`channelId`, channelId, setChannel)
-  //   }
-  //   if (!stored) {
-  //     fetch(
-  //       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${id}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
-  //     )
-  //       .then((resp) => resp.json())
-  //       .then((respJson) => {
-          
-  //         const videoFetchData = `video ${id}`;
-  //         window.localStorage.setItem(videoFetchData, JSON.stringify(respJson));
-  //         setVidData(respJson);
-
-  //         if(respJson.items[0].id.videoId !== "" ){
-  //           moreVidData(`channelId`, respJson.items[0].snippet.channelId, setChannel)
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, [id]);
-
-// need to add conditional to fetch for inputted id value in url 
-  useEffect(()=> {
-    const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`))
-    const relatedVideoData = videoData.items[0].snippet.channelId
-    const moreChannelData = JSON.parse(window.localStorage.getItem(`channel-${relatedVideoData}`))
-    setVidData(videoData)
-    setRelatedVids(JSON.parse(window.localStorage.getItem(`related-to-video-${id}`)))
-    setChannel(moreChannelData)
-  },[id])
+    if (videoData) {
+      setVidData(videoData);
+      // then check/ fetch for additional video info
+      if (!moreChannelData) {
+        // fetch for channel id info
+        channelFetch(videoChannelId, id, setModal, setChannel);
+      } else {
+        setChannel(moreChannelData);
+      }
+      if (!relatedVideosData) {
+        // fetch for related videos based on id
+        relatedToVideoFetch(id, setRelatedVids, setModal);
+      } else {
+        setRelatedVids(relatedVideosData);
+      }
+    } else {
+      // fetch for videoData/related/and channel based on inputed id in url
+      fetch(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${id}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((resp) => resp.json())
+        .then((respJson) => {
+          window.localStorage.setItem(`views-${id}`, JSON.stringify(respJson));
+          setVidData(respJson);
+          // use channelId property from respJson to fetch for/set channel data
+          channelFetch(
+            respJson.items[0].snippet.channelId,
+            id,
+            setModal,
+            setChannel
+          );
+        })
+        .catch((err) => setModal(true));
+      // fetch for related videos
+      relatedToVideoFetch(id, setRelatedVids, setModal);
+    }
+  }, [id]);
 
   return (
     <div className="videoPage">
-      
       <div className="video">
-        <YouTube videoId={id} opts={opts} />
+        <YouTube videoId={id} opts={{ height: 400, width: 650 }} />
       </div>
-      
+
       <CommentForm videoId={id} />
 
       <RecentlyViewed />
@@ -115,34 +134,44 @@ function Video() {
           <span>{vidData.items[0].snippet.channelTitle}</span>
         </h4>
 
-        <div >
-        <p className="stats">
-          <span>Date added: {vidData.items[0].snippet.publishedAt? convertDate(vidData.items[0].snippet.publishedAt): null}</span>
-          <span>{vidData.items[0].statistics.viewCount ? convertNumber(vidData.items[0].statistics.viewCount): null} views</span>
-          <span>
-            <label htmlFor="checkbox">
-            <input
-            type="checkbox" 
-            checked = {clicked}
-            onChange = {() => handleCheckbox() }
-            />Add to Favorites
-            </label> 
-          </span>
-        </p>
+        <div>
+          <p className="stats">
+            <span>
+              Date added:{" "}
+              {vidData.items[0].snippet.publishedAt
+                ? convertDate(vidData.items[0].snippet.publishedAt)
+                : null}
+            </span>
+            <span>
+              {vidData.items[0].statistics.viewCount
+                ? convertNumber(vidData.items[0].statistics.viewCount)
+                : null}{" "}
+              views
+            </span>
+            <span>
+              <label htmlFor="checkbox">
+                <input
+                  type="checkbox"
+                  checked={clicked}
+                  onChange={() => handleCheckbox()}
+                />
+                Add to Favorites
+              </label>
+            </span>
+          </p>
         </div>
-        <p className="description">{vidData.items[0].snippet.localized.description}</p>
+        <p className="description">
+          {vidData.items[0].snippet.localized.description}
+        </p>
       </section>
 
       <section className="related">
         <h4>More from {vidData.items[0].snippet.channelTitle}:</h4>
         <div className="moreVids">
-          {
-            channel.length > 1 && channel.map(obj => 
-              <ChannelThumbnail 
-              key = {obj.id.videoId}
-              obj = {obj}/>
-            )
-          }
+          {channel.length > 1 &&
+            channel.map((obj) => (
+              <ChannelThumbnail key={obj.id.videoId} obj={obj} />
+            ))}
         </div>
       </section>
 
@@ -150,18 +179,13 @@ function Video() {
         <h4>You May Also Like:</h4>
         <div className="moreVids">
           {relatedVids &&
-            relatedVids.items.map(obj => {
-              if(obj.id.videoId){
-                return <ChannelThumbnail
-                        key={obj.id.videoId}
-                        obj = {obj}
-                        />
-                      }
-                    })
-          }
+            relatedVids.items.map((obj) => {
+              if (obj.id.videoId) {
+                return <ChannelThumbnail key={obj.id.videoId} obj={obj} />;
+              }
+            })}
         </div>
       </section>
-
     </div>
   );
 }

@@ -53,7 +53,7 @@ export default function SearchBar() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setSearchResult([]);
+          // setSearchResult([]);
           fetchData("search", searchInput, setSearchResult, order, numResults);
           navigate(`/search/${searchInput}/${order}/${numResults}`);
           setSearchInput("");

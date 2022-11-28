@@ -18,19 +18,22 @@ function About(props) {
           </p>
           <div className="circles">
             <div className="circle1">
-              <Link to="https://www.linkedin.com/in/destiny-joyner-934846243/">
+              <a
+              href="https://www.linkedin.com/in/destiny-joyner-934846243/">
                 <img src={linkedIn} alt="linkedIn" height="80px" />
-              </Link>
+              </a>
             </div>
             <div className="circle2">
-              <Link to="https://github.com/DestinyJoyner">
+              <a
+              href="https://github.com/DestinyJoyner" target="_blank">
                 <img src={gitHub} alt="gitHub" height="80px" />
-              </Link>
+              </a>
             </div>
             <div className="circle3">
-              <Link to="#">
+            <a 
+            href="mailto:destinyjoyner@pursuit.com">
                 <img src={mail} alt="email" height="80px" />
-              </Link>
+            </a>
             </div>
           </div>
         </section>

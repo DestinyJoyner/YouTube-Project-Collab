@@ -9,8 +9,8 @@ function Home() {
   // const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
   // const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
 
-  const [desVids, setDesVids] = useState(empty);
-  const [dansVids, setDansVids] = useState(empty);
+  const [desVids, setDesVids] = useState(empty.items);
+  const [dansVids, setDansVids] = useState(empty.items);
   const [dansTheme, setDansTheme] = useState("");
   const [desTheme, setDesTheme] = useState("");
 
@@ -69,7 +69,7 @@ function Home() {
           <span className="home-span">{dansTheme}</span>
         </p>
         {dansVids &&
-          dansVids.items.map(({id}) => 
+          dansVids.map(({id}) => 
                 <VideoThumbnail
                   key={id.videoId}
                   videoId={id.videoId}
@@ -83,7 +83,7 @@ function Home() {
           <span className="home-span">{desTheme}</span>
         </p>
         {desVids &&
-          desVids.items.map(({id}) => 
+          desVids.map(({id}) => 
                 <VideoThumbnail
                   key={id.videoId}
                   videoId={id.videoId}

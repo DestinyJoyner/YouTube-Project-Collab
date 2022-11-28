@@ -87,7 +87,6 @@ function convertDate(str) {
   return date.join("/");
 }
 
-
 const empty = {
   items: [
     {
@@ -116,14 +115,14 @@ const empty = {
 };
 
 const videoThumbnailEmpty = {
+  etag: "",
   items: [
     {
       id: {
-        videoId: ""
+        videoId: "",
       },
-      snippet: 
-      {
-        channelId:  "",
+      snippet: {
+        channelId: "",
         channelTitle: "",
         description: "",
         liveBroadcastContent: "",
@@ -132,16 +131,76 @@ const videoThumbnailEmpty = {
         thumbnails: {
           high: {
             url: "",
-          }
+          },
         },
         title: "",
+      },
+      statistics: {
+        viewCount: "",
+      },
     },
-    statistics : {
-      viewCount: ""
-    }
-  }
-  ]
+  ],
+};
+
+/* FETCH FOR VIEWS, CHANNEL AND RELATED FOR VIDEO PAGE */
+//   fetch for video with stats/views
+function viewsFetch(idValue, errorFunc) {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${idValue}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+    .then((respJson) =>
+      window.localStorage.setItem(`views-${idValue}`, JSON.stringify(respJson))
+    )
+    .catch((err) => errorFunc(true));
 }
 
+//  // fetch for channel id info
+function channelFetch(idValue, thisVideoId, errorFunc, setFunction) {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&$channelId=${idValue}&maxResults=6&type=video&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+    .then((respJson) => {
+      let count = 0;
+      const filtered = respJson.items.filter((video) => {
+        if (video.id.videoId !== thisVideoId && count < 5) {
+          count++;
+          return video;
+        }
+      });
+      window.localStorage.setItem(
+        `channel-${idValue}`,
+        JSON.stringify(filtered)
+      );
+      setFunction(filtered);
+    })
+    .catch((err) => errorFunc(true));
+}
 
-export { fetchViews, convertNumber, convertDate, empty, videoThumbnailEmpty };
+// fetch for related to video info
+function relatedToVideoFetch(idValue, setFunction, errorFunc) {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relatedToVideoId=${idValue}&type=video&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+    .then((respJson) => {
+      window.localStorage.setItem(
+        `related-to-video-${idValue}`,
+        JSON.stringify(respJson)
+      );
+      setFunction(respJson);
+    })
+    .catch((err) => errorFunc(true));
+}
+
+export {
+  fetchViews,
+  convertNumber,
+  convertDate,
+  empty,
+  videoThumbnailEmpty,
+  channelFetch,
+  relatedToVideoFetch,
+  viewsFetch,
+};
