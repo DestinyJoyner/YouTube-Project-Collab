@@ -1,6 +1,7 @@
 .videoPage {
     display: grid;
-    grid-template-columns: 1fr 5fr .5fr;
+    /* grid-template-columns: 1fr 5fr .5fr; */
+    grid-template-columns: .1fr 5fr 1fr ;
     column-gap: 15px;
     row-gap: 15px;
     margin-top: 80px;

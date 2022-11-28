@@ -6,7 +6,8 @@ import "./VideoThumbnail.css";
 
 function VideoThumbnail({videoId}) {
   const { recent, setRecent } = useContext(ContextData)
-  const [thisVideo, setThisVideo] = useState(empty)
+  const stored = window.localStorage.getItem(`views-${videoId}`) 
+  const [thisVideo, setThisVideo] = useState(JSON.parse(stored))
 
   // function on click to add video to recently viewed list
   function addToRecents(e) {
@@ -25,15 +26,18 @@ function VideoThumbnail({videoId}) {
   }
 
 useEffect(() => {
-  const stored = window.localStorage.getItem(`views-${videoId}`) 
-  if(stored){
-    setThisVideo(JSON.parse(stored))
-  }
+  
+  setThisVideo(JSON.parse(stored))
+  console.log(`use effect`, thisVideo)
+  // const stored = window.localStorage.getItem(`views-${videoId}`) 
+  // if(stored){
+  //   setThisVideo(JSON.parse(stored))
+  // }
   },[videoId])
 
   return (
     <div className="videoThumbnail">
-        {  
+        {  thisVideo &&
           thisVideo.items.map(obj => 
             <Link 
             to={`/video/${videoId}`}

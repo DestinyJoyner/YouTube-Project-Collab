@@ -1,11 +1,11 @@
 
 button{
     grid-column: 5;
-    width: 60%;
-    align-self: flex-start;
+    width: 40%;
+    align-self: center;
     justify-self: center;
-    margin-top: 10px;
-    margin-right: 20px;
+    /* margin-top: 10px;
+    margin-right: 20px; */
     border-radius: 20px;
     border: 2px solid #e8e5e5;
 }

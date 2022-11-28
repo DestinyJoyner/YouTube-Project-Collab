@@ -119,7 +119,7 @@ function Video() {
   return (
     <div className="videoPage">
       <div className="video">
-        <YouTube videoId={id} opts={{ height: 400, width: 650 }} />
+        <YouTube videoId={id} opts={{ height: 400}} />
       </div>
 
       <CommentForm videoId={id} />

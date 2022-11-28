@@ -30,3 +30,18 @@
     font-weight: bold;
     margin-left: 8px;
 }
+
+
+@media (max-width: 1135px) {
+    .featVids {
+        grid-template-columns: 1fr 1fr ;
+        column-gap: 0px;
+        grid-template-rows: auto 1fr 1fr  ;
+        justify-items: center;
+    }
+
+    .dan, .destiny {
+        display: flex;
+        flex-direction: column;
+    }
+}
