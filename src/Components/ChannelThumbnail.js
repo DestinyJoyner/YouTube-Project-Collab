@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { convertDate, convertNumber } from '../Functions/functions';
+import { convertDate } from '../Functions/functions';
 
 function ChannelThumbnail({obj}) {
     return (
