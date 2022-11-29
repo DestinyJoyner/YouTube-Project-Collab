@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ContextData } from '../Provider/Provider';
 import moon from './assets/Moon.png'
-import sun from './assets/Sun.png'
+import sun from './assets/sun-icon.png'
 import './DarkModeButton.css'
 
 function DarkModeButton() {

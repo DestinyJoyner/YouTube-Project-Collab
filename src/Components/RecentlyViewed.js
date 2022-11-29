@@ -21,18 +21,22 @@ function RecentlyViewed(props) {
           src={!darkMode ? watchHistoryIcon : lightWatchHistory}
           alt="watch-history-icon"
         />
-        <span>Recently Viewed</span>
+        <span>Your 5 Most Recent Views</span>
       </h4>
       <ul>
         {recent.length > 0 &&
-          recent.map(({ id, title }) => (
-            <Link to={`/video/${id}`} key={id}>
-              <li>
-                <img src={playIcon} alt="play-button" />
-                <span>{title}</span>
-              </li>
-            </Link>
-          ))}
+          recent.map(({ id, title }, index) => {
+            if (index < 5) {
+              return (
+                <Link to={`/video/${id}`} key={id}>
+                  <li>
+                    <img src={playIcon} alt="play-button" />
+                    <span>{title}</span>
+                  </li>
+                </Link>
+              );
+            }
+          })}
       </ul>
     </aside>
   );

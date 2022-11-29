@@ -8,6 +8,7 @@ footer {
     font-size: 12px;
     padding: 2px 0;
     word-spacing: 2px;
+    z-index: 210;
 }
 
 a.egg {

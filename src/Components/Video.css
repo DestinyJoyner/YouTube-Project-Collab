@@ -3,7 +3,7 @@
   grid-template-columns: 3fr 0.5fr;
   column-gap: 15px;
   row-gap: 15px;
-  margin-top: 80px;
+  padding-top: 80px;
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -40,6 +40,7 @@ iframe {
   row-gap: 20px;
   grid-column: 1;
   grid-row: 2;
+  /* height: fit-content; */
 }
 
 .videoInfo h4 img {
@@ -56,8 +57,6 @@ iframe {
 }
 
 .videoInfo h4 span {
-  /* margin-top: 5px; */
-  /* margin-left: 15px; */
   align-self: center;
 }
 
@@ -67,6 +66,10 @@ iframe {
   align-items: center;
   /* margin-bottom: 10px;
   margin-left: 10%; */
+}
+
+.stats-div {
+  align-self: center;
 }
 
 .videoInfo .stats #fav-checkbox label {
@@ -151,6 +154,15 @@ p#title {
 
   .related .videoThumbnail #title {
     padding-bottom: 12px;
+  }
+
+  .videoInfo h4 {
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+  }
+  .videoInfo h4 img {
+    width: 2rem;
+    align-self: center;
   }
 }
 

@@ -134,7 +134,7 @@ function Video() {
           <span>{vidData.items[0].snippet.channelTitle}</span>
         </h4>
 
-        <div>
+        <div className="stats-div">
           <p className="stats">
             <span>
               Date added:{" "}

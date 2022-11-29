@@ -6,16 +6,15 @@
     border-radius: 20px;
     background-color: #f8f8f8;
     border: 2px solid #e8e5e5;
+    padding-bottom: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
 
-}
-
-.vid-history {
-    border: 4px solid purple;
 }
 
 .recent-views a {
     color: #212121;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 13px;
     font-family: arial rounded mt bold;
 }
@@ -30,8 +29,16 @@
 }
 
 .recent-views ul {
-    display: grid;
-    grid-template-rows: auto;
+    /* display: grid;
+    grid-template-rows: auto; */
     row-gap: 20px;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.recent-views a:hover {
+    transform: scale(1.1);
+    color: #f40402;
 }

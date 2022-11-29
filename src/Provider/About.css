@@ -1,5 +1,5 @@
 .aboutPage {
-    margin-top: 80px;
+    padding-top: 80px;
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -46,6 +46,11 @@
 .dan-details img {
     height: 170px;
 }
+
+/* Update padding/margin to avoid overlap footer */
+/* .dan-details{
+    padding-bottom: 60px;
+} */
 
 .destiny-details p, .dan-details p {
     grid-column: 2;

@@ -6,7 +6,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-
 .App {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
@@ -27,10 +26,31 @@ input:focus {
 }
 
 /* DarkMode across entire app */
-.darkMode {
+
+.darkMode{
+    background-color: #212121;
+}
+
+.darkMode .nav a{
+    color: #e8e5e5;
+}
+
+.darkMode .nav a:hover{
+    color: #f40402;
+}
+
+.darkMode .nav {
+    background-color: black;
+}
+
+.darkMode .textbox {
     background-color: #212121;
     color: #e8e5e5;
-    border: 2px solid #f40402;
+}
+
+.darkMode select {
+    background-color: #212121;
+    color: #e8e5e5;
 }
 
 .darkMode form h4, .darkMode form span, .darkMode li{
@@ -42,16 +62,12 @@ input:focus {
     color: #212121;
 }
 
-.darkMode .description {
-    border: 5px solid #f40402;
-}
-
-.darkMode .videoThumbnail {
-    border: 2px solid #f40402;
+.darkMode .videoThumbnail, .darkMode .commentSection, .darkMode .description, .darkMode .recent-views  {
+    border: 2px solid black;
 }
 
 .darkMode .videoThumbnail:hover {
-    border: 2px solid #e8e5e5;
+    border: 2px solid #f40402;
 }
 
 .darkMode .dan p, .darkMode .destiny p {
@@ -59,21 +75,41 @@ input:focus {
 }
 
 .darkMode footer {
-    border-top: 1px solid #f40402;
-    background-color: #212121;
+    background-color: black;
     color: #e8e5e5;
 }
 
 .darkMode .recent-views {
     background-color: #212121;
     color:#e8e5e5;
-    border:  2px solid #f40402;
 }
-.darkMode .recent-views a {
-    text-decoration-color: #e8e5e5 ;
+.darkMode .recent-views li span{
+    color: #e8e5e5 ;
 }
-.darkMode .recent-views a:hover {
+.darkMode .recent-views li span:hover {
     transform: scale(1.1);
+    color: black;
 }
 
+.darkMode .commentForm span, .darkMode .commentForm h4, .darkMode .commentSection li {
+    color:#212121;
+}
+
+.darkMode .videoInfo, .darkMode .related {
+    color: #e8e5e5;
+}
+
+.darkMode .favorites a{
+    color: #e8e5e5;
+}
+
+.darkMode .favorites {
+    color: #e8e5e5;
+}
+
+.darkMode button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 12px 0.22px rgba(228, 99, 29, 0.744);
+    transform: scale(1.1);  
+}
 
