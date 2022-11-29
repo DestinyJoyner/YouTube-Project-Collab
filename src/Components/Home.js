@@ -5,10 +5,6 @@ import { empty } from "../Functions/functions";
 import "./Home.css";
 
 function Home() {
-  // hardcoded for testing
-  // const desStored = JSON.parse(window.localStorage.getItem(`the office-relevance-4`))
-  // const danStored = JSON.parse(window.localStorage.getItem(`qlimax-relevance-4`))
-
   const [desVids, setDesVids] = useState(empty.items);
   const [dansVids, setDansVids] = useState(empty.items);
   const [dansTheme, setDansTheme] = useState("");
@@ -26,7 +22,7 @@ function Home() {
   ];
   const desPicks = [
     // "Asian Cuisine Recipes",
-    // "Christmas",
+    "Christmas",
     "How to Adult",
     // "Resident Evil",
     // "The Office",
