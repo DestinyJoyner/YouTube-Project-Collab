@@ -150,15 +150,18 @@ function viewsFetch(idValue, errorFunc) {
   )
     .then((resp) => resp.json())
     .then((respJson) =>
-      window.localStorage.setItem(`views-${idValue}`, JSON.stringify(respJson))
+      window.localStorage.setItem(`views-${idValue}`, JSON.stringify(respJson.items))
     )
     .catch((err) => errorFunc(true));
 }
 
+/* 
+  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCWJ2lWNubArHWmf3FIHbfcQ&maxResults=5&type=video&key=[YOUR_API_KEY]'
+*/
 //  // fetch for channel id info
 function channelFetch(idValue, thisVideoId, errorFunc, setFunction) {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&$channelId=${idValue}&maxResults=6&type=video&key=${process.env.REACT_APP_API_KEY}`
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${idValue}&maxResults=6&type=video&key=${process.env.REACT_APP_API_KEY}`
   )
     .then((resp) => resp.json())
     .then((respJson) => {
@@ -194,6 +197,45 @@ function relatedToVideoFetch(idValue, setFunction, errorFunc) {
     .catch((err) => errorFunc(true));
 }
 
+
+// test views fetch (without 2nd then)
+function testViews(idValue){
+  return fetch(
+    `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${idValue}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+}
+
+function testChannels(idValue){
+  return fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${idValue}&maxResults=6&type=video&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+}
+
+function testRelated(idValue){
+  return fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relatedToVideoId=${idValue}&type=video&key=${process.env.REACT_APP_API_KEY}`
+  )
+    .then((resp) => resp.json())
+}
+
+ // function on click to add video to recently viewed list
+ function addToRecents(e, stateVar, setFunction) {
+  const vidTitle = JSON.parse(window.localStorage.getItem(`views-${e.target.name}`))[0].snippet.localized.title
+  
+  const newRecent = {
+     id: e.target.name,
+     title: vidTitle, 
+   }
+   
+   const duplicate = stateVar.filter(({id}) => id === e.target.name)
+   if(!Object.keys(duplicate).length){
+     window.localStorage.setItem(`recents`, JSON.stringify([newRecent, ...stateVar]))
+     setFunction([newRecent, ...stateVar])
+   }
+ }
+
 export {
   fetchViews,
   convertNumber,
@@ -203,4 +245,8 @@ export {
   channelFetch,
   relatedToVideoFetch,
   viewsFetch,
+  testViews,
+  testChannels,
+  testRelated,
+  addToRecents,
 };

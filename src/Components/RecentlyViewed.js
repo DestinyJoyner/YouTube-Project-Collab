@@ -12,7 +12,7 @@ function RecentlyViewed(props) {
   useEffect(() => {
     const stored = JSON.parse(window.localStorage.getItem(`recents`));
     setRecent(stored);
-  }, [recent.length]);
+  }, []);
 
   return (
     <aside className="recent-views">
@@ -24,7 +24,7 @@ function RecentlyViewed(props) {
         <span>Your 5 Most Recent Views</span>
       </h4>
       <ul>
-        {recent.length > 0 &&
+        {recent &&
           recent.map(({ id, title }, index) => {
             if (index < 5) {
               return (
