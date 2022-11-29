@@ -3,7 +3,7 @@
 - black : #0f0f0f  */
 
 .videoThumbnail {
-  display: grid;
+  /* display: grid; */
   text-align: center;
   margin-top: 10px;
   border: 2px solid #e8e5e5;
@@ -19,21 +19,51 @@
   border: 2px solid white;
   border-radius: 10px;
 }
+
+.videoThumbnail a {
+  text-decoration: none;
+  display: grid;
+  width: 16rem;
+  grid-template-rows: 1fr auto auto;
+  padding: 2px 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #title {
   color: #212121;
-  height: 50px;
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: bold;
+  padding-bottom: 6px;
 }
 
 .views {
   color: #212121;
   font-size: 12px;
-  padding-top: 6px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .videoThumbnail:hover {
   transform: scale(1.1);
   cursor: pointer;
   border: 2px solid #f40402;
+}
+
+@media (max-width: 1135px) {
+  #title {
+    font-size: 0.75rem;
+  }
+
+  .videoThumbnail a {
+    grid-template-columns: 1fr;
+    width: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .videoThumbnail {
+    width: 16rem;
+  }
 }

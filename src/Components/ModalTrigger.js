@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ContextData } from "../Provider/Provider";
 
-export default function ModalTrigger({ isTrue, setIsOpen }) {
-  // useEffect allows for useState to update before rendering
+export default function ModalTrigger({ isTrue }) {
+  const { setModal } = useContext(ContextData);
+
+  // useEffect updates the state
   useEffect(() => {
     if (isTrue) {
-      setIsOpen(isTrue);
+      setModal(isTrue);
     }
   }, []);
   return;

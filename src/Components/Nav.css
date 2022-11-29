@@ -2,13 +2,14 @@
 .nav {
     background-color: #f40402 ;
     display: grid;
-    grid-template-columns: auto auto auto auto 1fr;
-    column-gap: 12px;
-    padding-left: 20px;
+    /* grid-template-columns: auto auto auto auto .2fr; */
+    grid-template-columns: 10vw 10vw 55vw 10vw 10vw;
+    /* column-gap: 12px; */
+    column-gap: 10px; 
     color: white;
-    font-size: 14px;
-    align-items: center;
-    margin-bottom: 20px;
+    font-size: 16px;
+    align-items: flex-end;
+    /* margin-bottom: 20px; */
     position: fixed;
     top: 0;
     left: 0;
@@ -17,17 +18,55 @@
     z-index: 500;
 }
 
-h1 {
-    margin: 0;
+.logo-home {
+    grid-column: 1;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 20px;
 }
-a {
+.logo-home h1 {
+    /* margin-top: 10px; */
+    align-self: center;
+}
+
+.nav a {
     text-decoration: none;
     color: white;
     font-size: 12px;
+    align-self: center;
+    justify-self: center;
 }
 
-a:hover {
+.nav a:hover {
    color: #212121; 
 }
 
 
+@media (max-width: 1135px) {
+    .nav {
+        /* background-color: aqua; */
+        grid-template-columns: repeat(3, 1fr) .5fr;
+        grid-template-rows: 1fr 1.5fr ;
+        column-gap: 0px;
+        height: auto;
+        /* justify-items: left; */
+    }
+
+    .nav a {
+        justify-self: left;
+    }
+
+    .search-section {
+        grid-row: 2;
+        grid-column: 1/5;
+    }
+
+    .dropdowns {
+       justify-self: right;
+    }
+
+    button {
+        grid-column: 4;
+    }
+
+}

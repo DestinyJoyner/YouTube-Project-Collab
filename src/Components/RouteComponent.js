@@ -1,112 +1,39 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import { Routes, Route, Navigate } from "react-router-dom";
+import About from "../Provider/About";
+import EasterEgg from "../Easter-Egg/EasterEgg";
+import Favorites from "./Favorites";
+import Home from "./Home";
+import ModalTrigger from "./ModalTrigger";
 import SearchResults from "./SearchResults";
 import Video from "./Video";
-import ModalTrigger from "./ModalTrigger";
-import Home from "./Home";
 
-function RouteComponent({
-  searchInput,
-  setSearchInput,
-  searchResult,
-  setSearchResult,
-  setIsOpen,
-}) {
+function RouteComponent() {
   return (
     <Routes>
       <Route path="/">
-        <Route
-          index
-          element={
-            <>
-              <SearchBar
-                searchResult={searchResult}
-                setSearchResult={setSearchResult}
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-                setIsOpen={setIsOpen}
-              />
-              <Home setIsOpen={setIsOpen} />
-            </>
-          }
-        />
-        <Route path="about" element={<>About</>} />
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="favorites" element={<Favorites />} />
+        <Route path="overkill" element={<EasterEgg />} />
 
         <Route path="search">
           <Route index element={<Navigate to="/" />} />
           <Route
             path=":keyword"
-            element={
-              <>
-                <SearchBar
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setSearchResult={setSearchResult}
-                />
-                <SearchResults
-                  searchResult={searchResult}
-                  setSearchResult={setSearchResult}
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setIsOpen={setIsOpen}
-                  defaultOrder={true}
-                  defaultNum={true}
-                />
-              </>
-            }
+            element={<SearchResults defaultOrder={true} defaultNum={true} />}
           />
           <Route
             path=":keyword/:order"
-            element={
-              <>
-                <SearchBar
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setSearchResult={setSearchResult}
-                />
-                <SearchResults
-                  searchResult={searchResult}
-                  setSearchResult={setSearchResult}
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setIsOpen={setIsOpen}
-                  defaultNum={true}
-                />
-              </>
-            }
+            element={<SearchResults defaultNum={true} />}
           />
-          <Route
-            path=":keyword/:order/:num"
-            element={
-              <>
-                <SearchBar
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setSearchResult={setSearchResult}
-                />
-
-                <SearchResults
-                  searchResult={searchResult}
-                  setSearchResult={setSearchResult}
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  setIsOpen={setIsOpen}
-                />
-              </>
-            }
-          />
+          <Route path=":keyword/:order/:num" element={<SearchResults />} />
         </Route>
 
-        <Route path="videos">
+        <Route path="video">
           <Route index element={<Navigate to="/" />} />
           <Route path=":id" element={<Video />} />
         </Route>
-        <Route
-          path="*"
-          element={<ModalTrigger isTrue={true} setIsOpen={setIsOpen} />}
-        />
+        <Route path="*" element={<ModalTrigger isTrue={true} />} />
       </Route>
     </Routes>
   );

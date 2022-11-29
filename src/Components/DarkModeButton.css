@@ -1,0 +1,20 @@
+
+button{
+    grid-column: 5;
+    width: 40%;
+    align-self: center;
+    justify-self: center;
+    /* margin-top: 10px;
+    margin-right: 20px; */
+    border-radius: 20px;
+    border: 2px solid #e8e5e5;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px 3px rgba(2, 10, 31, 0.744);
+    transform: scale(1.1);  
+}
+button img {
+    height:18px;
+}

@@ -1,4 +1,182 @@
-.video {
-    text-align: center;
-    margin-top: 100px;
+.videoPage {
+  display: grid;
+  grid-template-columns: 3fr 0.5fr;
+  column-gap: 15px;
+  row-gap: 15px;
+  padding-top: 80px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
+
+.video {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+}
+
+iframe {
+  text-align: center;
+  width: 100%;
+}
+
+.description {
+  grid-column: span 2;
+  grid-row: 3;
+  height: 100px;
+  justify-self: center;
+  overflow: scroll;
+  padding: 10px;
+  border-radius: 15px;
+  text-indent: 5px;
+  border: 1px solid #e8e5e5;
+  background-color: #f8f8f8;
+}
+
+.videoInfo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: auto auto auto;
+  row-gap: 20px;
+  grid-column: 1;
+  grid-row: 2;
+  /* height: fit-content; */
+}
+
+.videoInfo h4 img {
+  height: 40px;
+}
+
+.videoInfo h2 {
+  grid-column: span 2;
+}
+
+.videoInfo h4 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.videoInfo h4 span {
+  align-self: center;
+}
+
+.videoInfo .stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  /* margin-bottom: 10px;
+  margin-left: 10%; */
+}
+
+.stats-div {
+  align-self: center;
+}
+
+.videoInfo .stats #fav-checkbox label {
+  display: flex;
+}
+
+.videoInfo .stats #fav-checkbox label span {
+  align-self: center;
+  text-indent: 5px;
+}
+
+.related {
+  grid-column: 1;
+}
+
+.moreVids {
+  display: flex;
+  justify-content: space-evenly;
+  height: 200px;
+  width: 100%;
+}
+
+.moreVids p#title,
+.moreVids p {
+  font-size: 10px;
+}
+
+p#title {
+  height: 25px;
+}
+
+.moreVids img {
+  height: 100px;
+}
+
+.stats input:hover {
+  border: 2px solid #f40402;
+  cursor: pointer;
+}
+
+.stats input:focus {
+  outline: none;
+}
+
+.moreVids .videoThumbnail {
+  width: 20%;
+}
+
+@media (min-width: 1135px) {
+  .related .videoThumbnail,
+  .related .videoThumbnail a {
+    width: 9rem;
+  }
+
+  .related .videoThumbnail a {
+    justify-items: center;
+  }
+
+  iframe {
+    text-align: center;
+    width: 100%;
+  }
+
+  .video {
+    width: 100%;
+  }
+
+  .video div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1135px) {
+  .video,
+  .recent-views {
+    margin-top: 2rem;
+  }
+
+  .related .videoThumbnail {
+    width: 9rem;
+  }
+
+  .related .videoThumbnail #title {
+    padding-bottom: 12px;
+  }
+
+  .videoInfo h4 {
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+  }
+  .videoInfo h4 img {
+    width: 2rem;
+    align-self: center;
+  }
+}
+
+@media (max-width: 990px) {
+  .recent-views {
+    /* margin-right: 0; */
+    width: 13vw;
+  }
+
+  .related, .commentSection {
+    grid-column: 1/3;
+  }
+}
+
+/* @media (max-width: 760px){
+
+} */

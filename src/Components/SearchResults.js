@@ -1,19 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { ContextData } from "../Provider/Provider";
 import VideoThumbnail from "./VideoThumbnail";
-
-import { fetchData } from "../API/Fetch";
-
 import "./SearchResults.css";
 
-export default function SearchResults({
-  searchResult,
-  setSearchResult,
-  setIsOpen,
-  defaultOrder,
-  defaultNum
-}) {
+
+export default function SearchResults({ defaultOrder, defaultNum }) {
+  const { fetchData, searchResult, setSearchResult} = useContext(ContextData);
+
   const navigate = useNavigate();
 
   const { keyword } = useParams();
@@ -22,37 +16,32 @@ export default function SearchResults({
 
   const orderVal = defaultOrder ? "relevance" : order;
   const numVal = defaultNum ? 9 : num;
-  
+
+
   useEffect(() => {
-    const stored = window.localStorage.getItem(keyword);
+    const stored = window.localStorage.getItem(
+      `${keyword}-${orderVal}-${numVal}`
+    );
     if (stored) {
-      setSearchResult(JSON.parse(stored).items);
+      setSearchResult(JSON.parse(stored));
     }
     if (!stored) {
       // makes a fetch call directly from the url when search is not in local storage
-      fetchData(
-        "search",
-        keyword,
-        setSearchResult,
-        setIsOpen,
-        orderVal,
-        numVal
-      );
+      fetchData("search", keyword, setSearchResult, orderVal, numVal);
       navigate(`/search/${keyword}/${orderVal}/${numVal}`);
     }
-  }, [keyword]);
+  }, []);
 
   return (
     <>
       <h3 id="results-label">Results for: {keyword}</h3>
       <div className="videos">
-        {searchResult &&
-          searchResult.map((video) => {
+        { searchResult.length > 1 &&
+          searchResult.map(({id}) => {
             return (
               <VideoThumbnail
-                key={video.id.videoId}
-                video={video}
-                videoId={video.id.videoId}
+                key={id.videoId}
+                videoId={id.videoId}
               />
             );
           })}

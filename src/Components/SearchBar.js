@@ -1,20 +1,28 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import Dropdown from "./Dropdown";
-
-import { fetchData } from "../API/Fetch";
+import { ContextData } from "../Provider/Provider";
 import searchIcon from "./assets/Search-icon.png";
 import "./SearchBar.css";
 
-export default function SearchBar({
-  searchInput,
-  setSearchInput,
-  setSearchResult,
-  setIsOpen,
-}) {
-  const [numResults, setNumResults] = useState("9");
-  const [order, setOrder] = useState("relevance");
+export default function SearchBar() {
+  const {
+    fetchData,
+    searchInput,
+    setSearchInput,
+    setSearchResult,
+    order,
+    setOrder,
+    numResults,
+    setNumResults,
+    darkMode
+  } = useContext(ContextData);
+
   const navigate = useNavigate();
+
+  const orderVal = ["relevance", "date", "viewCount"];
+  const orderNames = ["Relevance", "Most Recent", "Most Viewed"];
+  const numArr = ["9", "18", "27", "36", "45"];
 
   return (
     <div className="search-section">
@@ -23,8 +31,8 @@ export default function SearchBar({
           <Dropdown
             value={"order"}
             title={"Sort By: "}
-            optionValue={["relevance", "date", `viewCount`]}
-            optionName={["Relevance", `Most Recent`, `Most Viewed`]}
+            optionValue={orderVal}
+            optionName={orderNames}
             stateVar={order}
             setFunction={setOrder}
           />
@@ -35,8 +43,8 @@ export default function SearchBar({
             className="num-drop"
             value={"maxResults"}
             title={"Number of Results: "}
-            optionValue={["9", "18", "27", "36", "45"]}
-            optionName={["9", "18", "27", "36", "45"]}
+            optionValue={numArr}
+            optionName={numArr}
             stateVar={numResults}
             setFunction={setNumResults}
           />
@@ -45,15 +53,8 @@ export default function SearchBar({
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setSearchResult([]);
-          fetchData(
-            "search",
-            searchInput,
-            setSearchResult,
-            setIsOpen,
-            order,
-            numResults
-          );
+          // setSearchResult([]);
+          fetchData("search", searchInput, setSearchResult, order, numResults);
           navigate(`/search/${searchInput}/${order}/${numResults}`);
           setSearchInput("");
           setNumResults("9");

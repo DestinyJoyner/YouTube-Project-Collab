@@ -1,0 +1,104 @@
+.favorites{
+    padding-top: 100px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 40% 60% ;
+    height: 100vh;
+    color: #212121;
+}
+
+.favorites section img {
+    height: 200px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.favorites section p {
+    text-indent: 20px;
+    font-size: 14px;
+}
+
+.favorites section {
+    justify-self: center;
+    font-family: didot;
+}
+
+.favorites ol {
+    grid-column: 2;
+}
+
+.favorites a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.favorites ol li {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin-bottom: 15px;
+}
+
+.favorites li img {
+    height: 75px;
+    margin-bottom: 0;
+    border-radius: 10px;
+}
+
+
+.favorites ol li h3 {
+    align-self: flex-end;
+}
+
+.favorites ol li h3:hover {
+    color: #F40402;
+    text-decoration: none;
+}
+
+.favorites ol li p {
+    text-decoration: none;
+    font-style: italic;
+    font-size: 14px;
+}
+
+@media (max-width: 1135px){
+    .favorites{
+        padding-top: 140px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 970px){
+    .favorites{
+        /* padding-top: 140px; */
+        width: 98%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 12px;
+    }
+    .favorites ol li p {
+        font-size: 10px;
+    }
+
+    .favorites ol li div{
+        padding: 1px 6px ;
+    }
+}
+
+@media (max-width: 840px){
+    .favorites ol li div{
+        padding: 2px 1.4rem ;
+    }
+}
+
+@media (max-width: 700px) {
+    .favorites section {
+        display: none;
+    }
+    .favorites {
+        grid-template-columns: 1fr;
+    }
+}

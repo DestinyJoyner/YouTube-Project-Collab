@@ -1,4 +1,3 @@
-
 footer {
     position: fixed;
     bottom: 0;
@@ -8,4 +7,22 @@ footer {
     color: white;
     font-size: 12px;
     padding: 2px 0;
+    word-spacing: 2px;
+    z-index: 210;
+}
+
+a.egg {
+    width: 50px,;
+    justify-self: flex-end,;
+    margin: 0 5px;
+    
+}
+
+.egg img {
+    height: 16px;
+   text-align: end;
+}
+
+.egg img:hover {
+    cursor: pointer;
 }
