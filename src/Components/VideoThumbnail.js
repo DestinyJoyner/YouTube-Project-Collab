@@ -1,17 +1,19 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextData } from "../Provider/Provider.js";
-import { convertNumber, convertDate, videoThumbnailEmpty, empty } from "../Functions/functions.js"
+import { convertNumber, convertDate, videoThumbnailEmpty, empty, testViews } from "../Functions/functions.js"
 import "./VideoThumbnail.css";
 
 function VideoThumbnail({videoId}) {
-  const { recent, setRecent } = useContext(ContextData)
+  const { recent, setRecent, setModal } = useContext(ContextData)
   const stored = window.localStorage.getItem(`views-${videoId}`) 
-  const [thisVideo, setThisVideo] = useState(JSON.parse(stored))
+  // const [thisVideo, setThisVideo] = useState(JSON.parse(stored))
+  const [thisVideo, setThisVideo] = useState([])
 
   // function on click to add video to recently viewed list
   function addToRecents(e) {
-   const vidTitle = JSON.parse(window.localStorage.getItem(`views-${e.target.name}`)).items[0].snippet.localized.title
+   const vidTitle = JSON.parse(window.localStorage.getItem(`views-${e.target.name}`))[0].snippet.localized.title
+   console.log(vidTitle)
   
    const newRecent = {
       id: e.target.name,
@@ -25,20 +27,29 @@ function VideoThumbnail({videoId}) {
     }
   }
 
-useEffect(() => {
+// useEffect(() => {
   
-  setThisVideo(JSON.parse(stored))
-  console.log(`use effect`, thisVideo)
-  // const stored = window.localStorage.getItem(`views-${videoId}`) 
-  // if(stored){
-  //   setThisVideo(JSON.parse(stored))
-  // }
-  },[videoId])
+//   setThisVideo(JSON.parse(stored))
+//   console.log(`use effect`, thisVideo)
+//   // const stored = window.localStorage.getItem(`views-${videoId}`) 
+//   // if(stored){
+//   //   setThisVideo(JSON.parse(stored))
+//   // }
+//   },[videoId])
+
+useEffect(() => {
+  testViews(videoId)
+  .then(respJson => {
+    setThisVideo(respJson.items)
+    window.localStorage.setItem(`views-${videoId}`, JSON.stringify(respJson.items))
+  })
+  .catch(err => setModal(true))
+}, [videoId])
 
   return (
     <div className="videoThumbnail">
-        {  thisVideo &&
-          thisVideo.items.map(obj => 
+        {  thisVideo.length > 0 &&
+          thisVideo.map(obj => 
             <Link 
             to={`/video/${videoId}`}
             key= {videoId}

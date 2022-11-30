@@ -10,6 +10,9 @@ import {
   channelFetch,
   relatedToVideoFetch,
   viewsFetch,
+  testViews,
+  testChannels,
+  testRelated,
 } from "../Functions/functions";
 import "./Video.css";
 import tvImage from "./assets/channel-icon.png";
@@ -33,7 +36,7 @@ function Video() {
   } = useContext(ContextData);
 
   // state for favorite checkbox
-  const checkboxState = favData.find(({ vidId }) => vidId === id);
+  const checkboxState = favData.length > 0? favData.find(({ vidId }) => vidId === id) : false;
   const [clicked, setClicked] = useState(checkboxState ? true : false);
 
   // OnChange for checkbox to update favorites
@@ -46,7 +49,7 @@ function Video() {
       chanName: "",
       image: "",
     };
-    vidData.items.forEach(({ id, snippet }) => {
+    vidData.forEach(({ id, snippet }) => {
       favObj.title = snippet.title;
       favObj.vidId = id;
       favObj.image = snippet.thumbnails.high.url;
@@ -67,66 +70,197 @@ function Video() {
     }
   }
 
+  
   // Use Effect for setting channel/related to states for video page
-  useEffect(() => {
-    const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`));
-    const videoChannelId = videoData.items[0].snippet.channelId;
-    const moreChannelData = JSON.parse(
-      window.localStorage.getItem(`channel-${videoChannelId}`)
-    );
-    const relatedVideosData = JSON.parse(window.localStorage.getItem(
-      `related-to-video-${id}`
-    ));
+  // useEffect(() => {
+  //   const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`));
+  //   console.log(videoData)
+  //   const videoChannelId = videoData.items[0].snippet.channelId;
+  //   console.log(videoChannelId)
+  //   // const moreChannelData = JSON.parse(
+  //   //   window.localStorage.getItem(`channel-${videoChannelId}`)
+  //   // );
+  //   const relatedVideosData = JSON.parse(window.localStorage.getItem(
+  //     `related-to-video-${id}`
+  //   ));
 
-    if (videoData) {
-      setVidData(videoData);
-      // then check/ fetch for additional video info
-      if (!moreChannelData) {
-        // fetch for channel id info
-        channelFetch(videoChannelId, id, setModal, setChannel);
+  //   if (videoData) {
+  //     setVidData(videoData);
+  //     // then check/ fetch for additional video info
+  //     if (!window.localStorage.getItem(`channel-${videoChannelId}`)) {
+  //       // fetch for channel id info
+  //       channelFetch(videoChannelId, id, setModal, setChannel);
+  //     } else {
+  //       setChannel(JSON.parse(window.localStorage.getItem(`channel-${videoChannelId}`)));
+  //     }
+  //     if (!relatedVideosData) {
+  //       // fetch for related videos based on id
+  //       relatedToVideoFetch(id, setRelatedVids, setModal);
+  //     } else {
+  //       setRelatedVids(relatedVideosData);
+  //     }
+  //   } else {
+  //     // fetch for videoData/related/and channel based on inputed id in url
+  //     fetch(
+  //       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${id}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
+  //     )
+  //       .then((resp) => resp.json())
+  //       .then((respJson) => {
+  //         window.localStorage.setItem(`views-${id}`, JSON.stringify(respJson));
+  //         setVidData(respJson);
+  //         // use channelId property from respJson to fetch for/set channel data
+  //         channelFetch(
+  //           respJson.items[0].snippet.channelId,
+  //           id,
+  //           setModal,
+  //           setChannel
+  //         );
+  //       })
+  //       .catch((err) => setModal(true));
+  //     // fetch for related videos
+  //     relatedToVideoFetch(id, setRelatedVids, setModal);
+  //   }
+  // }, [id]);
+
+  useEffect(() => {
+    const isStored = JSON.parse(window.localStorage.getItem(`views-${id}`));
+    let channelId;
+    const channelStored = JSON.parse(
+      window.localStorage.getItem(`channel-${channelId}`)
+    );
+    if (isStored) {
+      setVidData(isStored);
+      console.log(isStored)
+      channelId = isStored[0].snippet.channelId;
+      if (channelStored) {
+        setChannel(channelStored);
       } else {
-        setChannel(moreChannelData);
-      }
-      if (!relatedVideosData) {
-        // fetch for related videos based on id
-        relatedToVideoFetch(id, setRelatedVids, setModal);
-      } else {
-        setRelatedVids(relatedVideosData);
-      }
-    } else {
-      // fetch for videoData/related/and channel based on inputed id in url
-      fetch(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20statistics&id=${id}&maxResults=1&key=${process.env.REACT_APP_API_KEY}`
-      )
-        .then((resp) => resp.json())
+        testChannels(channelId)
         .then((respJson) => {
-          window.localStorage.setItem(`views-${id}`, JSON.stringify(respJson));
-          setVidData(respJson);
-          // use channelId property from respJson to fetch for/set channel data
-          channelFetch(
-            respJson.items[0].snippet.channelId,
-            id,
-            setModal,
-            setChannel
+          window.localStorage.setItem(
+            `channel-${channelId}`,
+            JSON.stringify(respJson)
           );
+          let count = 0;
+          const filtered = respJson.items.filter((video) => {
+            if (video.id.videoId !== id && count < 5) {
+              count++;
+              return video;
+            }
+          });
+          setChannel(filtered);
+        });
+      }
+    } 
+   else if(!isStored) {
+      // fetch for individual fetch data
+      testViews(id)
+      .then((respJson) => {
+        setVidData(respJson.items);
+        window.localStorage.setItem(`views-${id}`,JSON.stringify(respJson.items));
+        
+        // use snippet.channelId to fetch for more from channel
+          channelId = respJson.items[0].snippet.channelId;
+          testChannels(channelId)
+            .then((respJson) => {
+              window.localStorage.setItem(
+                `channel-${channelId}`,
+                JSON.stringify(respJson)
+              );
+              let count = 0;
+              const filtered = respJson.items.filter((video) => {
+                if (video.id.videoId !== id && count < 5) {
+                  count++;
+                  return video;
+                }
+              });
+              setChannel(filtered);
+            })
+            .catch((err) => setModal(true));
         })
         .catch((err) => setModal(true));
-      // fetch for related videos
-      relatedToVideoFetch(id, setRelatedVids, setModal);
     }
+
+    // fetch for relatedVid
+    const relatedStored = JSON.parse(window.localStorage.getItem(`related-to-video-${id}`))
+    if(relatedStored){
+      setRelatedVids(relatedStored)
+    }
+    else{
+      testRelated(id)
+      .then((respJson) => {
+        window.localStorage.setItem(
+          `related-to-video-${id}`,
+          JSON.stringify(respJson)
+        );
+        setRelatedVids(respJson);
+      })
+      .catch((err) => setModal(true));
+    }
+    
   }, [id]);
 
   return (
     <div className="videoPage">
       <div className="video">
-        <YouTube videoId={id} opts={{ height: 400, width: 650}} />
+        <YouTube videoId={id} opts={{ 
+          height: 400, 
+          width: 650, 
+          h:{
+            attributes: {
+              sandbox: {
+                value: "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation" 
+              } } }
+          }} />
       </div>
 
       <CommentForm videoId={id} />
 
       <RecentlyViewed />
 
-      <section className="videoInfo">
+      {vidData.length > 0 && (
+        <section className="videoInfo">
+          <h2>{vidData[0].snippet.localized.title}</h2>
+
+          <h4>
+            <img src={!darkMode ? tvImage : darkTvImage} alt="tv-icon" />
+            <span>{vidData[0].snippet.channelTitle}</span>
+          </h4>
+
+          <div className="stats-div">
+            <p className="stats">
+              <span>
+                Date added:{" "}
+                {vidData[0].snippet.publishedAt
+                  ? convertDate(vidData[0].snippet.publishedAt)
+                  : null}
+              </span>
+              <span>
+                {vidData[0].statistics.viewCount
+                  ? convertNumber(vidData[0].statistics.viewCount)
+                  : null}{" "}
+                views
+              </span>
+              <span id="fav-checkbox">
+                <label htmlFor="checkbox">
+                  <input
+                    type="checkbox"
+                    checked={clicked}
+                    onChange={() => handleCheckbox()}
+                  />
+                  <span>Add to Favorites</span>
+                </label>
+              </span>
+            </p>
+          </div>
+          <p className="description">
+            {vidData[0].snippet.localized.description}
+          </p>
+        </section>
+      )}
+
+      {/* {vidData &&
+        <section className="videoInfo">
         <h2>{vidData.items[0].snippet.localized.title}</h2>
 
         <h4>
@@ -164,9 +298,12 @@ function Video() {
           {vidData.items[0].snippet.localized.description}
         </p>
       </section>
-
-      <section className="related">
-        <h4>More from {vidData.items[0].snippet.channelTitle}:</h4>
+} */}
+        <section className="related">
+        {
+          vidData.length > 0 &&
+          <h4>More from {vidData[0].snippet.channelTitle}:</h4>
+          }
         <div className="moreVids">
           {channel.length > 1 &&
             channel.map((obj) => (

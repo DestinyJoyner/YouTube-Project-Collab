@@ -17,7 +17,7 @@ function Provider({ children }) {
   const [order, setOrder] = useState("relevance");
 
   //test for video.js state to be changed from onclick videothumbnail
-  const [vidData, setVidData] = useState(empty);
+  const [vidData, setVidData] = useState([]);
   // related to video state
   const [relatedVids, setRelatedVids] = useState(empty);
   // more from channel state
