@@ -6,11 +6,11 @@ import noImage from "./assets/no-image-dark.png";
 
 function Favorites(props) {
   const { favData, setFavData } = useContext(ContextData);
-
+console.log(favData.length)
   useEffect(() => {
     const stored = JSON.parse(window.localStorage.getItem(`favorites`));
-    setFavData(stored);
-  }, [favData.length]);
+    stored ? setFavData(stored) : setFavData([]);
+  }, []);
   return (
     <div className="favorites">
       <section>

@@ -36,7 +36,7 @@ function Video() {
   } = useContext(ContextData);
 
   // state for favorite checkbox
-  const checkboxState = favData.find(({ vidId }) => vidId === id);
+  const checkboxState = favData.length > 0? favData.find(({ vidId }) => vidId === id) : false;
   const [clicked, setClicked] = useState(checkboxState ? true : false);
 
   // OnChange for checkbox to update favorites
