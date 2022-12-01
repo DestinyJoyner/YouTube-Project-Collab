@@ -113,3 +113,7 @@ input:focus {
     transform: scale(1.1);  
 }
 
+.darkMode .about-project, .darkMode .destiny-details, .darkMode .dan-details {
+    box-shadow: 14px 8px 30px #f40402;
+}
+
