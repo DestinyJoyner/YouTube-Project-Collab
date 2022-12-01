@@ -40,12 +40,12 @@ function ChannelThumbnail({obj}) {
                id="title"
                name = {obj.id.videoId}>
                  {obj.snippet.title}</p>
-               <p 
+               {/* <p 
                className="views"
                name = {obj.id.videoId}>
-                {/* {obj.statistics.viewCount ? convertNumber(obj.statistics.viewCount) : null}  */}views{" "}
+                {obj.statistics.viewCount ? convertNumber(obj.statistics.viewCount) : null} views{" "}
                  <span>date added: {convertDate(obj.snippet.publishedAt)}</span>
-               </p>
+               </p> */}
                
              </Link>
           }

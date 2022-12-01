@@ -117,3 +117,6 @@ input:focus {
     box-shadow: 14px 8px 30px #f40402;
 }
 
+.darkMode #results-label {
+    color: #e8e5e5;
+}

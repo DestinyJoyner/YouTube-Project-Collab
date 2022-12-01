@@ -27,6 +27,7 @@
 .logo-home h1 {
     /* margin-top: 10px; */
     align-self: center;
+    padding-left: 4px;
 }
 
 .nav a {

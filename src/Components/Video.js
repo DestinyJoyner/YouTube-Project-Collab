@@ -36,7 +36,8 @@ function Video() {
   } = useContext(ContextData);
 
   // state for favorite checkbox
-  const checkboxState = favData.length > 0? favData.find(({ vidId }) => vidId === id) : false;
+  const checkboxState =
+    favData.length > 0 ? favData.find(({ vidId }) => vidId === id) : false;
   const [clicked, setClicked] = useState(checkboxState ? true : false);
 
   // OnChange for checkbox to update favorites
@@ -70,7 +71,6 @@ function Video() {
     }
   }
 
-  
   // Use Effect for setting channel/related to states for video page
   // useEffect(() => {
   //   const videoData = JSON.parse(window.localStorage.getItem(`views-${id}`));
@@ -130,13 +130,12 @@ function Video() {
     );
     if (isStored) {
       setVidData(isStored);
-      console.log(isStored)
+      console.log(isStored);
       channelId = isStored[0].snippet.channelId;
       if (channelStored) {
         setChannel(channelStored);
       } else {
-        testChannels(channelId)
-        .then((respJson) => {
+        testChannels(channelId).then((respJson) => {
           window.localStorage.setItem(
             `channel-${channelId}`,
             JSON.stringify(respJson)
@@ -151,15 +150,17 @@ function Video() {
           setChannel(filtered);
         });
       }
-    } 
-   else if(!isStored) {
+    } else if (!isStored) {
       // fetch for individual fetch data
       testViews(id)
-      .then((respJson) => {
-        setVidData(respJson.items);
-        window.localStorage.setItem(`views-${id}`,JSON.stringify(respJson.items));
-        
-        // use snippet.channelId to fetch for more from channel
+        .then((respJson) => {
+          setVidData(respJson.items);
+          window.localStorage.setItem(
+            `views-${id}`,
+            JSON.stringify(respJson.items)
+          );
+
+          // use snippet.channelId to fetch for more from channel
           channelId = respJson.items[0].snippet.channelId;
           testChannels(channelId)
             .then((respJson) => {
@@ -182,36 +183,42 @@ function Video() {
     }
 
     // fetch for relatedVid
-    const relatedStored = JSON.parse(window.localStorage.getItem(`related-to-video-${id}`))
-    if(relatedStored){
-      setRelatedVids(relatedStored)
-    }
-    else{
+    const relatedStored = JSON.parse(
+      window.localStorage.getItem(`related-to-video-${id}`)
+    );
+    if (relatedStored) {
+      setRelatedVids(relatedStored);
+    } else {
       testRelated(id)
-      .then((respJson) => {
-        window.localStorage.setItem(
-          `related-to-video-${id}`,
-          JSON.stringify(respJson)
-        );
-        setRelatedVids(respJson);
-      })
-      .catch((err) => setModal(true));
+        .then((respJson) => {
+          window.localStorage.setItem(
+            `related-to-video-${id}`,
+            JSON.stringify(respJson)
+          );
+          setRelatedVids(respJson);
+        })
+        .catch((err) => setModal(true));
     }
-    
   }, [id]);
 
   return (
     <div className="videoPage">
       <div className="video">
-        <YouTube videoId={id} opts={{ 
-          height: 400, 
-          width: 650, 
-          h:{
-            attributes: {
-              sandbox: {
-                value: "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation" 
-              } } }
-          }} />
+        <YouTube
+          videoId={id}
+          opts={{
+            height: 400,
+            width: 650,
+            h: {
+              attributes: {
+                sandbox: {
+                  value:
+                    "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation",
+                },
+              },
+            },
+          }}
+        />
       </div>
 
       <CommentForm videoId={id} />
@@ -254,7 +261,9 @@ function Video() {
             </p>
           </div>
           <p className="description">
-            {vidData[0].snippet.localized.description}
+            {vidData[0].snippet.localized.description
+              ? vidData[0].snippet.localized.description
+              : "No Description Available"}
           </p>
         </section>
       )}
@@ -299,11 +308,10 @@ function Video() {
         </p>
       </section>
 } */}
-        <section className="related">
-        {
-          vidData.length > 0 &&
+      <section className="related">
+        {vidData.length > 0 && (
           <h4>More from {vidData[0].snippet.channelTitle}:</h4>
-          }
+        )}
         <div className="moreVids">
           {channel.length > 1 &&
             channel.map((obj) => (

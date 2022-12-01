@@ -23,6 +23,7 @@ iframe {
   grid-column: span 2;
   grid-row: 3;
   height: 100px;
+  width: 100%;
   justify-self: center;
   overflow: scroll;
   padding: 10px;

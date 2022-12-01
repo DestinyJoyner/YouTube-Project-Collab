@@ -13,7 +13,6 @@ function VideoThumbnail({videoId}) {
   // function on click to add video to recently viewed list
   function addToRecents(e) {
    const vidTitle = JSON.parse(window.localStorage.getItem(`views-${e.target.name}`))[0].snippet.localized.title
-   console.log(vidTitle)
   
    const newRecent = {
       id: e.target.name,

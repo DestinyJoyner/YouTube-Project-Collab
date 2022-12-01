@@ -4,9 +4,8 @@ import { ContextData } from "../Provider/Provider";
 import VideoThumbnail from "./VideoThumbnail";
 import "./SearchResults.css";
 
-
 export default function SearchResults({ defaultOrder, defaultNum }) {
-  const { fetchData, searchResult, setSearchResult} = useContext(ContextData);
+  const { fetchData, searchResult, setSearchResult } = useContext(ContextData);
 
   const navigate = useNavigate();
 
@@ -15,8 +14,8 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
   const { num } = useParams();
 
   const orderVal = defaultOrder ? "relevance" : order;
-  const numVal = defaultNum ? 9 : num;
 
+  const numVal = defaultNum ? 9 : num > 45 ? 45 : num;
 
   useEffect(() => {
     const stored = window.localStorage.getItem(
@@ -36,14 +35,9 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
     <>
       <h3 id="results-label">Results for: {keyword}</h3>
       <div className="videos">
-        { searchResult.length > 1 &&
-          searchResult.map(({id}) => {
-            return (
-              <VideoThumbnail
-                key={id.videoId}
-                videoId={id.videoId}
-              />
-            );
+        {searchResult.length > 1 &&
+          searchResult.map(({ id }) => {
+            return <VideoThumbnail key={id.videoId} videoId={id.videoId} />;
           })}
       </div>
     </>

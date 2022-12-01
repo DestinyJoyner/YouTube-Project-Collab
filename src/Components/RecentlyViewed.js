@@ -6,7 +6,7 @@ import playIcon from "./assets/play-button-icon.gif";
 import watchHistoryIcon from "./assets/watch-history-icon.png";
 import lightWatchHistory from "./assets/light-recent-icon.png";
 
-function RecentlyViewed(props) {
+function RecentlyViewed() {
   const { recent, setRecent, darkMode } = useContext(ContextData);
 
   useEffect(() => {
