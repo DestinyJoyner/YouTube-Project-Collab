@@ -9,14 +9,17 @@ import danAvatar from "../Components/assets/Dan-icon.png";
 function About() {
   return (
     <div className="aboutPage">
-      <h1>About the Project</h1>
       <div className="about-project">
+        <h1>About the Project</h1>
+        <hr />
+        <br />
         <p>
           The objective of this project was to create a Front End YouTube clone
-          application. The application was built in React, and utilizes the
-          YouTube V3 API to gain access to their video data. Through pair
+          application. The application was built in <a id="react-link" href="https://beta.reactjs.org/learn" target="_blank"> React</a>, and utilizes the
+          <a href="https://developers.google.com/youtube/documentation?hl=en_US" target="_blank"> YouTube V3 API</a> to gain access to their video data. Through pair
           programming we were able to implement several functionalities.
         </p>
+        <br />
         <p>
           The home page randomly selects topics chosen by the devs to display as
           video suggestions.The search bar allows the selection of a sorting
@@ -26,12 +29,15 @@ function About() {
           more videos from the same channel and related content is presented
           below the video details.
         </p>
+        <br />
         <p>
           It is also possible to perform a video search directly in the url. The
           user will type their search keyword(s) after "/search" and may also
           add a sorting method (date, relevance, or viewCount) as well as the
-          number of search results. Example: /search/programming/viewCount/18
+          number of search results.
         </p>
+        <p> Example: <span>/search/programming/viewCount/18</span></p>
+        <br />
         <p>
           A dark mode theme is available, and some media queries were added to
           account for different screen sizes.
