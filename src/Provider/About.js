@@ -4,73 +4,118 @@ import gitHub from "./grey-gitHub(2).png";
 import linkedIn from "./red-linkedIn.png";
 import mail from "./dark-mail-icon.png";
 import destinyAbout from "./you-tube-about.png";
-import danAvatar from "../Components/assets/dan-avatar.jpg"
+import danAvatar from "../Components/assets/Dan-icon.png";
 
-function About(props) {
+function About() {
   return (
     <div className="aboutPage">
-     <h1>ABOUT PAGE</h1>
+      <h1>About the Project</h1>
+      <div className="about-project">
+        <p>
+          The objective of this project was to create a Front End YouTube clone
+          application. The application was built in React, and utilizes the
+          YouTube V3 API to gain access to their video data. Through pair
+          programming we were able to implement several functionalities.
+        </p>
+        <p>
+          The home page randomly selects topics chosen by the devs to display as
+          video suggestions.The search bar allows the selection of a sorting
+          method and number of results to display. The video page allows the
+          user to watch the video, as well as adding it to a favorites page,
+          leaving a comment, and to view previously opened videos. In addition,
+          more videos from the same channel and related content is presented
+          below the video details.
+        </p>
+        <p>
+          It is also possible to perform a video search directly in the url. The
+          user will type their search keyword(s) after "/search" and may also
+          add a sorting method (date, relevance, or viewCount) as well as the
+          number of search results. Example: /search/programming/viewCount/18
+        </p>
+        <p>
+          A dark mode theme is available, and some media queries were added to
+          account for different screen sizes.
+        </p>
+      </div>
+      <section className="devs">
+        <div className="about-destiny">
+          <section className="destiny-details">
+            <img src={destinyAbout} alt="destiny" />
+            <div className="bio">
+              <h4>Destiny J.</h4>
+              <p>
+                Born and raised in Harlem, USA, I've always had a flare for
+                solving math and logic puzzles.
+              </p>
+              <p>
+                I am intrigued by the Metaverse and eager to learn the skills
+                needed to create virtual immersive digital worlds.
+              </p>
+              <p>
+                In my spare time, when I'm not coordinating my hats with my
+                clothing, I enjoy tinkering with international recipes, jogging,
+                and gaming.{" "}
+              </p>
+            </div>
+            <div className="circles">
+              <div className="circle1">
+                <a
+                  href="https://www.linkedin.com/in/destiny-joyner-934846243/"
+                  target="_blank"
+                >
+                  <img src={linkedIn} alt="linkedIn" />
+                </a>
+              </div>
+              <div className="circle2">
+                <a href="https://github.com/DestinyJoyner" target="_blank">
+                  <img src={gitHub} alt="gitHub" />
+                </a>
+              </div>
+              <div className="circle3">
+                <a href="mailto:destinyjoyner@pursuit.com">
+                  <img src={mail} alt="email" />
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
 
-      <article className="about-destiny">
-        <section className="destiny-details">
-          <img src={destinyAbout} alt="destiny" />
-          <p>
-            <h4>Destiny J.</h4>
-            about me yadda yadda yadda
-          </p>
-          <div className="circles">
-            <div className="circle1">
-              <a
-              href="https://www.linkedin.com/in/destiny-joyner-934846243/">
-                <img src={linkedIn} alt="linkedIn" height="80px" />
-              </a>
+        <div className="about-dan">
+          <section className="dan-details">
+            <img src={danAvatar} alt="dan" />
+            <div className="bio">
+              <h4>Dan M.</h4>
+              <p>Grew up in Italy, now living in NYC.</p>
+              <p>
+                Looking forward to learning more about sustainability, resource
+                optimization, AI, spacial analysis, and sports analytics in the
+                tech field.
+              </p>
+              <p>
+                In my free time I enjoy museums, soccer, traveling, dance music
+                events, and cooking
+              </p>
             </div>
-            <div className="circle2">
-              <a
-              href="https://github.com/DestinyJoyner" target="_blank">
-                <img src={gitHub} alt="gitHub" height="80px" />
-              </a>
+            <div className="circles">
+              <div className="circle1">
+                <a href="https://www.linkedin.com/in/mazzilli-daniel/">
+                  <img src={linkedIn} alt="linkedIn" />
+                </a>
+              </div>
+              <div className="circle2">
+                <a href="https://github.com/Daniel-Mazzilli" target="_blank">
+                  <img src={gitHub} alt="gitHub" />
+                </a>
+              </div>
+              <div className="circle3">
+                <a href="mailto:danmazzilli@pursuit.com">
+                  <img src={mail} alt="email" />
+                </a>
+              </div>
             </div>
-            <div className="circle3">
-            <a 
-            href="mailto:destinyjoyner@pursuit.com">
-                <img src={mail} alt="email" height="80px" />
-            </a>
-            </div>
-          </div>
-        </section>
-      </article>
-
-      <article className="about-dan">
-        <section className="dan-details">
-          <img src={danAvatar} alt="dan" />
-          <p>
-            <h4>Dan M.</h4>
-            about me yadda yadda yadda
-          </p>
-          <div className="circles">
-            <div className="circle1">
-              <a
-              href="https://www.linkedin.com/in/destiny-joyner-934846243/">
-                <img src={linkedIn} alt="linkedIn" height="80px" />
-              </a>
-            </div>
-            <div className="circle2">
-              <a
-              href="https://github.com/DestinyJoyner" target="_blank">
-                <img src={gitHub} alt="gitHub" height="80px" />
-              </a>
-            </div>
-            <div className="circle3">
-            <a 
-            href="mailto:destinyjoyner@pursuit.com">
-                <img src={mail} alt="email" height="80px" />
-            </a>
-            </div>
-          </div>
-        </section>
-      </article>
-
+          </section>
+        </div>
+      </section>
     </div>
   );
 }
