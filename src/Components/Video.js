@@ -149,8 +149,11 @@ function Video() {
   useEffect(() => {
     window.scrollTo(0, 0)
     // check favorites
-    const storedFavs = JSON.parse(window.localStorage.getItem(`favorites`)).find(({vidId}) => id === vidId)
+    if(JSON.parse(window.localStorage.getItem(`favorites`))){
+      const storedFavs = JSON.parse(window.localStorage.getItem(`favorites`)).find(({vidId}) => id === vidId)
     storedFavs ? setClicked(true) : setClicked(false)
+    }
+    
 
     const commentArr = JSON.parse(window.localStorage.getItem(id))
     commentArr ? setComments(commentArr) : setComments([])
