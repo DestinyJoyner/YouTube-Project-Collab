@@ -4,6 +4,7 @@ import rain from './rain.png'
 import pix from './kratos-thor.gif'
 import destiny from './light-saber-no-background.png'
 import dan from './test.png'
+import quota from '../Components/assets/quota-bar.jpg'
 import "./EasterEgg.css"
 import '../Fonts/GODOFWAR.TTF'
 
@@ -19,7 +20,8 @@ function EasterEgg(props) {
             <div className='axe-hammer'><img 
             src = {pix}
             alt = 'collision' /></div>
-             <h1><span className='first'>PROJECT </span><span className='second'>OVERKILL</span></h1>
+             <h1><span className='first'>PROJECT </span><span className='second'>OVERKILL</span><br/><img id="quota" src={quota} alt="quota bar"></img></h1>
+             
 
             <div className="gallery">
            
