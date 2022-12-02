@@ -2,7 +2,7 @@ import React from 'react';
 import lightining from './lightining.png'
 import rain from './rain.png'
 import pix from './kratos-thor.gif'
-import destiny from './light-saber-no-background.png'
+import destiny from './blue lightsaber.png'
 import dan from './bicycle kick.png'
 import quota from '../Components/assets/quota-bar.jpg'
 import "./EasterEgg.css"

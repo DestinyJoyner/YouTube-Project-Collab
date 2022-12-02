@@ -10,7 +10,6 @@ export const ContextData = createContext();
 function Provider({ children }) {
   // declare state to toggle darkMode
   const darkStored = JSON.parse(window.localStorage.getItem(`darkMode`))
-  console.log(`dark`, typeof darkStored)
   const [darkMode, setDarkMode] = useState(darkStored ? true : false);
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState(empty.items);
