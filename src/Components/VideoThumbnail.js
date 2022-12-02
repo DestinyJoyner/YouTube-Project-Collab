@@ -62,7 +62,7 @@ useEffect(() => {
         <p 
         id="title"
         name = {videoId}>
-          {obj.snippet.title}</p>
+          {obj.snippet.title.length > 80?<span>{obj.snippet.title.slice(0,80)}<span id="dots">...</span></span>:obj.snippet.title }</p>
         <p 
         className="views"
         name = {videoId}>

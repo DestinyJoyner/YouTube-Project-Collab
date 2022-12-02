@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import uuid from "react-uuid";
 import "./CommentForm.css";
 import userIcon from "./assets/default-user-icon.jpg";
 
@@ -92,10 +93,11 @@ function CommentForm({ videoId }) {
       <div className="comments">
         <ul>
           {comments.map(({ comment, commenter }) => (
-            <li>
+            <li key={uuid()}>
               <img src={userIcon} alt="user-icon" />
               <h4>
-                <span className="user">{commenter}</span> {time(timeNow)}
+                <span className="user">{commenter}</span>
+                {/* {time(timeNow)} */}
               </h4>
               <p>{comment}</p>
             </li>

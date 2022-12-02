@@ -32,7 +32,7 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
   }, []);
 
   return (
-    <>
+    <div className="search-results">
       <h3 id="results-label">Results for: {keyword}</h3>
       <div className="videos">
         {searchResult.length > 1 &&
@@ -40,6 +40,6 @@ export default function SearchResults({ defaultOrder, defaultNum }) {
             return <VideoThumbnail key={id.videoId} videoId={id.videoId} />;
           })}
       </div>
-    </>
+    </div>
   );
 }

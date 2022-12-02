@@ -62,11 +62,6 @@ function Provider({ children }) {
               viewsFetch(id.videoId, setModal)
           });
             setData(res.items);
-            // fetch for views info for each video in fetch return
-          //   res.items.forEach(({id}) => {
-          //     //   fetch for video with stats/views
-          //     viewsFetch(id.videoId, setModal)
-          // });
           }
         })
         .catch((err) => setModal(true));

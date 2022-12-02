@@ -24,7 +24,7 @@
   text-decoration: none;
   display: grid;
   width: 16rem;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: 1fr 0.25fr auto;
   padding: 2px 0;
   margin-left: auto;
   margin-right: auto;
@@ -34,13 +34,17 @@
   color: #212121;
   font-size: 0.8rem;
   font-weight: bold;
-  padding-bottom: 6px;
+  align-self: center;
+}
+
+#dots {
+  font-weight: normal;
 }
 
 .views {
   color: #212121;
   font-size: 12px;
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-evenly;
 }
