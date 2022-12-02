@@ -8,6 +8,7 @@ function Favorites(props) {
   const { favData, setFavData } = useContext(ContextData);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const stored = JSON.parse(window.localStorage.getItem(`favorites`));
     stored ? setFavData(stored) : setFavData([]);
   }, []);

@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import About from "../Provider/About";
+import About from "./About";
 import EasterEgg from "../Easter-Egg/EasterEgg";
 import Favorites from "./Favorites";
 import Home from "./Home";

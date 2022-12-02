@@ -34,7 +34,7 @@ function ChannelThumbnail({ obj }) {
   //   // navigate(`/video/${e.target.id}`);
   // }
   return (
-    // <div className="videoThumbnail" onClick={(event) => addToRecents(event)}>
+    <div className="videoThumbnail" >
     <Link to = {`/video/${obj.id.videoId}`}>
       {obj.id.videoId && (
         <>
@@ -50,7 +50,7 @@ function ChannelThumbnail({ obj }) {
         </>
       )}
       </Link>
-    // </div>
+     </div>
   );
 }
 

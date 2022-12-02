@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+
+import { useEffect } from "react";
 import "./About.css";
-import gitHub from "./grey-gitHub(2).png";
-import linkedIn from "./red-linkedIn.png";
-import mail from "./dark-mail-icon.png";
-import destinyAbout from "./you-tube-about.png";
+import gitHub from "./assets/grey-gitHub(2).png";
+import linkedIn from "./assets/red-linkedIn.png";
+import mail from "./assets/dark-mail-icon.png";
+import destinyAbout from "./assets/you-tube-about.png";
 import danAvatar from "../Components/assets/Dan-icon.png";
 
 function About() {
+
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="aboutPage">
       <div className="about-project">

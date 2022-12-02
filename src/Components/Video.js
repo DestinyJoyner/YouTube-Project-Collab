@@ -141,15 +141,12 @@ function Video() {
       );
       setRecent([newRecent, ...recent]);
     }
-    //  navigate(`/video/${e.target.id}`);
-    // navigate("/");
-      // e.preventDefault()
-    // console.log(e);
-    // navigate(`/video/${e.target.id}`);
   }
 
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+
     const isStored = JSON.parse(window.localStorage.getItem(`views-${id}`));
     let channelId;
     const channelStored = JSON.parse(
@@ -157,7 +154,7 @@ function Video() {
     );
     if (isStored) {
       setVidData(isStored);
-      // console.log(isStored);
+      addToRecents(id)
       channelId = isStored[0].snippet.channelId;
       if (channelStored) {
         setChannel(channelStored);
@@ -186,7 +183,8 @@ function Video() {
             `views-${id}`,
             JSON.stringify(respJson.items)
           );
-
+            //  function on click to add video to recently viewed list
+          addToRecents(id)
           // use snippet.channelId to fetch for more from channel
           channelId = respJson.items[0].snippet.channelId;
           testChannels(channelId)
@@ -227,8 +225,6 @@ function Video() {
         .catch((err) => setModal(true));
     }
 
-    //  function on click to add video to recently viewed list
-    addToRecents(id)
    
 
   }, [id]);
