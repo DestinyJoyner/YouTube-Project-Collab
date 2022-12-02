@@ -34,7 +34,9 @@ function Video() {
     darkMode,
     setModal,
     recent,
-    setRecent
+    setRecent,
+    comments,
+    setComments
   } = useContext(ContextData);
 
   // state for favorite checkbox
@@ -146,7 +148,13 @@ function Video() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    // check favorites
+    const storedFavs = JSON.parse(window.localStorage.getItem(`favorites`)).find(({vidId}) => id === vidId)
+    storedFavs ? setClicked(true) : setClicked(false)
 
+    const commentArr = JSON.parse(window.localStorage.getItem(id))
+    commentArr ? setComments(commentArr) : setComments([])
+    
     const isStored = JSON.parse(window.localStorage.getItem(`views-${id}`));
     let channelId;
     const channelStored = JSON.parse(

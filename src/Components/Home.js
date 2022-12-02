@@ -13,19 +13,21 @@ function Home() {
   const { fetchData } = useContext(ContextData);
 
   const dansPicks = [
-    "Seria A",
+    // "Seria A",
+    "AS Roma",
     "Qlimax",
+    "Met Museum", 
     // "Life Hacks",
     // "React Coding",
     // "Funny Cat Videos",
     // "Ted Lasso",
   ];
   const desPicks = [
-    // "Asian Cuisine Recipes",
-    "Christmas",
+    "Asian Cuisine Recipes",
+    // "Christmas",
     "How to Adult",
     // "Resident Evil",
-    // "The Office",
+    "The Office",
     // "Hats",
   ];
 

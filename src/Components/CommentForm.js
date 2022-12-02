@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import { ContextData } from "../Provider/Provider";
 import uuid from "react-uuid";
 import "./CommentForm.css";
 import userIcon from "./assets/default-user-icon.jpg";
@@ -7,9 +8,10 @@ function CommentForm({ videoId }) {
   const commentArr = window.localStorage.getItem(videoId)
     ? JSON.parse(window.localStorage.getItem(videoId))
     : [];
-  // declare state for storing comments
-  const [comments, setComments] = useState(commentArr);
+  // // declare state for storing comments
+  // const [comments, setComments] = useState(commentArr);
   // declare state for new comments
+  const {comments, setComments} = useContext(ContextData)
   const [newComment, setNewComment] = useState({
     commenter: "",
     comment: "",

@@ -35,6 +35,10 @@ function Provider({ children }) {
       ? JSON.parse(window.localStorage.getItem(`recents`))
       : []
   );
+// declare state for storing comments
+const [comments, setComments] = useState([]);
+
+
   const URL = "https://youtube.googleapis.com/youtube/v3/";
 
   const fetchData = (resource, searchInput, setData, order, number) => {
@@ -99,6 +103,8 @@ function Provider({ children }) {
           setFavData,
           recent,
           setRecent,
+          comments, 
+          setComments
         }}
       >
         <Nav />

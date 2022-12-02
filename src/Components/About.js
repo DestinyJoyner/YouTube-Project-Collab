@@ -104,7 +104,7 @@ function About() {
               </p>
               <p>
                 In my free time I enjoy museums, soccer, traveling, dance music
-                events, and cooking
+                events, and cooking.
               </p>
             </div>
             <div className="circles">
