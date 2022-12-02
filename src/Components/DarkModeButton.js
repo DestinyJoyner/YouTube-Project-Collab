@@ -9,7 +9,10 @@ function DarkModeButton() {
     return (
         <button 
         type= "button"
-        onClick={() => setDarkMode(!darkMode)}>
+        onClick={() => {
+            window.localStorage.setItem(`darkMode`, !darkMode)
+            setDarkMode(!darkMode)
+        }}>
             <img 
             src= {!darkMode ? moon : sun}
             alt = {!darkMode? 'darkmode' : 'lightmode'} />
