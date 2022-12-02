@@ -1,28 +1,36 @@
 footer {
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    background-color: #212121 ;
-    color: white;
-    font-size: 12px;
-    padding: 2px 0;
-    word-spacing: 2px;
-    z-index: 210;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #212121;
+  color: white;
+  font-size: 12px;
+  padding: 2px 0;
+  word-spacing: 2px;
+  z-index: 210;
+}
+
+#hidden {
+  opacity: 0;
+}
+
+#hidden:hover {
+  opacity: 1;
+  cursor: default;
 }
 
 a.egg {
-    width: 50px,;
-    justify-self: flex-end,;
-    margin: 0 5px;
-    
+  width: 50px;
+  justify-self: flex-end;
+  margin: 0 5px;
 }
 
 .egg img {
-    height: 16px;
-   text-align: end;
+  height: 16px;
+  text-align: end;
 }
 
 .egg img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

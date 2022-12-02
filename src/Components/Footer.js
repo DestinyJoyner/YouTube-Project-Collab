@@ -7,7 +7,7 @@ export default function Footer() {
     <footer>
       Dan M. & Destiny J.
       <Link to="/overkill" className="egg">
-        <img src={goldEgg} alt="golden egg" />
+        <img id="hidden" src={goldEgg} alt="golden egg" />
       </Link> Nov 2022
     </footer>
   );
