@@ -130,7 +130,7 @@ function Video() {
     );
     if (isStored) {
       setVidData(isStored);
-      console.log(isStored);
+      // console.log(isStored);
       channelId = isStored[0].snippet.channelId;
       if (channelStored) {
         setChannel(channelStored);

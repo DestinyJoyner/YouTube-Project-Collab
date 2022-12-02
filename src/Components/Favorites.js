@@ -6,7 +6,7 @@ import noImage from "./assets/no-image-dark.png";
 
 function Favorites(props) {
   const { favData, setFavData } = useContext(ContextData);
-console.log(favData.length)
+// console.log(favData.length)
   useEffect(() => {
     const stored = JSON.parse(window.localStorage.getItem(`favorites`));
     stored ? setFavData(stored) : setFavData([]);
@@ -26,7 +26,7 @@ console.log(favData.length)
 
       <ol>
         {favData.map(({ vidId, title, image, chanName, chanId }) => (
-          <li>
+          <li key={vidId}>
             <img src={image} alt="vid-thumbnail" />
             <div>
               <Link to={`/video/${vidId}`} key={vidId}>

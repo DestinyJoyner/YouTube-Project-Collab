@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ContextData } from '../Provider/Provider';
 import { Link } from 'react-router-dom';
-import { convertDate, convertNumber } from '../Functions/functions';
+// import { convertDate, convertNumber } from '../Functions/functions';
 
 function ChannelThumbnail({obj}) {
   const {recent, setRecent} = useContext(ContextData)
