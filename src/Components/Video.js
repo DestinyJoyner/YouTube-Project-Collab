@@ -33,6 +33,8 @@ function Video() {
     setChannel,
     darkMode,
     setModal,
+    recent,
+    setRecent
   } = useContext(ContextData);
 
   // state for favorite checkbox
@@ -121,6 +123,31 @@ function Video() {
   //     relatedToVideoFetch(id, setRelatedVids, setModal);
   //   }
   // }, [id]);
+  function addToRecents(value) {
+    const vidTitle = JSON.parse(
+      window.localStorage.getItem(`views-${value}`)
+    )[0].snippet.localized.title;
+
+    const newRecent = {
+      id: value,
+      title: vidTitle,
+    };
+
+    const duplicate = recent.filter(({ id }) => id === value);
+    if (!Object.keys(duplicate).length) {
+      window.localStorage.setItem(
+        `recents`,
+        JSON.stringify([newRecent, ...recent])
+      );
+      setRecent([newRecent, ...recent]);
+    }
+    //  navigate(`/video/${e.target.id}`);
+    // navigate("/");
+      // e.preventDefault()
+    // console.log(e);
+    // navigate(`/video/${e.target.id}`);
+  }
+
 
   useEffect(() => {
     const isStored = JSON.parse(window.localStorage.getItem(`views-${id}`));
@@ -199,6 +226,11 @@ function Video() {
         })
         .catch((err) => setModal(true));
     }
+
+    //  function on click to add video to recently viewed list
+    addToRecents(id)
+   
+
   }, [id]);
 
   return (

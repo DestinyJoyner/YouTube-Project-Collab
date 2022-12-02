@@ -6,7 +6,7 @@ import noImage from "./assets/no-image-dark.png";
 
 function Favorites(props) {
   const { favData, setFavData } = useContext(ContextData);
-// console.log(favData.length)
+
   useEffect(() => {
     const stored = JSON.parse(window.localStorage.getItem(`favorites`));
     stored ? setFavData(stored) : setFavData([]);

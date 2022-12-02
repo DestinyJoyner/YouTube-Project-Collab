@@ -8,7 +8,7 @@ import darkLogo from "./assets/dark-logo(2).png";
 import "./Nav.css";
 
 function Nav() {
-  const { darkMode, setDarkMode, darkStyles } = useContext(ContextData);
+  const { darkMode } = useContext(ContextData);
 
   return (
     <nav className={darkMode ? "darkMode nav" : "nav"}>
