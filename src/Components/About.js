@@ -109,7 +109,8 @@ function About() {
             </div>
             <div className="circles">
               <div className="circle1">
-                <a href="https://www.linkedin.com/in/mazzilli-daniel/">
+                <a href="https://www.linkedin.com/in/mazzilli-daniel/"
+                target="_blank">
                   <img src={linkedIn} alt="linkedIn" />
                 </a>
               </div>
