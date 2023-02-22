@@ -1,8 +1,9 @@
 import { useState, createContext, useContext } from "react";
+import axios from "axios";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Modal from "../Components/Modal";
-import { empty, viewsFetch } from "../Functions/functions";
+import { viewsFetch } from "../Functions/functions";
 
 // Create Context object to consume data in other components
 export const ContextData = createContext();
@@ -12,7 +13,13 @@ export function useContextProvider() {
   return useContext(ContextData);
 }
 
+// API URL AND KEY in .env
+const URL = process.env.REACT_APP_URL;
+const KEY = process.env.REACT_APP_API_KEY;
+
 function Provider({ children }) {
+  const favorites = JSON.parse(window.localStorage.getItem(`favorites`));
+  const recents = JSON.parse(window.localStorage.getItem(`recents`));
   // declare state to toggle darkMode
   const darkStored = JSON.parse(window.localStorage.getItem(`darkMode`));
   const [darkMode, setDarkMode] = useState(darkStored ? true : false);
@@ -25,26 +32,15 @@ function Provider({ children }) {
   //test for video.js state to be changed from onclick videothumbnail
   const [vidData, setVidData] = useState([]);
   // related to video state
-  // const [relatedVids, setRelatedVids] = useState(empty);
   const [relatedVids, setRelatedVids] = useState({});
   // more from channel state
-  const [channel, setChannel] = useState(empty.items);
+  const [channel, setChannel] = useState([]);
   // test for favorites
-  const [favData, setFavData] = useState(
-    JSON.parse(window.localStorage.getItem(`favorites`))
-      ? JSON.parse(window.localStorage.getItem(`favorites`))
-      : []
-  );
+  const [favData, setFavData] = useState(favorites ? favorites : []);
   // state for recently viewed videos
-  const [recent, setRecent] = useState(
-    JSON.parse(window.localStorage.getItem(`recents`))
-      ? JSON.parse(window.localStorage.getItem(`recents`))
-      : []
-  );
+  const [recent, setRecent] = useState(recents ? recents : []);
   // declare state for storing comments
   const [comments, setComments] = useState([]);
-
-  const URL = "https://youtube.googleapis.com/youtube/v3/";
 
   const fetchData = (resource, searchInput, setData, order, number) => {
     const lowerCase = searchInput.toLowerCase();
@@ -57,21 +53,22 @@ function Provider({ children }) {
       const formattedInput = lowerCase.replaceAll(" ", "%20");
       const fDetails = `?part=snippet&maxResults=${number}&order=${order}&q=`;
       const type = `&type=video`;
-      const apiKey = `&key=${process.env.REACT_APP_API_KEY}`;
-      fetch(URL + resource + fDetails + formattedInput + type + apiKey)
-        .then((res) => res.json())
-        .then((res) => {
+      const apiKey = `&key=${KEY}`;
+
+      axios
+        .get(URL + resource + fDetails + formattedInput + type + apiKey)
+        .then(({ data }) => {
           // if we receive a res error -> show modal
-          if (res.error) {
+          if (data.error) {
             setModal(true);
           } else {
             // store search keyword, order and num in local storage
-            window.localStorage.setItem(storageVar, JSON.stringify(res.items));
-            res.items.forEach(({ id }) => {
+            window.localStorage.setItem(storageVar, JSON.stringify(data.items));
+            data.items.forEach(({ id }) => {
               //   fetch for video with stats/views
               viewsFetch(id.videoId, setModal);
             });
-            setData(res.items);
+            setData(data.items);
           }
         })
         .catch((err) => setModal(true));
