@@ -1,18 +1,23 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Modal from "../Components/Modal";
-import { videoThumbnailEmpty, empty, viewsFetch } from "../Functions/functions";
+import { empty, viewsFetch } from "../Functions/functions";
 
 // Create Context object to consume data in other components
 export const ContextData = createContext();
 
+// function for using contextProvider in other components
+export function useContextProvider() {
+  return useContext(ContextData);
+}
+
 function Provider({ children }) {
   // declare state to toggle darkMode
-  const darkStored = JSON.parse(window.localStorage.getItem(`darkMode`))
+  const darkStored = JSON.parse(window.localStorage.getItem(`darkMode`));
   const [darkMode, setDarkMode] = useState(darkStored ? true : false);
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState(empty.items);
+  const [searchResult, setSearchResult] = useState([]);
   const [modal, setModal] = useState(false);
   const [numResults, setNumResults] = useState("9");
   const [order, setOrder] = useState("relevance");
@@ -20,7 +25,8 @@ function Provider({ children }) {
   //test for video.js state to be changed from onclick videothumbnail
   const [vidData, setVidData] = useState([]);
   // related to video state
-  const [relatedVids, setRelatedVids] = useState(empty);
+  // const [relatedVids, setRelatedVids] = useState(empty);
+  const [relatedVids, setRelatedVids] = useState({});
   // more from channel state
   const [channel, setChannel] = useState(empty.items);
   // test for favorites
@@ -35,9 +41,8 @@ function Provider({ children }) {
       ? JSON.parse(window.localStorage.getItem(`recents`))
       : []
   );
-// declare state for storing comments
-const [comments, setComments] = useState([]);
-
+  // declare state for storing comments
+  const [comments, setComments] = useState([]);
 
   const URL = "https://youtube.googleapis.com/youtube/v3/";
 
@@ -62,10 +67,10 @@ const [comments, setComments] = useState([]);
           } else {
             // store search keyword, order and num in local storage
             window.localStorage.setItem(storageVar, JSON.stringify(res.items));
-            res.items.forEach(({id}) => {
+            res.items.forEach(({ id }) => {
               //   fetch for video with stats/views
-              viewsFetch(id.videoId, setModal)
-          });
+              viewsFetch(id.videoId, setModal);
+            });
             setData(res.items);
           }
         })
@@ -103,8 +108,8 @@ const [comments, setComments] = useState([]);
           setFavData,
           recent,
           setRecent,
-          comments, 
-          setComments
+          comments,
+          setComments,
         }}
       >
         <Nav />

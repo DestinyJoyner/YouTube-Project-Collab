@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { ContextData } from "../Provider/Provider";
+import { useState, useEffect } from "react";
+import { useContextProvider } from "../Provider/Provider";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import ChannelThumbnail from "./ChannelThumbnail";
@@ -37,7 +37,7 @@ function Video() {
     setRecent,
     comments,
     setComments
-  } = useContext(ContextData);
+  } = useContextProvider();
 
   // state for favorite checkbox
   const checkboxState =
@@ -362,7 +362,7 @@ function Video() {
       <section className="related">
         <h4>You May Also Like:</h4>
         <div className="moreVids">
-          {relatedVids &&
+          {relatedVids.items &&
             relatedVids.items.map((obj) => {
               if (obj.id.videoId) {
                 return <ChannelThumbnail key={obj.id.videoId} obj={obj} />;

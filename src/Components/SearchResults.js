@@ -1,11 +1,11 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ContextData } from "../Provider/Provider";
+import { useContextProvider } from "../Provider/Provider";
 import VideoThumbnail from "./VideoThumbnail";
 import "./SearchResults.css";
 
 export default function SearchResults({ defaultOrder, defaultNum }) {
-  const { fetchData, searchResult, setSearchResult } = useContext(ContextData);
+  const { fetchData, searchResult, setSearchResult } = useContextProvider();
 
   const navigate = useNavigate();
 
